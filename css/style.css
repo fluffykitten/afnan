@@ -1,0 +1,495 @@
+/* ==========================================================================
+   Story Quest — Pulau Cerita
+   Gaya Canva Modern: Dominan Putih & Biru, Pendukung Hitam, Info Tosca
+   Tipografi: Cambria (fallback Georgia, serif)
+   ========================================================================== */
+
+:root {
+  --sq-bg: #f4f8ff;
+  --sq-surface: #ffffff;
+  --sq-blue: #1d4ed8;
+  --sq-blue-dark: #1e3a8a;
+  --sq-blue-soft: #e0edff;
+  --sq-tosca: #0d9488;
+  --sq-tosca-soft: #ccfbf1;
+  --sq-purple: #6d28d9;
+  --sq-purple-soft: #ede9fe;
+  --sq-ink: #111827;
+  --sq-muted: #4b5563;
+  --sq-border: #cbd5e1;
+  --sq-success: #15803d;
+  --sq-danger: #b91c1c;
+  --sq-warning: #b45309;
+  --sq-radius: 20px;
+  --sq-radius-sm: 12px;
+  --sq-shadow: 0 10px 28px rgba(29, 78, 216, 0.08);
+  --sq-font: Cambria, Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.sq-body {
+  font-family: var(--sq-font);
+  background: radial-gradient(circle at top right, #dbeafe 0%, var(--sq-bg) 42%, #ffffff 100%);
+  color: var(--sq-ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+main#app-root {
+  flex: 1 0 auto;
+}
+
+.sq-container {
+  max-width: 1180px;
+}
+
+/* Skip link aksesibilitas */
+.sq-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 12px;
+  background: var(--sq-ink);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  z-index: 2000;
+}
+.sq-skip-link:focus {
+  top: 12px;
+}
+
+/* Header & Navigasi */
+.sq-header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--sq-blue-soft);
+  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.05);
+}
+
+.sq-brand-btn {
+  border: none;
+  background: transparent;
+  color: var(--sq-ink);
+  min-height: 44px;
+}
+.sq-brand-btn:hover,
+.sq-brand-btn:focus-visible {
+  background: var(--sq-blue-soft);
+  border-radius: 12px;
+}
+
+.sq-brand-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--sq-blue-dark);
+  letter-spacing: 0.4px;
+}
+
+.sq-brand-sub {
+  color: var(--sq-muted);
+  font-size: 0.82rem;
+}
+
+.sq-progress-wrap {
+  min-width: 190px;
+  max-width: 300px;
+}
+
+.sq-progress-bar {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--sq-blue-soft);
+  overflow: hidden;
+}
+
+.sq-progress-bar .progress-bar {
+  background: linear-gradient(90deg, var(--sq-blue), var(--sq-tosca));
+  transition: width 0.35s ease;
+}
+
+.sq-status-strip {
+  background: #f8fafc;
+  border: 1px solid var(--sq-blue-soft);
+  border-radius: 14px;
+  padding: 6px 12px;
+}
+
+.sq-mini-avatar svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.sq-pill {
+  background: #ffffff;
+  border: 1px solid var(--sq-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* Tombol & Ukuran Sentuh >= 44px */
+.sq-touch {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.sq-touch-sm {
+  min-height: 38px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.sq-touch:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.sq-touch:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.sq-btn-primary {
+  background: linear-gradient(135deg, var(--sq-blue), #2563eb);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 6px 14px rgba(29, 78, 216, 0.25);
+}
+.sq-btn-primary:hover,
+.sq-btn-primary:focus {
+  background: linear-gradient(135deg, var(--sq-blue-dark), var(--sq-blue));
+  color: #ffffff;
+}
+
+.sq-btn-outline {
+  background: #ffffff;
+  color: var(--sq-blue-dark);
+  border: 2px solid var(--sq-blue-soft);
+}
+.sq-btn-outline:hover,
+.sq-btn-outline.active {
+  background: var(--sq-blue-soft);
+  color: var(--sq-blue-dark);
+  border-color: var(--sq-blue);
+}
+
+.sq-btn-tosca {
+  background: var(--sq-tosca);
+  color: #ffffff;
+  border: none;
+}
+.sq-btn-tosca:hover {
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.sq-btn-dark {
+  background: var(--sq-ink);
+  color: #ffffff;
+  border: none;
+}
+.sq-btn-dark:hover {
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.sq-badge-tosca {
+  background: var(--sq-tosca);
+  color: #ffffff;
+}
+
+/* Kartu & Kotak Info Tosca */
+.sq-card {
+  background: var(--sq-surface);
+  border: 2px solid #e2e8f0;
+  border-radius: var(--sq-radius);
+  box-shadow: var(--sq-shadow);
+  padding: 1.5rem;
+  animation: sqFadeIn 0.28s ease;
+}
+
+.sq-card-blue {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--sq-radius);
+  padding: 1.75rem;
+  box-shadow: 0 14px 32px rgba(30, 58, 138, 0.22);
+}
+
+.sq-info-box {
+  background: var(--sq-tosca-soft);
+  border-left: 6px solid var(--sq-tosca);
+  border-radius: var(--sq-radius-sm);
+  padding: 1rem 1.2rem;
+  color: #0f172a;
+}
+
+.sq-info-title {
+  color: #0f766e;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.35rem;
+}
+
+/* Avatar Picker */
+.sq-avatar-card {
+  border: 2px solid var(--sq-border);
+  border-radius: 16px;
+  padding: 10px;
+  cursor: pointer;
+  background: #ffffff;
+  text-align: center;
+  min-height: 44px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.sq-avatar-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--sq-blue);
+}
+.sq-avatar-card.selected {
+  border-color: var(--sq-blue);
+  background: var(--sq-blue-soft);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.2);
+}
+
+/* Peta Pulau Interaktif */
+.sq-map-wrapper {
+  background: linear-gradient(180deg, #dbeafe 0%, #bfdbfe 55%, #99f6e4 100%);
+  border: 3px solid var(--sq-blue-soft);
+  border-radius: 24px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sq-island-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid var(--sq-blue-soft);
+  border-radius: 18px;
+  padding: 1rem;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sq-island-card:hover:not(.locked) {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(29, 78, 216, 0.15);
+}
+
+.sq-island-card.locked {
+  opacity: 0.72;
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.sq-island-card.completed {
+  border-color: var(--sq-tosca);
+  background: #f0fdfa;
+}
+
+.sq-island-card.recommended {
+  box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.35);
+}
+
+/* Teks Bacaan Inggris */
+.sq-reading-box {
+  background: #f8fafc;
+  border: 2px solid #dbeafe;
+  border-radius: 16px;
+  padding: 1.25rem;
+  font-size: 1.08rem;
+}
+
+.sq-stage-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tag-orientation { background: #dbeafe; color: #1e40af; }
+.tag-complication { background: #fee2e2; color: #991b1b; }
+.tag-evaluation { background: #fef3c7; color: #92400e; }
+.tag-resolution { background: #dcfce7; color: #166534; }
+.tag-reorientation { background: #ede9fe; color: #5b21b6; }
+
+/* Kuis & Pilihan Jawaban */
+.sq-option-btn {
+  width: 100%;
+  text-align: left;
+  background: #ffffff;
+  border: 2px solid var(--sq-border);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  min-height: 48px;
+  font-weight: 600;
+  color: var(--sq-ink);
+  transition: all 0.15s ease;
+}
+.sq-option-btn:hover:not(:disabled) {
+  border-color: var(--sq-blue);
+  background: var(--sq-blue-soft);
+}
+.sq-option-btn.correct {
+  border-color: var(--sq-success);
+  background: #dcfce7;
+  color: #14532d;
+}
+.sq-option-btn.wrong {
+  border-color: var(--sq-danger);
+  background: #fee2e2;
+  color: #7f1d1d;
+}
+
+/* Mini-Game Drag & Drop / Match / Swipe */
+.sq-dropzone {
+  min-height: 110px;
+  border: 2px dashed var(--sq-blue);
+  border-radius: 14px;
+  padding: 0.75rem;
+  background: #f8fafc;
+  transition: background-color 0.15s ease;
+}
+.sq-dropzone.drag-over {
+  background: #dbeafe;
+}
+
+.sq-drag-chip {
+  background: #ffffff;
+  border: 2px solid var(--sq-blue);
+  border-radius: 12px;
+  padding: 0.65rem 0.9rem;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+.sq-drag-chip.selected-chip {
+  background: var(--sq-blue-soft);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.35);
+}
+
+.sq-swipe-card {
+  background: linear-gradient(145deg, #ffffff, #eff6ff);
+  border: 3px solid var(--sq-blue);
+  border-radius: 22px;
+  padding: 1.75rem;
+  box-shadow: 0 14px 28px rgba(29, 78, 216, 0.14);
+  touch-action: pan-y;
+  transition: transform 0.2s ease;
+}
+
+/* Sertifikat Ungu & Tosca */
+.sq-certificate {
+  background: linear-gradient(135deg, #faf5ff 0%, #ffffff 48%, #f0fdfa 100%);
+  border: 10px double var(--sq-purple);
+  outline: 4px solid var(--sq-tosca);
+  border-radius: 16px;
+  padding: 2.25rem;
+  color: #1e1b4b;
+  position: relative;
+}
+.sq-cert-ribbon {
+  background: linear-gradient(90deg, var(--sq-purple), var(--sq-tosca));
+  color: #ffffff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Navigasi Bawah & Footer */
+.sq-bottom-nav {
+  background: #ffffff;
+  border-top: 2px solid var(--sq-blue-soft);
+  position: sticky;
+  bottom: 0;
+  z-index: 1020;
+  box-shadow: 0 -4px 16px rgba(17, 24, 39, 0.06);
+}
+
+.sq-footer {
+  background: var(--sq-ink);
+  color: #f8fafc;
+}
+.sq-footer .text-secondary {
+  color: #cbd5e1 !important;
+}
+
+/* Modal */
+.sq-modal-content {
+  border-radius: 20px;
+  border: 2px solid var(--sq-blue-soft);
+}
+.sq-modal-header {
+  background: var(--sq-blue-soft);
+  color: var(--sq-blue-dark);
+}
+
+/* ==========================================================================
+   MODE PAPAN INTERAKTIF (PID) — Font & Tombol Lebih Besar
+   ========================================================================== */
+body.pid-mode {
+  font-size: 1.32rem;
+}
+body.pid-mode .sq-container {
+  max-width: 1440px;
+}
+body.pid-mode .sq-touch,
+body.pid-mode .sq-option-btn {
+  min-height: 58px;
+  font-size: 1.15rem;
+  padding: 0.85rem 1.25rem;
+}
+body.pid-mode h1 { font-size: 2.5rem; }
+body.pid-mode h2 { font-size: 2.05rem; }
+body.pid-mode h3 { font-size: 1.7rem; }
+
+/* Animasi & Aksesibilitas prefers-reduced-motion */
+@keyframes sqFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .sq-header, .sq-bottom-nav, .sq-footer, .no-print {
+    display: none !important;
+  }
+  body.sq-body {
+    background: #ffffff !important;
+  }
+  .sq-certificate {
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}

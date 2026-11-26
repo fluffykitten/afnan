@@ -1,0 +1,102 @@
+{
+  "badges": [
+    {
+      "id": "first_step",
+      "name": "Penjelajah Pertama",
+      "icon": "🧭",
+      "description": "Menyelesaikan Asesmen Awal untuk memetakan kemampuan awalmu.",
+      "xpBonus": 25
+    },
+    {
+      "id": "island_1",
+      "name": "Pemburu Tujuan",
+      "icon": "🎯",
+      "description": "Menaklukkan Boss Quiz Pulau 1 (Tujuan Komunikatif).",
+      "xpBonus": 30
+    },
+    {
+      "id": "island_2",
+      "name": "Arsitek Story Map",
+      "icon": "🗺️",
+      "description": "Menaklukkan Boss Quiz Pulau 2 (Schematic Structure).",
+      "xpBonus": 30
+    },
+    {
+      "id": "island_3",
+      "name": "Ahli Proporsi",
+      "icon": "📊",
+      "description": "Menaklukkan Boss Quiz Pulau 3 (Hitung Kalimat & Persentase).",
+      "xpBonus": 30
+    },
+    {
+      "id": "island_4",
+      "name": "Analis Komparatif",
+      "icon": "⚖️",
+      "description": "Menaklukkan Boss Quiz Pulau 4 (Legend vs Fable).",
+      "xpBonus": 30
+    },
+    {
+      "id": "island_5",
+      "name": "Detektif Kritis",
+      "icon": "🔍",
+      "description": "Menaklukkan Boss Quiz Pulau 5 (Evaluasi Tahap & Fakta/Opini).",
+      "xpBonus": 30
+    },
+    {
+      "id": "island_6",
+      "name": "Kreator Cerita",
+      "icon": "✍️",
+      "description": "Menaklukkan Pulau 6 & merancang kerangka cerita orisinal.",
+      "xpBonus": 40
+    },
+    {
+      "id": "master_explorer",
+      "name": "Penakluk 6 Pulau",
+      "icon": "👑",
+      "description": "Menyelesaikan seluruh 6 pulau di Peta Story Quest.",
+      "xpBonus": 100
+    },
+    {
+      "id": "perfect_boss",
+      "name": "Juara Nilai Prima",
+      "icon": "🌟",
+      "description": "Meraih nilai ≥ 90 pada salah satu Boss Quiz atau Asesmen Akhir.",
+      "xpBonus": 50
+    },
+    {
+      "id": "game_lover",
+      "name": "Juara Mini-Game",
+      "icon": "🎮",
+      "description": "Menyelesaikan minimal 3 mini-game pulau dengan tuntas.",
+      "xpBonus": 35
+    },
+    {
+      "id": "all_games",
+      "name": "Kolektor Tantangan",
+      "icon": "🧩",
+      "description": "Menyelesaikan seluruh 6 mini-game interaktif di semua pulau.",
+      "xpBonus": 75
+    },
+    {
+      "id": "deep_reflector",
+      "name": "Pemikir Reflektif",
+      "icon": "💭",
+      "description": "Mengisi dan menyimpan keempat kalimat refleksi pembelajaran.",
+      "xpBonus": 30
+    },
+    {
+      "id": "graduate",
+      "name": "Lulusan Story Quest",
+      "icon": "🎓",
+      "description": "Menyelesaikan Asesmen Akhir dengan nilai ≥ 70 dan membuka sertifikat.",
+      "xpBonus": 80
+    },
+    {
+      "id": "streak_3",
+      "name": "Petualang Konsisten",
+      "icon": "🔥",
+      "description": "Mengumpulkan 300+ XP atau menjaga streak harian aktif.",
+      "xpBonus": 40
+    }
+  ]
+}

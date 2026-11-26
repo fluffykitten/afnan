@@ -1,0 +1,1246 @@
+{
+  "pretest": [
+    {
+      "id": "pre_1",
+      "difficulty": "easy",
+      "topicIsland": 1,
+      "topicLabel": "Social Function",
+      "question": "What is the main communicative purpose of a narrative text such as a legend or fable?",
+      "options": [
+        "To describe how to operate an electronic device",
+        "To entertain the readers and convey moral values",
+        "To persuade readers to buy a local product",
+        "To report scientific facts about animal habitats"
+      ],
+      "answerIndex": 1,
+      "explanation": "Teks naratif (legend & fable) bertujuan menghibur pembaca (to entertain/amuse) sekaligus menyampaikan nilai moral."
+    },
+    {
+      "id": "pre_2",
+      "difficulty": "easy",
+      "topicIsland": 2,
+      "topicLabel": "Schematic Structure",
+      "question": "Which part of a narrative text introduces the characters, time, and place of the story?",
+      "options": ["Complication", "Resolution", "Orientation", "Re-orientation"],
+      "answerIndex": 2,
+      "explanation": "Orientation adalah tahap pembuka yang memperkenalkan tokoh (who), waktu (when), dan tempat (where)."
+    },
+    {
+      "id": "pre_3",
+      "difficulty": "easy",
+      "topicIsland": 4,
+      "topicLabel": "Legend vs Fable",
+      "question": "Which statement best defines a fable?",
+      "options": [
+        "A story about the origin of a mountain or lake",
+        "A short story featuring animals that talk and act like humans",
+        "A biography of a national hero",
+        "A news article about wildlife conservation"
+      ],
+      "answerIndex": 1,
+      "explanation": "Fable adalah cerita fiksi dengan tokoh hewan yang berperilaku seperti manusia dan mengandung pesan moral."
+    },
+    {
+      "id": "pre_4",
+      "difficulty": "easy",
+      "topicIsland": 2,
+      "topicLabel": "Schematic Structure",
+      "question": "Where does the main conflict or problem reach its peak in a narrative text?",
+      "options": ["Orientation", "Complication", "Re-orientation", "Title"],
+      "answerIndex": 1,
+      "explanation": "Complication memuat munculnya masalah hingga puncak konflik yang dihadapi tokoh."
+    },
+    {
+      "id": "pre_5",
+      "difficulty": "easy",
+      "topicIsland": 1,
+      "topicLabel": "Social Function",
+      "passage": "Once upon a time, a tiny ant helped a dove escape from a hunter. Later, the dove dropped a leaf to save the ant from drowning.",
+      "question": "What moral value is conveyed by the story snippet above?",
+      "options": [
+        "Never trust small creatures",
+        "Kindness will be repaid with kindness",
+        "Hunters should stay in the forest",
+        "Doves are stronger than ants"
+      ],
+      "answerIndex": 1,
+      "explanation": "Semut dan merpati saling menolong; ini menunjukkan nilai moral bahwa kebaikan akan dibalas dengan kebaikan."
+    },
+    {
+      "id": "pre_6",
+      "difficulty": "easy",
+      "topicIsland": 3,
+      "topicLabel": "Text Proportion",
+      "question": "If Orientation has 2 sentences, Complication has 5 sentences, and Resolution has 3 sentences, what is the total number of sentences?",
+      "options": ["8 sentences", "9 sentences", "10 sentences", "12 sentences"],
+      "answerIndex": 2,
+      "explanation": "2 + 5 + 3 = 10 kalimat."
+    },
+    {
+      "id": "pre_7",
+      "difficulty": "easy",
+      "topicIsland": 5,
+      "topicLabel": "Fact vs Opinion",
+      "question": "Which sentence is a FACT based on 'Malin Kundang'?",
+      "options": [
+        "Malin Kundang is the saddest story ever written.",
+        "Malin Kundang sailed away on a merchant ship.",
+        "Every student dislikes Malin's behavior.",
+        "West Sumatra beaches are prettier than Java beaches."
+      ],
+      "answerIndex": 1,
+      "explanation": "Fakta teks adalah peristiwa yang tertulis langsung dalam cerita, yaitu Malin berlayar dengan kapal dagang."
+    },
+    {
+      "id": "pre_8",
+      "difficulty": "easy",
+      "topicIsland": 6,
+      "topicLabel": "Language Features",
+      "question": "Which verb tense is most commonly used in narrative texts?",
+      "options": ["Simple Present Tense", "Simple Past Tense", "Future Continuous Tense", "Present Perfect Continuous"],
+      "answerIndex": 1,
+      "explanation": "Teks naratif menceritakan kisah masa lampau sehingga dominan menggunakan Simple Past Tense (lived, went, saw)."
+    },
+    {
+      "id": "pre_9",
+      "difficulty": "easy",
+      "topicIsland": 4,
+      "topicLabel": "Legend vs Fable",
+      "question": "Which title is an example of a Legend?",
+      "options": [
+        "The Tortoise and the Hare",
+        "The Legend of Lake Toba",
+        "The Ant and the Grasshopper",
+        "The Lion and the Mouse"
+      ],
+      "answerIndex": 1,
+      "explanation": "The Legend of Lake Toba adalah legenda tentang asal-usul Danau Toba, sedangkan lainnya adalah fabel."
+    },
+    {
+      "id": "pre_10",
+      "difficulty": "easy",
+      "topicIsland": 2,
+      "topicLabel": "Schematic Structure",
+      "question": "Which stage is OPTIONAL in a narrative text and usually states the final moral lesson?",
+      "options": ["Orientation", "Complication", "Resolution", "Re-orientation"],
+      "answerIndex": 3,
+      "explanation": "Re-orientation (dan Evaluation) bersifat opsional; Re-orientation menutup cerita dengan komentar akhir atau pesan moral."
+    },
+    {
+      "id": "pre_11",
+      "difficulty": "medium",
+      "topicIsland": 1,
+      "topicLabel": "Social Function & Evidence",
+      "passage": "Ashamed of her worn clothes in front of his noble wife, Malin pushed his elderly mother away and denied knowing her. Soon, a fierce storm turned him into stone.",
+      "question": "Which two pieces of evidence prove the moral 'respect your parents'?",
+      "options": [
+        "Malin became rich AND bought a large ship.",
+        "Malin pushed his mother away AND suffered a storm curse for denying her.",
+        "His wife wore noble clothes AND the sea was calm.",
+        "The village was coastal AND sailors worked hard."
+      ],
+      "answerIndex": 1,
+      "explanation": "Penolakan Malin terhadap ibunya serta akibat badai yang mengutuknya menjadi bukti kuat pesan moral untuk menghormati orang tua."
+    },
+    {
+      "id": "pre_12",
+      "difficulty": "medium",
+      "topicIsland": 2,
+      "topicLabel": "Schematic Structure",
+      "passage": "Hearing that forbidden secret, the mother realized that Toba had forgotten his sacred promise in a moment of anger.",
+      "question": "Which optional narrative stage does the sentence represent?",
+      "options": ["Orientation", "Evaluation", "Resolution", "Re-orientation"],
+      "answerIndex": 1,
+      "explanation": "Kalimat ini menilai/merefleksikan reaksi tokoh di tengah konflik sebelum penyelesaian terjadi, yang disebut Evaluation."
+    },
+    {
+      "id": "pre_13",
+      "difficulty": "medium",
+      "topicIsland": 3,
+      "topicLabel": "Proportion Calculation",
+      "question": "A story has 10 sentences: Orientation (3), Complication (4), Resolution (2), Re-orientation (1). What percentage is the Complication?",
+      "options": ["20%", "30%", "40%", "50%"],
+      "answerIndex": 2,
+      "explanation": "(4 / 10) × 100% = 40%."
+    },
+    {
+      "id": "pre_14",
+      "difficulty": "medium",
+      "topicIsland": 3,
+      "topicLabel": "Proportion Calculation",
+      "question": "In a narrative text of 120 words, Complication has 54 words and Orientation has 30 words. What is the difference in word count between them?",
+      "options": ["14 words", "24 words", "34 words", "84 words"],
+      "answerIndex": 1,
+      "explanation": "Selisih jumlah kata = 54 − 30 = 24 kata."
+    },
+    {
+      "id": "pre_15",
+      "difficulty": "medium",
+      "topicIsland": 4,
+      "topicLabel": "Legend vs Fable",
+      "question": "How does a Legend usually differ from a Fable in terms of setting and characters?",
+      "options": [
+        "Legends explain real local landmarks with human/mythical figures, while fables use animals to teach morals.",
+        "Legends never have conflicts, while fables have three conflicts.",
+        "Fables always happen in Indonesia, while legends only happen in Europe.",
+        "Fables use future tense, while legends use past tense."
+      ],
+      "answerIndex": 0,
+      "explanation": "Legenda sering berkaitan dengan tempat nyata/asal-usul daerah dengan tokoh manusia/mistis, sedangkan fabel memakai tokoh hewan."
+    },
+    {
+      "id": "pre_16",
+      "difficulty": "medium",
+      "topicIsland": 5,
+      "topicLabel": "Fact vs Opinion",
+      "passage": "Pip hurried back to the anthill and called twelve friends to help him lift the wheat grain.",
+      "question": "Why is the statement 'Pip called twelve friends' classified as a FACT?",
+      "options": [
+        "Because twelve is a lucky number in stories",
+        "Because it contains personal feelings about Pip",
+        "Because it can be verified directly in the text",
+        "Because all ants live in groups of twelve"
+      ],
+      "answerIndex": 2,
+      "explanation": "Pernyataan tersebut dapat diverifikasi langsung dari informasi eksplisit di dalam teks."
+    },
+    {
+      "id": "pre_17",
+      "difficulty": "medium",
+      "topicIsland": 5,
+      "topicLabel": "Stage Role Evaluation",
+      "question": "What happens to a story if the Complication stage is completely removed?",
+      "options": [
+        "The story becomes more exciting because there is no problem.",
+        "The story loses tension and has no conflict to resolve.",
+        "The Orientation automatically becomes the Resolution.",
+        "The moral value becomes clearer without any conflict."
+      ],
+      "answerIndex": 1,
+      "explanation": "Tanpa Complication, cerita tidak memiliki ketegangan atau masalah yang memicu tokoh bertindak menuju Resolution."
+    },
+    {
+      "id": "pre_18",
+      "difficulty": "medium",
+      "topicIsland": 6,
+      "topicLabel": "Story Planning",
+      "question": "A student writes: 'In a misty valley lived a proud heron who refused to share fish.' Which stage is being drafted?",
+      "options": ["Orientation", "Resolution", "Re-orientation", "Evaluation"],
+      "answerIndex": 0,
+      "explanation": "Kalimat tersebut memperkenalkan tempat (misty valley) dan tokoh (proud heron) pada awal cerita, yaitu Orientation."
+    },
+    {
+      "id": "pre_19",
+      "difficulty": "medium",
+      "topicIsland": 1,
+      "topicLabel": "Social Function",
+      "question": "Which phrase in a fable signals its social function to convey a moral lesson?",
+      "options": [
+        "Once upon a time in a dark cave...",
+        "...proving that small hands united can move great burdens.",
+        "The wheat grain weighed fifty grams.",
+        "Turn left after crossing the river."
+      ],
+      "answerIndex": 1,
+      "explanation": "Kalimat 'proving that...' secara langsung menegaskan pesan moral (to convey values) di akhir fabel."
+    },
+    {
+      "id": "pre_20",
+      "difficulty": "medium",
+      "topicIsland": 2,
+      "topicLabel": "Schematic Structure",
+      "passage": "Working in rhythm, the ants lifted the golden grain together and carried it inside their dry tunnel before the rain.",
+      "question": "Which stage of 'The Little Ant and the Golden Grain' does this sentence belong to?",
+      "options": ["Orientation", "Complication", "Resolution", "Evaluation"],
+      "answerIndex": 2,
+      "explanation": "Masalah biji gandum yang berat terselesaikan lewat kerja sama semut; ini adalah tahap Resolution."
+    },
+    {
+      "id": "pre_21",
+      "difficulty": "medium",
+      "topicIsland": 3,
+      "topicLabel": "Proportion Analysis",
+      "question": "A legend has 10 sentences total: Orientation (3), Complication (3), Evaluation (1), Resolution (2), Re-orientation (1). Which stage is the shortest?",
+      "options": ["Orientation", "Complication", "Evaluation and Re-orientation (tied at 1 sentence)", "Resolution"],
+      "answerIndex": 2,
+      "explanation": "Evaluation dan Re-orientation masing-masing hanya memiliki 1 kalimat (10%), sehingga keduanya paling pendek."
+    },
+    {
+      "id": "pre_22",
+      "difficulty": "medium",
+      "topicIsland": 4,
+      "topicLabel": "Comparison Evidence",
+      "question": "In comparing 'Sangkuriang' and 'The Clever Mouse Deer', what common feature do BOTH stories share?",
+      "options": [
+        "Both use animal heroes as the main character.",
+        "Both involve a clever trick or strategy to change the outcome.",
+        "Both explain the origin of a volcano.",
+        "Both end with a character turning into stone."
+      ],
+      "answerIndex": 1,
+      "explanation": "Dayang Sumbi memakai siasat kain sutra/fajar palsu, dan Kancil memakai siasat menghitung buaya—keduanya memakai taktik cerdik."
+    },
+    {
+      "id": "pre_23",
+      "difficulty": "hard",
+      "topicIsland": 1,
+      "topicLabel": "Social Function HOTS",
+      "passage": "Dayang Sumbi waved a bright silk cloth to simulate sunrise, causing the spirits to flee before Sangkuriang finished the giant boat.",
+      "question": "If the author's purpose includes warning against uncontrollable anger, which follow-up event best supports this purpose?",
+      "options": [
+        "Sangkuriang thanked the spirits politely.",
+        "Sangkuriang kicked the boat in rage, creating Mount Tangkuban Perahu.",
+        "Dayang Sumbi went sailing on the river.",
+        "The roosters slept until noon."
+      ],
+      "answerIndex": 1,
+      "explanation": "Tindakan Sangkuriang menendang perahu karena marah menjadi bukti utama konsekuensi kemarahan."
+    },
+    {
+      "id": "pre_24",
+      "difficulty": "hard",
+      "topicIsland": 3,
+      "topicLabel": "Proportion HOTS",
+      "question": "Text A has 8 sentences (4 in Complication = 50%). Text B has 10 sentences (3 in Complication = 30%). Which text focuses proportionally MORE on developing conflict?",
+      "options": [
+        "Text B, because 10 total sentences is bigger than 8.",
+        "Text A, because 50% of its sentences build the conflict compared to 30% in Text B.",
+        "Both are equal because 4 and 3 are almost the same.",
+        "Neither text develops conflict."
+      ],
+      "answerIndex": 1,
+      "explanation": "Proporsi diukur dari persentase terhadap total teks: Text A (50%) lebih fokus pada konflik daripada Text B (30%)."
+    },
+    {
+      "id": "pre_25",
+      "difficulty": "hard",
+      "topicIsland": 5,
+      "topicLabel": "Fact vs Opinion HOTS",
+      "question": "Which sentence mixes a text FACT with a reader OPINION?",
+      "options": [
+        "Toba caught a golden fish near a clear river.",
+        "The peacock admired his blue-and-gold feathers in the pond.",
+        "The owl rescued the fawn, which proves owls are the kindest birds on Earth.",
+        "Malin Kundang knelt on the shore."
+      ],
+      "answerIndex": 2,
+      "explanation": "'The owl rescued the fawn' adalah fakta teks, sedangkan 'the kindest birds on Earth' adalah opini subjektif."
+    },
+    {
+      "id": "pre_26",
+      "difficulty": "hard",
+      "topicIsland": 2,
+      "topicLabel": "Structure HOTS",
+      "question": "Why does 'The Proud Peacock and the Wise Owl' place the thick fog in the Complication rather than the Orientation?",
+      "options": [
+        "Because weather descriptions are forbidden in Orientation.",
+        "Because the fog creates the urgent crisis that exposes the peacock's weakness.",
+        "Because the fog resolves the peacock's arrogance immediately.",
+        "Because fables must always end with fog."
+      ],
+      "answerIndex": 1,
+      "explanation": "Kabut tebal membuat anak rusa tersesat dan memicu krisis yang membuktikan kesombongan merak tidak berguna."
+    },
+    {
+      "id": "pre_27",
+      "difficulty": "hard",
+      "topicIsland": 4,
+      "topicLabel": "Legend vs Fable HOTS",
+      "question": "Which evidence pair best distinguishes 'The Legend of Lake Toba' from 'The Little Ant and the Golden Grain'?",
+      "options": [
+        "Both are written in English AND both use past tense.",
+        "Lake Toba explains a geographical landmark AND features human-magical transformation, whereas the Ant story features talking insects teaching teamwork.",
+        "Lake Toba has no moral AND the Ant story has five resolutions.",
+        "Lake Toba takes place in a meadow AND the Ant story takes place on a volcano."
+      ],
+      "answerIndex": 1,
+      "explanation": "Perbedaan kunci terletak pada asal-usul bentang alam (Danau Toba) vs tokoh serangga dan nilai kerja sama tanpa asal-usul tempat."
+    },
+    {
+      "id": "pre_28",
+      "difficulty": "hard",
+      "topicIsland": 5,
+      "topicLabel": "Evaluation HOTS",
+      "question": "If 'Re-orientation' is omitted from 'The Clever Mouse Deer and the Crocodile', what is the most likely effect?",
+      "options": [
+        "The plot becomes incomplete because Kancil never crosses the river.",
+        "The story still ends cleanly at the Resolution, though the explicit moral reflection is left for readers to infer.",
+        "The crocodiles become the main characters in Orientation.",
+        "The story turns into a procedure text."
+      ],
+      "answerIndex": 1,
+      "explanation": "Re-orientation bersifat opsional; cerita tetap tuntas di Resolution (Kancil berhasil menyeberang), hanya saja pembaca menyimpulkan moralnya sendiri."
+    },
+    {
+      "id": "pre_29",
+      "difficulty": "hard",
+      "topicIsland": 6,
+      "topicLabel": "Story Design HOTS",
+      "question": "To write a coherent fable with a strong Complication, which conflict matches a boastful eagle and a quiet mole?",
+      "options": [
+        "They agree to take a nap under an oak tree all afternoon.",
+        "A landslide blocks the forest entrance, and the eagle's wings cannot clear the underground tunnel that only the mole can dig.",
+        "The eagle buys a new nest from a department store.",
+        "Both characters fly to the moon together."
+      ],
+      "answerIndex": 1,
+      "explanation": "Konflik tanah longsor menantang kesombongan elang dan memberi ruang bagi keahlian alami tikus tanah untuk bersinar di Resolution."
+    },
+    {
+      "id": "pre_30",
+      "difficulty": "hard",
+      "topicIsland": 3,
+      "topicLabel": "Proportion HOTS",
+      "question": "In 'The Proud Peacock and the Wise Owl', Orientation has 2 sentences, Complication 2, Evaluation 1, Resolution 1, Re-orientation 1. Which statement is TRUE?",
+      "options": [
+        "Resolution is longer than Orientation.",
+        "Orientation and Complication together make up more than 55% of the sentences.",
+        "Re-orientation accounts for 50% of the text.",
+        "There are 10 sentences in total."
+      ],
+      "answerIndex": 1,
+      "explanation": "Total = 7 kalimat. Orientation (2) + Complication (2) = 4 dari 7 kalimat ≈ 57.1% (> 55%)."
+    }
+  ],
+  "hots": [
+    {
+      "id": "hots_1_1",
+      "islandId": 1,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 1 • Tujuan & Bukti",
+      "passage": "Toba promised never to reveal his wife's secret origin. Yet when Samosir ate his lunch, Toba shouted and called him the son of a fish. Heavy rain flooded the valley.",
+      "question": "Which pair of evidences best proves that the story's communicative purpose is to teach readers to keep promises and control anger?",
+      "options": [
+        "(1) Toba was a hardworking farmer; (2) The river was clear.",
+        "(1) Toba broke his sacred promise during a burst of anger; (2) Floodwaters formed a lake as the direct consequence.",
+        "(1) Samosir played often; (2) It was a hot afternoon.",
+        "(1) The fish was golden; (2) North Sumatra has many hills."
+      ],
+      "answerIndex": 1,
+      "explanation": "Dua bukti kausalitas (melanggar janji karena marah → banjir melanda lembah) langsung membuktikan pesan moral cerita."
+    },
+    {
+      "id": "hots_1_2",
+      "islandId": 1,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 1 • Tujuan Komunikatif",
+      "question": "Why do narrative legends like 'Sangkuriang' combine entertainment with cultural landmarks?",
+      "options": [
+        "To replace geography textbooks in school",
+        "To engage listeners imaginatively while passing down local heritage and moral warnings",
+        "To advertise tourism tickets to Mount Tangkuban Perahu",
+        "To prove that forest spirits exist scientifically"
+      ],
+      "answerIndex": 1,
+      "explanation": "Legenda memadukan hiburan imajinatif, identitas budaya lokal, dan pesan moral bagi generasi penerus."
+    },
+    {
+      "id": "hots_1_3",
+      "islandId": 1,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 1 • Kata Kunci Tujuan",
+      "passage": "Every ant enjoyed a warm meal that night, proving that small hands united can move great burdens.",
+      "question": "Identify TWO keywords in the passage that confirm the author's intent to convey a moral value about cooperation.",
+      "options": [
+        "'warm' and 'night'",
+        "'united' and 'proving'",
+        "'every' and 'meal'",
+        "'small' and 'that'"
+      ],
+      "answerIndex": 1,
+      "explanation": "Kata 'proving' menandai kesimpulan moral, sedangkan 'united' menegaskan nilai persatuan/kerja sama."
+    },
+    {
+      "id": "hots_1_4",
+      "islandId": 1,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 1 • Bukti Fabel",
+      "question": "In 'The Clever Mouse Deer and the Crocodile', which evidence shows that intelligence beats brute force?",
+      "options": [
+        "The river was wide and deep with sweet mangoes across.",
+        "Kancil tricked the crocodiles into forming a bridge instead of fighting their sharp teeth.",
+        "The morning sun shone brightly on the riverbank.",
+        "The mangoes were ripe and yellow."
+      ],
+      "answerIndex": 1,
+      "explanation": "Mengakali buaya membentuk jembatan tanpa bertarung fisik membuktikan keunggulan kecerdikan."
+    },
+    {
+      "id": "hots_1_5",
+      "islandId": 1,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 1 • Evaluasi Tujuan",
+      "question": "If a reader claims 'Malin Kundang' is ONLY meant to teach sailing skills, why is that claim inaccurate?",
+      "options": [
+        "Because Malin never sailed on a ship.",
+        "Because the plot highlights arrogance toward his mother and the resulting curse, not navigation techniques.",
+        "Because the story is written as a recipe.",
+        "Because fables never involve ships."
+      ],
+      "answerIndex": 1,
+      "explanation": "Kapal hanyalah latar kesuksesan Malin; inti konflik dan penyelesaiannya berfokus pada adab terhadap orang tua."
+    },
+    {
+      "id": "hots_2_1",
+      "islandId": 2,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 2 • Story Map",
+      "passage": "One day, Sangkuriang failed to catch any deer and killed Tumang in frustration, causing Dayang Sumbi to banish him in sorrow.",
+      "question": "How does this event function in the schematic structure of 'Sangkuriang'?",
+      "options": [
+        "Orientation, because it introduces Dayang Sumbi's house.",
+        "Complication, because it triggers the tragic conflict and separation that drives the rest of the plot.",
+        "Resolution, because the hunting problem ends happily.",
+        "Re-orientation, because it describes the mountain today."
+      ],
+      "answerIndex": 1,
+      "explanation": "Kejadian membunuh Tumang memicu pengusiran dan seluruh rangkaian konflik lanjutan dalam Complication."
+    },
+    {
+      "id": "hots_2_2",
+      "islandId": 2,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 2 • Tahap Opsional",
+      "passage": "The panicked peacock realized that colorful feathers offered no light or guidance in the dark.",
+      "question": "Why is this sentence categorized as Evaluation rather than Complication?",
+      "options": [
+        "It introduces a brand new villain.",
+        "It pauses to reflect on the character's internal realization before the rescue happens.",
+        "It states the permanent moral for all readers at the end.",
+        "It gives the time and place of the forest."
+      ],
+      "answerIndex": 1,
+      "explanation": "Evaluation menyoroti kesadaran atau penilaian batin tokoh terhadap krisis tepat sebelum Resolution."
+    },
+    {
+      "id": "hots_2_3",
+      "islandId": 2,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 2 • Urutan Alur",
+      "question": "Arrange these events from 'The Little Ant' into the correct Schematic Structure: (1) Ants carry the grain inside; (2) Pip finds wheat in a meadow; (3) Pip fails to push it alone as rain nears; (4) United hands move great burdens.",
+      "options": [
+        "2 - 3 - 1 - 4",
+        "3 - 2 - 1 - 4",
+        "2 - 1 - 3 - 4",
+        "1 - 2 - 3 - 4"
+      ],
+      "answerIndex": 0,
+      "explanation": "Orientation (2) → Complication (3) → Resolution (1) → Re-orientation (4)."
+    },
+    {
+      "id": "hots_2_4",
+      "islandId": 2,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 2 • Identifikasi Resolution",
+      "question": "Which sentence marks the Resolution in 'Malin Kundang'?",
+      "options": [
+        "Mande Rubayah lived with her brave son in a coastal village.",
+        "Malin became a wealthy ship captain.",
+        "Lightning hit the deck, and Malin Kundang knelt before turning into stone.",
+        "The stone figure on Air Manis Beach still stands today."
+      ],
+      "answerIndex": 2,
+      "explanation": "Kutukan menjadi batu menyelesaikan konflik kesombongan Malin; kalimat terakhir adalah Re-orientation."
+    },
+    {
+      "id": "hots_2_5",
+      "islandId": 2,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 2 • Story Map HOTS",
+      "question": "If you place 'The mountain near Bandung still resembles an overturned boat' into Orientation, why would a teacher correct your Story Map?",
+      "options": [
+        "Because it is a present-tense reflection of the ending outcome (Re-orientation), not the past opening setting.",
+        "Because mountains cannot appear in narratives.",
+        "Because it is a dialogue quote.",
+        "Because Bandung is not in West Java."
+      ],
+      "answerIndex": 0,
+      "explanation": "Kalimat ini merujuk kondisi masa kini sebagai penutup legenda (Re-orientation), bukan pengenalan awal cerita lampau."
+    },
+    {
+      "id": "hots_3_1",
+      "islandId": 3,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 3 • Hitung Proporsi",
+      "question": "In 'The Legend of Lake Toba', sentence counts are: Orientation (3), Complication (3), Evaluation (1), Resolution (2), Re-orientation (1). What is the percentage of Orientation + Complication?",
+      "options": ["40%", "50%", "60%", "70%"],
+      "answerIndex": 2,
+      "explanation": "Total = 10 kalimat. Orientation (3) + Complication (3) = 6/10 = 60%."
+    },
+    {
+      "id": "hots_3_2",
+      "islandId": 3,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 3 • Selisih & Persentase",
+      "question": "A fable has 8 sentences: Orientation (2), Complication (2), Resolution (3), Re-orientation (1). What is the difference in percentage points between the longest and shortest stages?",
+      "options": ["12.5%", "25%", "37.5%", "50%"],
+      "answerIndex": 1,
+      "explanation": "Terpanjang = Resolution (3/8 = 37.5%). Terpendek = Re-orientation (1/8 = 12.5%). Selisih = 37.5% − 12.5% = 25%."
+    },
+    {
+      "id": "hots_3_3",
+      "islandId": 3,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 3 • Analisis Panjang Tahap",
+      "question": "In 'Sangkuriang' (Orientation: 2, Complication: 3, Resolution: 3, Re-orientation: 1), why are Complication and Resolution tied as the longest stages?",
+      "options": [
+        "Because the author forgot to write Orientation.",
+        "Because both the escalating conflicts (Tumang, marriage challenge) and the multi-step climax (spirits, false dawn, kicking the boat) need detailed action.",
+        "Because Re-orientation always has 3 sentences.",
+        "Because legends do not have resolutions."
+      ],
+      "answerIndex": 1,
+      "explanation": "Konflik berantai dan klimaks penyelesaian bertahap membuat Complication dan Resolution sama-sama dominan (masing-masing 3 kalimat = 33.3%)."
+    },
+    {
+      "id": "hots_3_4",
+      "islandId": 3,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 3 • Hitung Kata",
+      "question": "Suppose Orientation has 38 words, Complication has 62 words, and Resolution has 50 words. Which stage is the longest and by how many words compared to the shortest?",
+      "options": [
+        "Resolution, by 12 words",
+        "Complication, by 24 words",
+        "Orientation, by 24 words",
+        "Complication, by 12 words"
+      ],
+      "answerIndex": 1,
+      "explanation": "Terpanjang: Complication (62 kata). Terpendek: Orientation (38 kata). Selisih = 62 − 38 = 24 kata."
+    },
+    {
+      "id": "hots_3_5",
+      "islandId": 3,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 3 • Interpretasi Grafik",
+      "question": "If a doughnut chart shows 50% Resolution and only 12.5% Complication in a student's draft, what revision advice makes the story more balanced?",
+      "options": [
+        "Delete Orientation completely.",
+        "Expand the Complication with stronger obstacles before jumping quickly to the Resolution.",
+        "Repeat the Re-orientation five times.",
+        "Convert the chart into a table without changing the text."
+      ],
+      "answerIndex": 1,
+      "explanation": "Jika Complication terlalu singkat (12.5%) dibanding Resolution (50%), konflik terasa terburu-buru dan perlu diperkaya."
+    },
+    {
+      "id": "hots_4_1",
+      "islandId": 4,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 4 • Perbandingan Legend vs Fable",
+      "question": "Compare 'Lake Toba' (10 sentences; 30% Complication) and 'The Clever Mouse Deer' (8 sentences; 25% Complication, 37.5% Resolution). Which conclusion is supported by data?",
+      "options": [
+        "Lake Toba spends a slightly larger share on Complication, while Kancil devotes its largest share to explaining the clever Resolution.",
+        "Kancil has more total sentences than Lake Toba.",
+        "Neither story has a Re-orientation.",
+        "Lake Toba uses 50% of its text for Evaluation."
+      ],
+      "answerIndex": 0,
+      "explanation": "Data menunjukkan Complication Danau Toba (30%) sedikit lebih besar dari Kancil (25%), sementara Resolution Kancil (37.5%) adalah tahap terpanjangnya."
+    },
+    {
+      "id": "hots_4_2",
+      "islandId": 4,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 4 • Bukti Perbandingan",
+      "question": "Which TWO pieces of evidence accurately contrast 'Malin Kundang' (Legend) with 'The Proud Peacock' (Fable)?",
+      "options": [
+        "Malin features human family conflict & ends in tragic stone curse; Peacock features animal pride & ends with humility and reconciliation.",
+        "Malin happens in space; Peacock happens under the sea.",
+        "Both characters turn into stone at the end.",
+        "Malin has no moral; Peacock has no characters."
+      ],
+      "answerIndex": 0,
+      "explanation": "Legenda Malin berakhir tragis (kutukan batu) pada konflik manusia, sedangkan fabel Merak berakhir rekonsiliasi tokoh hewan."
+    },
+    {
+      "id": "hots_4_3",
+      "islandId": 4,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 4 • Tabel Komparatif",
+      "question": "In a comparison table between 'Sangkuriang' and 'The Little Ant', which row shows a SIMILARITY rather than a difference?",
+      "options": [
+        "Main characters: Human & spirits vs. Ants & beetle",
+        "Ending tone: Mythical landmark origin vs. Cooperative survival",
+        "Schematic structure: Both progress through Orientation, Complication, Resolution, and Re-orientation",
+        "Setting: Ancient West Java vs. Golden meadow"
+      ],
+      "answerIndex": 2,
+      "explanation": "Keduanya sama-sama mengikuti struktur naratif Orientation → Complication → Resolution → Re-orientation."
+    },
+    {
+      "id": "hots_4_4",
+      "islandId": 4,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 4 • Proporsi Komparatif",
+      "question": "If Legend X has 4 sentences in Resolution out of 12 (33.3%) and Fable Y has 2 sentences in Resolution out of 8 (25%), which has a higher Resolution proportion?",
+      "options": ["Fable Y", "Legend X", "Both are 25%", "Cannot be determined"],
+      "answerIndex": 1,
+      "explanation": "33.3% (Legend X) lebih besar daripada 25% (Fable Y)."
+    },
+    {
+      "id": "hots_4_5",
+      "islandId": 4,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 4 • Analisis Tema",
+      "question": "Both 'Lake Toba' and 'Sangkuriang' teach a warning about anger. What evidence supports this shared theme?",
+      "options": [
+        "Toba's angry shout broke his promise and flooded the valley; Sangkuriang's angry kick overturned the giant boat.",
+        "Both stories feature talking birds.",
+        "Both stories take place on a coastal merchant ship.",
+        "Both stories end with a wedding feast."
+      ],
+      "answerIndex": 0,
+      "explanation": "Kedua legenda menampilkan ledakan amarah tokoh utama yang berdampak besar dan melahirkan bentang alam."
+    },
+    {
+      "id": "hots_5_1",
+      "islandId": 5,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 5 • Evaluasi Peran Tahap",
+      "question": "Why does the 'Evaluation' stage in 'Malin Kundang' ('His mother felt deeply heartbroken because wealth had blinded her son') strengthen the story?",
+      "options": [
+        "It adds random geographic trivia.",
+        "It deepens emotional empathy so readers understand why her prayer for justice follows.",
+        "It introduces a brand new character named Samosir.",
+        "It replaces the Orientation completely."
+      ],
+      "answerIndex": 1,
+      "explanation": "Evaluation menjelaskan luka batin ibu sehingga doa keadilan di Resolution terasa logis dan menyentuh."
+    },
+    {
+      "id": "hots_5_2",
+      "islandId": 5,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 5 • Fakta vs Opini",
+      "question": "Which statement is an OPINION rather than a text FACT?",
+      "options": [
+        "Kancil counted the crocodiles while hopping across their backs.",
+        "Pip found a golden grain of wheat under a clover leaf.",
+        "The crocodiles were foolish and deserved to stay hungry forever.",
+        "Dayang Sumbi was a clever princess in ancient West Java."
+      ],
+      "answerIndex": 2,
+      "explanation": "'Deserved to stay hungry forever' adalah penilaian moral/opini pembaca, bukan kejadian tertulis dalam teks."
+    },
+    {
+      "id": "hots_5_3",
+      "islandId": 5,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 5 • Evaluasi Struktur",
+      "question": "A student writes a fable without an Orientation and starts directly with: 'Suddenly, the wolf attacked the goat.' What weakness does this create?",
+      "options": [
+        "Readers have no context about who the characters are, where they live, or why they met.",
+        "The moral value becomes too long.",
+        "The past tense verbs turn into present tense.",
+        "The story automatically becomes a legend."
+      ],
+      "answerIndex": 0,
+      "explanation": "Tanpa Orientation, pembaca kehilangan konteks latar, tokoh, dan situasi awal sebelum konflik meledak."
+    },
+    {
+      "id": "hots_5_4",
+      "islandId": 5,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 5 • Verifikasi Fakta",
+      "question": "How can a student verify whether a statement about a narrative text is a FACT?",
+      "options": [
+        "Check if it uses emotional adjectives like 'amazing' or 'terrible'.",
+        "Locate explicit evidence or exact events stated in the passage.",
+        "Ask if most friends agree with the statement.",
+        "Guess based on the story's title only."
+      ],
+      "answerIndex": 1,
+      "explanation": "Fakta teks selalu dapat dibuktikan dengan menunjuk kalimat atau peristiwa eksplisit di dalam bacaan."
+    },
+    {
+      "id": "hots_5_5",
+      "islandId": 5,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 5 • Evaluasi Kritis",
+      "question": "Evaluate this claim: 'Re-orientation is useless because readers already know the ending.' Which counterargument is strongest?",
+      "options": [
+        "Re-orientation is mandatory in every English sentence.",
+        "Re-orientation connects the past story to the present reality or crystallizes the moral reflection.",
+        "Re-orientation always introduces the main conflict.",
+        "Re-orientation doubles the word count artificially."
+      ],
+      "answerIndex": 1,
+      "explanation": "Re-orientation menghubungkan kisah masa lalu dengan keadaan kini (pada legenda) atau menegaskan refleksi moral."
+    },
+    {
+      "id": "hots_6_1",
+      "islandId": 6,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 6 • Merancang Cerita",
+      "question": "When designing an original fable outline, which sequence creates the clearest plot?",
+      "options": [
+        "Moral lesson → Random ending → Introduce character",
+        "Setting & character traits → Problem matching the character flaw → Clever/cooperative solution → Moral reflection",
+        "Ten unrelated problems → No resolution",
+        "Only dialogue without any setting"
+      ],
+      "answerIndex": 1,
+      "explanation": "Alur yang kuat menghubungkan sifat tokoh di Orientation dengan masalah di Complication dan solusi di Resolution."
+    },
+    {
+      "id": "hots_6_2",
+      "islandId": 6,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 6 • Konsistensi Karakter",
+      "question": "You pick cards: Character 'A boastful hare', Setting 'A flooded riverbank', Moral 'Humility and teamwork'. Which Resolution fits best?",
+      "options": [
+        "The hare outruns everyone and laughs at the slower animals.",
+        "Unable to swim alone, the hare accepts a raft built by the turtles and thanks them humbly.",
+        "The river dries up magically with no character action.",
+        "The hare moves to a desert city."
+      ],
+      "answerIndex": 1,
+      "explanation": "Penyelesaian ini langsung menjawab masalah banjir dan membuktikan pesan moral kerendahan hati serta kerja sama."
+    },
+    {
+      "id": "hots_6_3",
+      "islandId": 6,
+      "difficulty": "medium",
+      "topicLabel": "Pulau 6 • Presentasi Kolaboratif",
+      "question": "During a collaborative presentation on the Interactive Whiteboard (PID), what should a group highlight first?",
+      "options": [
+        "Only the font color of their slides",
+        "The communicative purpose, schematic stages, and how their conflict resolves into a clear moral",
+        "Memorizing 500 unrelated vocabulary words",
+        "Skipping the Resolution so the audience guesses"
+      ],
+      "answerIndex": 1,
+      "explanation": "Presentasi efektif menjelaskan tujuan komunikatif, alur tahap struktur cerita, dan keterkaitan konflik dengan pesan moral."
+    },
+    {
+      "id": "hots_6_4",
+      "islandId": 6,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 6 • Revisi Draf",
+      "question": "A group's story outline has 5 sentences in Orientation and only 1 sentence in Resolution ('Then they were saved.'). How should they improve it?",
+      "options": [
+        "Add 3 more sentences to Orientation.",
+        "Develop the Resolution to show HOW the characters worked together to overcome the problem.",
+        "Remove the Complication.",
+        "Change the title to a longer one."
+      ],
+      "answerIndex": 1,
+      "explanation": "Resolution perlu menjelaskan proses penyelesaian masalah secara masuk akal agar proporsi cerita seimbang."
+    },
+    {
+      "id": "hots_6_5",
+      "islandId": 6,
+      "difficulty": "hard",
+      "topicLabel": "Pulau 6 • Bahasa Naratif",
+      "question": "Which opening sentence uses vivid past-tense narrative language suitable for Grade 9?",
+      "options": [
+        "A bird is flying and he wants food now.",
+        "High above a misty bamboo valley, a proud young eagle soared proudly until dark storm clouds gathered.",
+        "Yesterday I go to the forest and see an eagle.",
+        "Eagles are large birds of prey in biology."
+      ],
+      "answerIndex": 1,
+      "explanation": "Kalimat ini memakai latar deskriptif ('High above a misty bamboo valley') dan Simple Past Tense ('soared', 'gathered') secara tepat."
+    }
+  ],
+  "posttest": [
+    {
+      "id": "post_1",
+      "difficulty": "medium",
+      "topicLabel": "Tujuan Komunikatif",
+      "passage": "The stone figure on Air Manis Beach still stands as a timeless lesson to honor and love our parents.",
+      "question": "What is the primary communicative purpose of 'Malin Kundang' based on this closing line?",
+      "options": [
+        "To explain how coastal rocks erode scientifically",
+        "To entertain readers while teaching respect and gratitude toward parents",
+        "To promote boat-building businesses in West Sumatra",
+        "To describe daily life of fishermen in modern times"
+      ],
+      "answerIndex": 1,
+      "explanation": "Frasa 'timeless lesson to honor and love our parents' menegaskan fungsi hiburan sekaligus pendidikan moral."
+    },
+    {
+      "id": "post_2",
+      "difficulty": "hard",
+      "topicLabel": "Bukti Tujuan Komunikatif",
+      "question": "Which two pieces of text evidence best support the moral 'patience and honesty matter' in 'Sangkuriang'?",
+      "options": [
+        "Tumang was a dog AND West Java has rivers.",
+        "Dayang Sumbi tricked Sangkuriang to prevent a forbidden act AND Sangkuriang's impatient rage made him kick the unfinished boat.",
+        "Roosters crow in the morning AND Bandung is cool.",
+        "Sangkuriang hunted deer AND silk cloth is bright."
+      ],
+      "answerIndex": 1,
+      "explanation": "Dua peristiwa inti tersebut memperlihatkan ketegangan antara pencegahan pernikahan terlarang dan akibat ketidaksabaran/amarah."
+    },
+    {
+      "id": "post_3",
+      "difficulty": "medium",
+      "topicLabel": "Schematic Structure",
+      "passage": "In a bright green forest lived a peacock who spent every morning admiring his sparkling blue-and-gold feathers in a pond.",
+      "question": "Which schematic stage is shown, and what elements does it introduce?",
+      "options": [
+        "Complication — introduces the fog crisis",
+        "Orientation — introduces the main character, setting, and proud trait",
+        "Evaluation — reflects on the loss of feathers",
+        "Resolution — solves the conflict with the owl"
+      ],
+      "answerIndex": 1,
+      "explanation": "Tahap Orientation memperkenalkan latar hutan, tokoh merak, serta sifat sombongnya."
+    },
+    {
+      "id": "post_4",
+      "difficulty": "hard",
+      "topicLabel": "Tahap Opsional",
+      "question": "Why are 'Evaluation' and 'Re-orientation' labeled as optional stages in narrative text?",
+      "options": [
+        "Because a narrative remains grammatically and structurally complete with Orientation, Complication, and Resolution alone.",
+        "Because only fables can use them.",
+        "Because teachers remove them before exams.",
+        "Because they do not use past tense."
+      ],
+      "answerIndex": 0,
+      "explanation": "Tiga tahap wajib pembentuk plot naratif adalah Orientation, Complication, dan Resolution; Evaluation & Re-orientation bersifat pelengkap."
+    },
+    {
+      "id": "post_5",
+      "difficulty": "medium",
+      "topicLabel": "Hitung Proporsi",
+      "question": "A story has 12 sentences: Orientation (3), Complication (5), Resolution (3), Re-orientation (1). What is the percentage of the longest stage?",
+      "options": ["25%", "33.3%", "41.7%", "50%"],
+      "answerIndex": 2,
+      "explanation": "Tahap terpanjang adalah Complication (5 kalimat): (5 / 12) × 100% ≈ 41.7%."
+    },
+    {
+      "id": "post_6",
+      "difficulty": "hard",
+      "topicLabel": "Selisih Proporsi",
+      "question": "In a 10-sentence legend, Complication has 4 sentences and Re-orientation has 1 sentence. What is the difference in both sentence count and percentage?",
+      "options": [
+        "2 sentences and 20%",
+        "3 sentences and 30%",
+        "4 sentences and 40%",
+        "5 sentences and 50%"
+      ],
+      "answerIndex": 1,
+      "explanation": "Selisih kalimat = 4 − 1 = 3 kalimat. Selisih persentase = 40% − 10% = 30%."
+    },
+    {
+      "id": "post_7",
+      "difficulty": "medium",
+      "topicLabel": "Perbandingan Legend vs Fable",
+      "question": "Which comparison accurately contrasts Legend and Fable?",
+      "options": [
+        "Legends commonly explain the origin of a place/landmark, while fables use talking animals to convey practical morals.",
+        "Legends never contain morals, while fables never have conflicts.",
+        "Fables must be set in West Sumatra, while legends must be set in forests.",
+        "Legends use bullet points, while fables use poems."
+      ],
+      "answerIndex": 0,
+      "explanation": "Legenda kerap menjelaskan asal-usul tempat/fenomena lokal, sedangkan fabel memakai tokoh hewan untuk pesan moral."
+    },
+    {
+      "id": "post_8",
+      "difficulty": "hard",
+      "topicLabel": "Grafik Perbandingan",
+      "question": "Text 1 (Legend) devotes 40% to Complication and 20% to Resolution. Text 2 (Fable) devotes 25% to Complication and 37.5% to Resolution. What can be inferred?",
+      "options": [
+        "Text 1 expands the conflict buildup more heavily, while Text 2 spends more space showing how the clever solution unfolds.",
+        "Text 2 has no conflict at all.",
+        "Text 1 is shorter in total words than Text 2.",
+        "Text 2 skips the Resolution stage."
+      ],
+      "answerIndex": 0,
+      "explanation": "Persentase Complication lebih tinggi pada Text 1 menunjukkan fokus pembangunan konflik, sedangkan Text 2 menonjolkan proses penyelesaian."
+    },
+    {
+      "id": "post_9",
+      "difficulty": "medium",
+      "topicLabel": "Fakta vs Opini",
+      "question": "Which sentence is a verifiable FACT from 'The Legend of Lake Toba'?",
+      "options": [
+        "Toba's wife was the most patient woman in Sumatra.",
+        "Samosir ate his father's lunch on the way to the rice field.",
+        "Lake Toba is a boring story for teenagers.",
+        "Everyone agrees Toba should have waited two hours."
+      ],
+      "answerIndex": 1,
+      "explanation": "Samosir memakan bekal ayahnya dalam perjalanan ke sawah adalah peristiwa eksplisit dalam Complication."
+    },
+    {
+      "id": "post_10",
+      "difficulty": "hard",
+      "topicLabel": "Fakta vs Opini HOTS",
+      "question": "Identify the OPINION hidden inside this literary review: 'Although Kancil hopped across seven crocodiles' backs, his trick was unfairly cruel to hungry animals.'",
+      "options": [
+        "'Kancil hopped across' — because hopping is an opinion.",
+        "'his trick was unfairly cruel' — because fairness and cruelty are value judgments.",
+        "'hungry animals' — because hunger never appears in fables.",
+        "There is no opinion in the sentence."
+      ],
+      "answerIndex": 1,
+      "explanation": "Penilaian 'unfairly cruel' bersifat subjektif dan merupakan opini pembaca."
+    },
+    {
+      "id": "post_11",
+      "difficulty": "hard",
+      "topicLabel": "Evaluasi Peran Tahap",
+      "question": "In 'The Proud Peacock and the Wise Owl', what role does the Resolution play in changing the peacock's character?",
+      "options": [
+        "It proves that beauty wins every contest.",
+        "It demonstrates the owl's real-life usefulness in crisis, humbling the peacock.",
+        "It introduces a second peacock.",
+        "It tells the reader to avoid forests at night."
+      ],
+      "answerIndex": 1,
+      "explanation": "Keberhasilan burung hantu menyelamatkan anak rusa membuktikan nilai guna nyata dan meruntuhkan kesombongan merak."
+    },
+    {
+      "id": "post_12",
+      "difficulty": "medium",
+      "topicLabel": "Merancang Kerangka Cerita",
+      "question": "Which combination creates the strongest narrative outline for a fable?",
+      "options": [
+        "Character: Lazy cricket; Conflict: Winter food shortage; Resolution: Learns from hardworking bees and helps clean the hive.",
+        "Character: Lazy cricket; Conflict: Buys groceries online; Resolution: Sleeps all day.",
+        "Character: Rock; Conflict: None; Resolution: Stays still.",
+        "Character: Cricket; Conflict: Unrelated math test; Resolution: Moves to Mars."
+      ],
+      "answerIndex": 0,
+      "explanation": "Tokoh, konflik musim dingin, dan resolusi kerja sama saling terhubung logis menghasilkan pesan moral yang kuat."
+    },
+    {
+      "id": "post_13",
+      "difficulty": "medium",
+      "topicLabel": "Tujuan Komunikatif",
+      "question": "Which pair of verbs best summarizes the communicative purpose of Narrative Text?",
+      "options": [
+        "To inform and to calculate",
+        "To entertain and to educate (convey moral values)",
+        "To instruct and to assemble",
+        "To debate and to legislate"
+      ],
+      "answerIndex": 1,
+      "explanation": "Narrative text berfungsi menghibur (to entertain/amuse) dan mendidik lewat nilai moral."
+    },
+    {
+      "id": "post_14",
+      "difficulty": "hard",
+      "topicLabel": "Analisis Bukti",
+      "passage": "Pip pushed and pulled with all his strength, but the heavy grain barely moved an inch. Instead of giving up, he hurried back and called twelve friends.",
+      "question": "What two values are directly evidenced by Pip's actions here?",
+      "options": [
+        "Greed and laziness",
+        "Perseverance and teamwork",
+        "Pride and selfishness",
+        "Fear and isolation"
+      ],
+      "answerIndex": 1,
+      "explanation": "Tidak menyerah ('Instead of giving up') menunjukkan ketekunan, dan memanggil 12 teman menunjukkan kerja sama tim."
+    },
+    {
+      "id": "post_15",
+      "difficulty": "medium",
+      "topicLabel": "Schematic Structure",
+      "question": "Which sentence belongs to Re-orientation rather than Resolution?",
+      "options": [
+        "The ants carried the grain inside their dry tunnel.",
+        "Toba's wife told Samosir to climb the highest hill.",
+        "Today, people know the wide water as Lake Toba, reminding everyone to keep promises.",
+        "The wise owl guided the lost fawn safely home."
+      ],
+      "answerIndex": 2,
+      "explanation": "Kalimat dengan penanda waktu kini ('Today') dan pengingat moral merupakan ciri khas Re-orientation."
+    },
+    {
+      "id": "post_16",
+      "difficulty": "hard",
+      "topicLabel": "Proporsi Teks",
+      "question": "A fable has 8 sentences: Orientation 25%, Complication 25%, Resolution 37.5%, Re-orientation 12.5%. How many sentences are in Resolution?",
+      "options": ["2 sentences", "3 sentences", "4 sentences", "5 sentences"],
+      "answerIndex": 1,
+      "explanation": "37.5% × 8 = 3 kalimat."
+    },
+    {
+      "id": "post_17",
+      "difficulty": "medium",
+      "topicLabel": "Perbandingan Cerita",
+      "question": "Why are 'Malin Kundang' and 'Lake Toba' classified as Legends instead of Fables?",
+      "options": [
+        "Because they feature human protagonists and explain local cultural/geographical origins in Indonesia.",
+        "Because they are shorter than 5 sentences.",
+        "Because they only have animal characters.",
+        "Because they have no Resolution."
+      ],
+      "answerIndex": 0,
+      "explanation": "Keduanya memakai tokoh manusia dan menjelaskan asal-usul tempat/fenomena terkenal di Indonesia."
+    },
+    {
+      "id": "post_18",
+      "difficulty": "hard",
+      "topicLabel": "Evaluasi Peran Tahap",
+      "question": "What is the risk of writing an overly long Orientation (60% of the story) and a tiny Complication (10%)?",
+      "options": [
+        "Readers may lose interest before the main conflict even begins.",
+        "The moral lesson becomes twice as exciting.",
+        "The story automatically becomes a news report.",
+        "The past tense becomes incorrect."
+      ],
+      "answerIndex": 0,
+      "explanation": "Orientation yang terlalu panjang membuat pembaca bosan sebelum konflik utama muncul."
+    },
+    {
+      "id": "post_19",
+      "difficulty": "medium",
+      "topicLabel": "Fakta vs Opini",
+      "question": "Which statement about 'Sangkuriang' is an OPINION?",
+      "options": [
+        "Dayang Sumbi was Sangkuriang's mother.",
+        "Sangkuriang summoned forest spirits to help build the boat.",
+        "Dayang Sumbi's silk cloth trick was the smartest idea in Javanese literature.",
+        "The mountain near Bandung is named Mount Tangkuban Perahu."
+      ],
+      "answerIndex": 2,
+      "explanation": "Klaim 'the smartest idea in Javanese literature' adalah opini evaluatif subjektif."
+    },
+    {
+      "id": "post_20",
+      "difficulty": "hard",
+      "topicLabel": "Presentasi Cerita",
+      "question": "During group peer-review on the Interactive Whiteboard, which feedback is most constructive for a story draft?",
+      "options": [
+        "'Your story is bad because I don't like birds.'",
+        "'Your Orientation is vivid, and adding one more obstacle in Complication will make the Resolution feel earned.'",
+        "'Just copy Malin Kundang word for word.'",
+        "'Remove the title and moral completely.'"
+      ],
+      "answerIndex": 1,
+      "explanation": "Umpan balik konstruktif mengapresiasi kekuatan draf dan memberi saran spesifik berbasis struktur naratif."
+    },
+    {
+      "id": "post_21",
+      "difficulty": "medium",
+      "topicLabel": "Ciri Kebahasaan",
+      "question": "Which time connective is frequently used to transition into the Complication?",
+      "options": ["One day / Suddenly", "In conclusion / Finally", "Firstly / Mix well", "For example / In addition"],
+      "answerIndex": 0,
+      "explanation": "'One day' atau 'Suddenly' lazim menandai munculnya konflik pada Complication."
+    },
+    {
+      "id": "post_22",
+      "difficulty": "hard",
+      "topicLabel": "Analisis Bukti",
+      "question": "In 'The Proud Peacock and the Wise Owl', which TWO clues prove that character matters more than appearance?",
+      "options": [
+        "The peacock admired his feathers in a pond AND the owl sat on a branch.",
+        "Bright feathers failed to help in the dark fog AND the plain brown owl rescued the lost fawn using night vision.",
+        "The forest was green AND morning came.",
+        "Birds gathered together AND a cliff stood nearby."
+      ],
+      "answerIndex": 1,
+      "explanation": "Kegagalan bulu indah dalam kabut dan keberhasilan penglihatan malam burung hantu membuktikan isi moral fabel."
+    },
+    {
+      "id": "post_23",
+      "difficulty": "medium",
+      "topicLabel": "Hitung Selisih Kata",
+      "question": "Text A has 145 words and Text B has 118 words. What is the word count difference?",
+      "options": ["23 words", "27 words", "33 words", "37 words"],
+      "answerIndex": 1,
+      "explanation": "145 − 118 = 27 kata."
+    },
+    {
+      "id": "post_24",
+      "difficulty": "hard",
+      "topicLabel": "HOTS Proporsi",
+      "question": "If a 10-sentence narrative has 3 sentences in Orientation and 2 in Resolution, what percentage remains for Complication (assuming no optional stages)?",
+      "options": ["30%", "40%", "50%", "60%"],
+      "answerIndex": 2,
+      "explanation": "Sisa kalimat untuk Complication = 10 − (3 + 2) = 5 kalimat = 50%."
+    },
+    {
+      "id": "post_25",
+      "difficulty": "medium",
+      "topicLabel": "Fakta vs Opini",
+      "question": "Which sentence is a FACT from 'The Little Ant and the Golden Grain'?",
+      "options": [
+        "A greedy beetle laughed at Pip's struggle.",
+        "The beetle is the meanest insect in all fables.",
+        "Golden wheat tastes better than clover leaves.",
+        "Every student loves reading about ants."
+      ],
+      "answerIndex": 0,
+      "explanation": "Kejadian kumbang menertawakan perjuangan Pip tertulis eksplisit pada bagian Complication."
+    },
+    {
+      "id": "post_26",
+      "difficulty": "hard",
+      "topicLabel": "Perbandingan Struktur",
+      "question": "Both 'Lake Toba' and 'The Proud Peacock' include an Evaluation sentence. What common purpose does it serve in both?",
+      "options": [
+        "It announces the title of the next chapter.",
+        "It reveals a character's sudden realization right at the turning point of the crisis.",
+        "It lists the word count of the story.",
+        "It introduces the setting of a river."
+      ],
+      "answerIndex": 1,
+      "explanation": "Pada keduanya, Evaluation menampilkan kesadaran batin tokoh tepat di titik balik krisis sebelum Resolution."
+    },
+    {
+      "id": "post_27",
+      "difficulty": "medium",
+      "topicLabel": "Pesan Moral",
+      "question": "Which proverb best matches 'The Clever Mouse Deer and the Crocodile'?",
+      "options": [
+        "Look before you leap.",
+        "Brains can triumph over brawn.",
+        "Early to bed, early to rise.",
+        "Silence is golden."
+      ],
+      "answerIndex": 1,
+      "explanation": "'Brains can triumph over brawn' (kecerdasan mengalahkan kekuatan otot) sesuai dengan taktik Kancil menghadapi buaya."
+    },
+    {
+      "id": "post_28",
+      "difficulty": "hard",
+      "topicLabel": "Desain Cerita HOTS",
+      "question": "You want your original fable to highlight 'honesty protects nature'. Which Complication best sets up that moral?",
+      "options": [
+        "A fox lies about polluting the forest stream to blame the innocent beavers, causing all fish to vanish until the truth is confessed.",
+        "A fox counts stars in the clear night sky.",
+        "Two beavers swim happily all summer.",
+        "A bird finds an empty nest."
+      ],
+      "answerIndex": 0,
+      "explanation": "Konflik kebohongan yang merusak sungai mengaitkan kejujuran langsung dengan pelestarian alam."
+    },
+    {
+      "id": "post_29",
+      "difficulty": "medium",
+      "topicLabel": "Evaluasi Akhir",
+      "question": "Why is checking schematic structure helpful when summarizing a narrative text?",
+      "options": [
+        "It helps identify who, what conflict occurred, how it resolved, and what lesson emerged.",
+        "It forces you to memorize every adjective.",
+        "It turns the story into a math equation only.",
+        "It removes the characters from the summary."
+      ],
+      "answerIndex": 0,
+      "explanation": "Memetakan Orientation–Complication–Resolution memudahkan merangkum inti tokoh, konflik, solusi, dan pesan moral."
+    },
+    {
+      "id": "post_30",
+      "difficulty": "hard",
+      "topicLabel": "Sintesis Narrative Text",
+      "question": "When comparing two narratives deeply as a Grade 9 reader, which four aspects give the most complete analysis?",
+      "options": [
+        "Font size, paper weight, ink color, and page margin",
+        "Communicative purpose with evidence, schematic stage proportions, fact vs opinion distinction, and moral relevance",
+        "Only the first word of each paragraph",
+        "Only the number of vowels in the title"
+      ],
+      "answerIndex": 1,
+      "explanation": "Analisis mendalam memadukan tujuan komunikatif + bukti, proporsi tahap struktur, pemilahan fakta/opini, dan relevansi moral."
+    }
+  ]
+}

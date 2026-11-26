@@ -1,0 +1,310 @@
+{
+  "texts": [
+    {
+      "id": "toba",
+      "title": "The Legend of Lake Toba",
+      "type": "legend",
+      "origin": "North Sumatra, Indonesia",
+      "purpose": "To entertain the readers and convey a moral value about keeping promises and controlling anger.",
+      "purposeKeywords": ["legend", "to entertain", "keep a promise", "control anger"],
+      "evidences": [
+        "Toba promised never to reveal his wife's secret origin as a fish.",
+        "When Toba broke his promise in anger, heavy rain flooded the valley and formed Lake Toba."
+      ],
+      "stages": [
+        {
+          "stage": "Orientation",
+          "sentences": [
+            "Once upon a time, a hardworking young farmer named Toba lived alone near a clear river in North Sumatra.",
+            "One afternoon, he caught a gleaming golden fish that magically transformed into a kind and graceful woman.",
+            "She agreed to marry him on one strict condition: he must never tell anyone that she came from a fish."
+          ]
+        },
+        {
+          "stage": "Complication",
+          "sentences": [
+            "Years later, they had a lively son named Samosir who often played instead of helping his parents.",
+            "One hot day, Samosir ate his father's lunch on the way to the rice field because he felt hungry.",
+            "Exhausted and furious, Toba shouted at the boy and called him the son of a fish."
+          ]
+        },
+        {
+          "stage": "Evaluation",
+          "sentences": [
+            "Hearing that forbidden secret, the mother realized that Toba had forgotten his sacred promise in a moment of anger."
+          ]
+        },
+        {
+          "stage": "Resolution",
+          "sentences": [
+            "She told Samosir to climb the highest hill while dark clouds suddenly gathered and rain poured nonstop for days.",
+            "Water filled the entire valley until it became a vast lake, and the woman returned to the water."
+          ]
+        },
+        {
+          "stage": "Re-orientation",
+          "sentences": [
+            "Today, people know the wide water as Lake Toba and the island in its center as Samosir Island, reminding everyone to keep their promises."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "malin",
+      "title": "Malin Kundang",
+      "type": "legend",
+      "origin": "West Sumatra, Indonesia",
+      "purpose": "To amuse readers with a folktale and teach respect and gratitude toward parents.",
+      "purposeKeywords": ["folktale", "respect parents", "gratitude", "warning against arrogance"],
+      "evidences": [
+        "Malin's mother worked tirelessly and prayed every day for her son's safe return.",
+        "Because Malin felt ashamed and denied his poor mother, his arrogance led to his tragic stone curse."
+      ],
+      "stages": [
+        {
+          "stage": "Orientation",
+          "sentences": [
+            "Long ago, in a quiet coastal village in West Sumatra, a poor widow named Mande Rubayah lived with her brave son, Malin Kundang.",
+            "Determined to change their fate, Malin sailed away on a merchant ship to seek a better fortune."
+          ]
+        },
+        {
+          "stage": "Complication",
+          "sentences": [
+            "After many years of hard work, Malin became a wealthy ship captain and married a noblewoman.",
+            "When his grand ship anchored at his hometown, his elderly mother ran joyfully to embrace him.",
+            "Ashamed of her worn clothes in front of his wife, Malin pushed her away and claimed he did not know her."
+          ]
+        },
+        {
+          "stage": "Evaluation",
+          "sentences": [
+            "His mother felt deeply heartbroken because wealth had blinded her beloved son from recognizing the person who raised him."
+          ]
+        },
+        {
+          "stage": "Resolution",
+          "sentences": [
+            "With trembling tears, she prayed to God for justice, and a fierce storm immediately struck Malin's ship.",
+            "Lightning hit the deck, and Malin Kundang knelt on the shore before turning into stone."
+          ]
+        },
+        {
+          "stage": "Re-orientation",
+          "sentences": [
+            "The stone figure on Air Manis Beach still stands as a timeless lesson to honor and love our parents."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sangkuriang",
+      "title": "Sangkuriang",
+      "type": "legend",
+      "origin": "West Java, Indonesia",
+      "purpose": "To entertain readers with the origin story of Mount Tangkuban Perahu and remind us about honesty and patience.",
+      "purposeKeywords": ["origin story", "mountain", "patience", "consequence of impatience"],
+      "evidences": [
+        "Dayang Sumbi asked for a lake and a giant boat in one night to prevent a forbidden marriage.",
+        "Sangkuriang kicked the unfinished boat in rage, forming the upturned-boat shape of Mount Tangkuban Perahu."
+      ],
+      "stages": [
+        {
+          "stage": "Orientation",
+          "sentences": [
+            "In ancient West Java lived Dayang Sumbi, a clever princess, and her loyal dog Tumang, who was actually a cursed deity.",
+            "Her young son Sangkuriang grew up as a skilled hunter without knowing Tumang was his father."
+          ]
+        },
+        {
+          "stage": "Complication",
+          "sentences": [
+            "One day, Sangkuriang failed to catch any deer and killed Tumang in frustration, causing Dayang Sumbi to banish him in sorrow.",
+            "Years later, the grown Sangkuriang returned, did not recognize his mother, and fell in love with her.",
+            "To stop the marriage, Dayang Sumbi challenged him to dam the Citarum River and build a giant boat before dawn."
+          ]
+        },
+        {
+          "stage": "Resolution",
+          "sentences": [
+            "Sangkuriang summoned forest spirits and nearly finished the task, so Dayang Sumbi waved a bright silk cloth to make the sky look like sunrise.",
+            "Hearing the roosters crow early, the spirits fled and left the boat incomplete.",
+            "Furious at his failure, Sangkuriang kicked the huge boat upside down until it became Mount Tangkuban Perahu."
+          ]
+        },
+        {
+          "stage": "Re-orientation",
+          "sentences": [
+            "The mountain near Bandung still resembles an overturned boat, reminding people that anger never solves a problem."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kancil",
+      "title": "The Clever Mouse Deer and the Crocodile",
+      "type": "fable",
+      "origin": "Southeast Asian Fable",
+      "purpose": "To entertain readers with animal characters and show that intelligence can overcome brute strength.",
+      "purposeKeywords": ["fable", "animal characters", "intelligence", "outsmart"],
+      "evidences": [
+        "The mouse deer tricked the crocodiles into lining up across the river under the excuse of counting them for a royal feast.",
+        "Instead of fighting the strong crocodiles physically, the small mouse deer used quick thinking to cross safely."
+      ],
+      "stages": [
+        {
+          "stage": "Orientation",
+          "sentences": [
+            "One sunny morning, a small mouse deer named Kancil felt hungry while standing beside a wide, deep river.",
+            "Across the water grew tall trees loaded with sweet, ripe mangoes, yet dangerous crocodiles guarded the stream."
+          ]
+        },
+        {
+          "stage": "Complication",
+          "sentences": [
+            "Suddenly, the largest crocodile snapped his jaws near the bank and threatened to eat Kancil for breakfast.",
+            "Kancil realized he could neither swim faster than the reptiles nor defeat their sharp teeth by force."
+          ]
+        },
+        {
+          "stage": "Resolution",
+          "sentences": [
+            "Thinking quickly, Kancil announced that the Forest King wanted to invite all crocodiles to a grand feast if they lined up to be counted.",
+            "Eager for free food, the crocodiles formed a neat bridge from one bank to the other.",
+            "Kancil hopped lightly across their backs while counting aloud, then leaped safely onto the mango shore."
+          ]
+        },
+        {
+          "stage": "Re-orientation",
+          "sentences": [
+            "The embarrassed crocodiles learned that calm thinking is far stronger than empty boasting."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peacock",
+      "title": "The Proud Peacock and the Wise Owl",
+      "type": "fable",
+      "origin": "Original Moral Fable",
+      "purpose": "To amuse readers and remind them that true worth comes from kindness and usefulness rather than appearance.",
+      "purposeKeywords": ["fable", "humility", "true worth", "kindness"],
+      "evidences": [
+        "The peacock mocked the plain brown feathers of the owl in front of the forest birds.",
+        "When night fell and a lost fawn needed help, the owl's sharp night vision saved the day while the peacock's bright feathers could not."
+      ],
+      "stages": [
+        {
+          "stage": "Orientation",
+          "sentences": [
+            "In a bright green forest lived a peacock who spent every morning admiring his sparkling blue-and-gold feathers in a pond.",
+            "On a high oak branch nearby rested a quiet brown owl who rarely spoke during the day."
+          ]
+        },
+        {
+          "stage": "Complication",
+          "sentences": [
+            "Whenever other birds gathered, the peacock spread his wide tail and mocked the owl's dull gray-brown wings.",
+            "That evening, thick fog covered the forest and a young deer lost its way near a steep cliff."
+          ]
+        },
+        {
+          "stage": "Evaluation",
+          "sentences": [
+            "The panicked peacock realized that colorful feathers offered no light or guidance in the dark."
+          ]
+        },
+        {
+          "stage": "Resolution",
+          "sentences": [
+            "Without hesitating, the wise owl soared silently through the mist, spotted the safe path with her keen night eyes, and guided the fawn home."
+          ]
+        },
+        {
+          "stage": "Re-orientation",
+          "sentences": [
+            "The next morning, the humbled peacock bowed politely to the owl, having learned that character shines brighter than beauty."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ant",
+      "title": "The Little Ant and the Golden Grain",
+      "type": "fable",
+      "origin": "Original Moral Fable",
+      "purpose": "To entertain young readers and teach the value of teamwork, perseverance, and sharing.",
+      "purposeKeywords": ["fable", "teamwork", "perseverance", "sharing"],
+      "evidences": [
+        "Pip the ant could not lift the heavy golden wheat grain alone on the windy path.",
+        "By inviting his colony and sharing the food together, they moved the grain safely before the rain."
+      ],
+      "stages": [
+        {
+          "stage": "Orientation",
+          "sentences": [
+            "At the edge of a golden meadow, a tiny ant named Pip searched diligently for food before the rainy season arrived.",
+            "Under a clover leaf, he discovered a plump golden grain of wheat that smelled delicious."
+          ]
+        },
+        {
+          "stage": "Complication",
+          "sentences": [
+            "Pip pushed and pulled with all his strength, but the heavy grain barely moved an inch.",
+            "Meanwhile, dark rain clouds rolled across the sky and a greedy beetle laughed at Pip's struggle."
+          ]
+        },
+        {
+          "stage": "Resolution",
+          "sentences": [
+            "Instead of giving up, Pip hurried back to the anthill and called twelve friends to help him.",
+            "Working in rhythm, the ants lifted the golden grain together and carried it inside their dry tunnel just as the first raindrops fell."
+          ]
+        },
+        {
+          "stage": "Re-orientation",
+          "sentences": [
+            "Every ant enjoyed a warm meal that night, proving that small hands united can move great burdens."
+          ]
+        }
+      ]
+    }
+  ],
+  "factOpinionItems": [
+    { "id": "fo1", "text": "In 'The Legend of Lake Toba', Toba shouted at Samosir and called him the son of a fish.", "type": "fact", "reason": "Ini adalah peristiwa eksplisit yang tertulis langsung di dalam teks cerita." },
+    { "id": "fo2", "text": "Toba is the worst father in Indonesian folklore because he lost his temper once.", "type": "opinion", "reason": "Kata 'the worst' adalah penilaian subjektif pembaca, bukan fakta teks." },
+    { "id": "fo3", "text": "Malin Kundang sailed away on a merchant ship from a coastal village in West Sumatra.", "type": "fact", "reason": "Detail latar dan tindakan ini tertulis jelas pada bagian Orientation." },
+    { "id": "fo4", "text": "The story of Malin Kundang is much more exciting than Sangkuriang.", "type": "opinion", "reason": "'much more exciting' merupakan selera atau pandangan pribadi pembaca." },
+    { "id": "fo5", "text": "Dayang Sumbi waved a bright silk cloth to make the sky look like sunrise.", "type": "fact", "reason": "Tindakan tokoh ini tercatat secara faktual pada bagian Resolution." },
+    { "id": "fo6", "text": "Kancil cheated unfairly, so the crocodiles actually deserved to win.", "type": "opinion", "reason": "Memuat penilaian moral subjektif ('unfairly', 'deserved') yang tidak dinyatakan teks." },
+    { "id": "fo7", "text": "The wise owl used her keen night eyes to guide the lost fawn home through the fog.", "type": "fact", "reason": "Peristiwa tersebut terjadi secara nyata dalam alur Resolution teks fabel." },
+    { "id": "fo8", "text": "Blue-and-gold peacock feathers are definitely the prettiest thing in any forest.", "type": "opinion", "reason": "Kata 'the prettiest' dan 'definitely' menunjukkan pendapat pribadi." },
+    { "id": "fo9", "text": "Pip called twelve friends from the anthill to help carry the golden grain.", "type": "fact", "reason": "Jumlah dan kejadian ini tertulis langsung di dalam teks." },
+    { "id": "fo10", "text": "Fables are always easier to understand for Grade 9 students than legends.", "type": "opinion", "reason": "Ini adalah klaim/pendapat umum, bukan fakta dari isi cerita." }
+  ],
+  "storyBuilderCards": {
+    "characters": [
+      "A humble woodcutter and a talking white heron",
+      "A stubborn young turtle and a wise river crab",
+      "A brave village girl named Sekar and a golden deer",
+      "A clever squirrel and a boastful eagle"
+    ],
+    "settings": [
+      "In a misty bamboo valley in ancient Java",
+      "Along a sparkling coral bay in Eastern Indonesia",
+      "Inside an enchanted pine forest before the monsoon",
+      "Near a crystal waterfall at the foot of Mount Merapi"
+    ],
+    "problems": [
+      "A drought dried up the village spring after someone broke a promise",
+      "A giant storm trapped the forest animals on a tiny mud island",
+      "A greedy merchant stole the magic seed that fed the whole valley",
+      "A young hero underestimated a small friend during a race across the canyon"
+    ],
+    "morals": [
+      "Honesty and keeping promises protect harmony with nature.",
+      "Teamwork and humility overcome challenges that pride cannot solve.",
+      "True courage means helping others even when you feel afraid."
+    ]
+  }
+}

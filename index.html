@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1d4ed8" />
+  <meta name="description" content="Story Quest: Petualangan belajar Narrative Text (Legend & Fable) untuk siswa SMP Kelas 9." />
+  <title>Story Quest — Pulau Cerita (Narrative Text SMP Kelas 9)</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="./assets/icon-192.svg" />
+  <!-- Bootstrap 5.3.3 (versi disematkan) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="sq-body">
+  <a href="#app-root" class="visually-hidden-focusable sq-skip-link">Lewati ke konten utama</a>
+
+  <!-- Header Utama -->
+  <header class="sq-header sticky-top" role="banner">
+    <div class="container-fluid sq-container py-2">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <div class="d-flex align-items-center gap-2">
+          <button type="button" id="btn-brand-home" class="btn sq-brand-btn d-flex align-items-center gap-2 p-1" aria-label="Kembali ke Beranda Story Quest">
+            <img src="./assets/icon-192.svg" alt="Ikon Story Quest" width="38" height="38" class="rounded-3" />
+            <div class="text-start lh-sm">
+              <span class="sq-brand-title d-block">STORY QUEST</span>
+              <small class="sq-brand-sub">Pulau Cerita • SMP Kelas 9</small>
+            </div>
+          </button>
+        </div>
+
+        <!-- Progres Belajar Global -->
+        <div class="sq-progress-wrap flex-grow-1 mx-lg-3" aria-label="Progres belajar keseluruhan">
+          <div class="d-flex justify-content-between small fw-bold mb-1">
+            <span>Progres Petualangan</span>
+            <span id="global-progress-text">0%</span>
+          </div>
+          <div class="progress sq-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="global-progress-bar-wrap">
+            <div class="progress-bar" id="global-progress-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Kontrol Cepat Header -->
+        <div class="d-flex flex-wrap align-items-center gap-2">
+          <button type="button" id="btn-nav-home" class="btn sq-btn-outline sq-touch" aria-label="Beranda" title="Beranda">
+            🏠 <span class="d-none d-md-inline">Home</span>
+          </button>
+          <button type="button" id="btn-nav-map" class="btn sq-btn-outline sq-touch" aria-label="Peta Pulau Cerita" title="Peta Pulau">
+            🗺️ <span class="d-none d-md-inline">Peta</span>
+          </button>
+          <button type="button" id="btn-nav-leaderboard" class="btn sq-btn-outline sq-touch" aria-label="Papan Peringkat Lokal" title="Peringkat">
+            🏆 <span class="d-none d-lg-inline">Peringkat</span>
+          </button>
+          <button type="button" id="btn-toggle-pid" class="btn sq-btn-outline sq-touch" aria-pressed="false" aria-label="Mode Papan Interaktif (PID)" title="Mode Papan Interaktif & Layar Penuh">
+            🖥️ <span class="d-none d-lg-inline">Mode PID</span>
+          </button>
+          <button type="button" id="btn-toggle-sound" class="btn sq-btn-outline sq-touch" aria-pressed="false" aria-label="Matikan atau nyalakan suara" title="Suara Efek">
+            🔊
+          </button>
+          <button type="button" id="btn-teacher-mode" class="btn sq-btn-dark sq-touch" aria-label="Buka Mode Guru" title="Mode Guru">
+            👩‍🏫 <span class="d-none d-md-inline">Guru</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Strip Status Siswa Aktif -->
+      <div id="student-status-strip" class="sq-status-strip mt-2 d-flex flex-wrap align-items-center justify-content-between gap-2 d-none">
+        <div class="d-flex align-items-center gap-2">
+          <span id="header-avatar-slot" class="sq-mini-avatar" aria-hidden="true"></span>
+          <div>
+            <strong id="header-student-name">-</strong>
+            <span class="badge bg-primary ms-1" id="header-student-class">-</span>
+            <span class="badge sq-badge-tosca ms-1" id="header-student-level">Lv. 1</span>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap align-items-center gap-2 small fw-bold">
+          <span class="sq-pill" id="header-xp">⚡ 0 XP</span>
+          <span class="sq-pill" id="header-streak">🔥 0 Hari</span>
+          <span class="sq-pill" id="header-badges">🎖️ 0 Badge</span>
+          <button type="button" id="btn-switch-profile" class="btn btn-sm btn-outline-primary sq-touch-sm">Ganti Siswa</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Area Konten Utama SPA -->
+  <main id="app-root" class="container-fluid sq-container py-4" tabindex="-1">
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Memuat Story Quest...</span>
+      </div>
+      <p class="mt-3 fw-bold">Menyiapkan Pulau Cerita...</p>
+    </div>
+  </main>
+
+  <!-- Bilah Navigasi Pembelajaran Bawah -->
+  <nav id="bottom-nav-bar" class="sq-bottom-nav d-none" aria-label="Navigasi langkah belajar">
+    <div class="container-fluid sq-container d-flex flex-wrap align-items-center justify-content-between gap-2 py-2">
+      <div class="d-flex flex-wrap gap-2">
+        <button type="button" id="btn-prev-step" class="btn sq-btn-outline sq-touch">⬅️ Previous</button>
+        <button type="button" id="btn-repeat-material" class="btn sq-btn-tosca sq-touch d-none">🔄 Ulangi Materi</button>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        <button type="button" id="btn-download-summary" class="btn sq-btn-outline sq-touch">📥 Download Hasil Belajar</button>
+        <button type="button" id="btn-next-step" class="btn sq-btn-primary sq-touch">Next ➡️</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Footer Profesional -->
+  <footer class="sq-footer mt-5 py-4" role="contentinfo">
+    <div class="container-fluid sq-container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div>
+        <strong>Story Quest: Pulau Cerita</strong> — Media Pembelajaran Mendalam Bahasa Inggris SMP Kelas 9 (Narrative Text: Legend &amp; Fable).
+      </div>
+      <div class="small text-secondary">
+        Data tersimpan aman di perangkat (offline-ready PWA) • Tanpa login &amp; tanpa server eksternal.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notifikasi Badge / XP -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="sq-toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Modal Umum (Profil, Peringkat, Mode Guru, Detail) -->
+  <div class="modal fade" id="sqModal" tabindex="-1" aria-labelledby="sqModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content sq-modal-content">
+        <div class="modal-header sq-modal-header">
+          <h5 class="modal-title fw-bold" id="sqModalLabel">Informasi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body" id="sqModalBody"></div>
+        <div class="modal-footer" id="sqModalFooter">
+          <button type="button" class="btn sq-btn-outline sq-touch" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Library CDN dengan versi disematkan -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js" crossorigin="anonymous"></script>
+
+  <!-- Aplikasi Modular ES Modules -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
