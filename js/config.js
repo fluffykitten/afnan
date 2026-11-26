@@ -7,6 +7,8 @@ export const CONFIG = {
   SUBJECT: 'Bahasa Inggris SMP Kelas 9 — Narrative Text (Legend & Fable)',
   TEACHER_PIN: '1234',
   APERSEPSI_YOUTUBE_URL: 'https://www.youtube.com/watch?v=5GhtevFmhxw',
+  DEFAULT_BGM_YOUTUBE_URL: 'https://www.youtube.com/watch?v=AF6pUQkENoY',
+  DEFAULT_BGM_ENABLED: true,
   DEFAULT_QUIZ_RACE_SECONDS: 90,
   XP_PER_LEVEL: 250,
   MIN_CONFETTI_SCORE: 90,

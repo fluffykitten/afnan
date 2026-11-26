@@ -885,9 +885,67 @@ function renderReflectionView() {
 }
 
 /* ============================================================================
-   7. BINDING GLOBAL HEADER, FOOTER NAV & INISIALISASI
+   7. BGM YOUTUBE PLAYER, ANIMASI KLIK & BINDING GLOBAL HEADER/FOOTER
    ============================================================================ */
+let bgmUserPreferredOn = true;
+let bgmHasInteracted = false;
+let currentBgmVideoId = '';
+
+function syncBgmPlayer(forceFromUser = false) {
+  const settings = getSettings();
+  const container = document.getElementById('sq-bgm-container');
+  const btn = document.getElementById('btn-toggle-bgm');
+  const label = document.getElementById('bgm-label');
+  if (!container || !btn) return;
+
+  const shouldPlay = bgmUserPreferredOn && !getMuted() && (bgmHasInteracted || forceFromUser);
+  const ytId = extractYouTubeId(settings.bgmYoutubeUrl || CONFIG.DEFAULT_BGM_YOUTUBE_URL);
+
+  btn.setAttribute('aria-pressed', String(bgmUserPreferredOn && !getMuted()));
+  btn.classList.toggle('active', bgmUserPreferredOn && !getMuted());
+  if (label) {
+    label.textContent = bgmUserPreferredOn && !getMuted() ? t('bgmOnLabel') : t('bgmOffLabel');
+  }
+
+  if (shouldPlay && ytId) {
+    if (currentBgmVideoId !== ytId || !container.firstElementChild) {
+      currentBgmVideoId = ytId;
+      container.innerHTML = `<iframe width="200" height="200" src="https://www.youtube.com/embed/${ytId}?autoplay=1&loop=1&playlist=${ytId}&controls=0" title="Background Music" allow="autoplay; encrypted-media"></iframe>`;
+    }
+  } else {
+    currentBgmVideoId = '';
+    if (container.innerHTML) container.innerHTML = '';
+  }
+}
+
+function bindButtonAnimations() {
+  document.addEventListener('click', (e) => {
+    if (!bgmHasInteracted) {
+      bgmHasInteracted = true;
+      syncBgmPlayer(true);
+    }
+
+    const btn = e.target.closest('button, .sq-avatar-card');
+    if (!btn || btn.disabled) return;
+
+    let animClass = 'anim-jelly';
+    if (['btn-toggle-pid', 'btn-toggle-lang', 'btn-toggle-sound', 'btn-toggle-bgm', 'btn-teacher-mode'].includes(btn.id)) {
+      animClass = 'anim-wiggle';
+    } else if (btn.classList.contains('sq-btn-primary') || btn.classList.contains('sq-btn-tosca') || btn.classList.contains('btn-warning')) {
+      animClass = 'anim-pop';
+    }
+
+    btn.classList.remove('anim-wiggle', 'anim-pop', 'anim-jelly');
+    void btn.offsetWidth;
+    btn.classList.add(animClass);
+    setTimeout(() => btn.classList.remove(animClass), 450);
+  });
+}
+
 function bindGlobalControls() {
+  bindButtonAnimations();
+  bgmUserPreferredOn = getSettings().bgmEnabled !== false;
+
   document.getElementById('btn-brand-home').addEventListener('click', () => { playClick(); navigate('home'); });
   document.getElementById('btn-nav-home').addEventListener('click', () => { playClick(); navigate('home'); });
   document.getElementById('btn-nav-map').addEventListener('click', () => { playClick(); navigate('map'); });
@@ -898,6 +956,19 @@ function bindGlobalControls() {
     const next = getLang() === 'en' ? 'id' : 'en';
     setLang(next);
     renderCurrentRoute();
+    syncBgmPlayer();
+  });
+
+  document.getElementById('btn-toggle-bgm').addEventListener('click', () => {
+    playClick();
+    bgmHasInteracted = true;
+    bgmUserPreferredOn = !bgmUserPreferredOn;
+    if (bgmUserPreferredOn && getMuted()) {
+      setMuted(false);
+      document.getElementById('btn-toggle-sound').textContent = '🔊';
+      document.getElementById('btn-toggle-sound').setAttribute('aria-pressed', 'false');
+    }
+    syncBgmPlayer(true);
   });
 
   document.getElementById('btn-nav-leaderboard').addEventListener('click', () => {
@@ -926,15 +997,26 @@ function bindGlobalControls() {
     updateActiveStudent((stu) => {
       stu.muted = nextMute;
     });
+    syncBgmPlayer();
   });
 
   document.getElementById('btn-teacher-mode').addEventListener('click', () => {
     playClick();
     showModal(t('teacherModalTitle'), (body, footer) => {
-      openTeacherModal(body, footer, () => {
-        getModal().hide();
-        navigate('home');
-      });
+      openTeacherModal(
+        body,
+        footer,
+        () => {
+          getModal().hide();
+          bgmUserPreferredOn = getSettings().bgmEnabled !== false;
+          syncBgmPlayer();
+          navigate('home');
+        },
+        () => {
+          bgmUserPreferredOn = getSettings().bgmEnabled !== false;
+          syncBgmPlayer(true);
+        }
+      );
     });
   });
 
@@ -997,6 +1079,7 @@ async function initApp() {
   setLang(getLang());
   applyStaticShellTranslations();
   bindGlobalControls();
+  syncBgmPlayer();
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
@@ -1016,6 +1099,7 @@ async function initApp() {
     if (activeStu) {
       setMuted(Boolean(activeStu.muted));
       document.getElementById('btn-toggle-sound').textContent = activeStu.muted ? '🔇' : '🔊';
+      syncBgmPlayer();
       navigate('map');
     } else {
       navigate('home');

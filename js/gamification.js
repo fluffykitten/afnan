@@ -11,32 +11,32 @@ export const AVATARS = [
   {
     id: 'explorer',
     label: 'Raka Penjelajah',
-    svg: `<svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#dbeafe"/><circle cx="32" cy="36" r="16" fill="#fed7aa"/><path d="M14 28 Q32 10 50 28 Z" fill="#1d4ed8"/><rect x="12" y="25" width="40" height="5" rx="2" fill="#1e3a8a"/><circle cx="26" cy="35" r="2.5" fill="#111827"/><circle cx="38" cy="35" r="2.5" fill="#111827"/><path d="M27 42 Q32 46 37 42" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`
+    svg: `<svg class="sq-avatar-svg" viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#dbeafe"/><circle cx="32" cy="36" r="16" fill="#fed7aa"/><path d="M14 28 Q32 10 50 28 Z" fill="#1d4ed8"/><rect x="12" y="25" width="40" height="5" rx="2" fill="#1e3a8a"/><circle class="sq-eye" cx="26" cy="35" r="2.5" fill="#111827"/><circle class="sq-eye" cx="38" cy="35" r="2.5" fill="#111827"/><path d="M27 42 Q32 46 37 42" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`
   },
   {
     id: 'scholar',
     label: 'Sinta Pustaka',
-    svg: `<svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#ccfbf1"/><circle cx="32" cy="35" r="16" fill="#fde68a"/><path d="M16 32 Q16 14 32 14 Q48 14 48 32" fill="#0f766e"/><circle cx="26" cy="35" r="4.5" fill="none" stroke="#111827" stroke-width="2"/><circle cx="38" cy="35" r="4.5" fill="none" stroke="#111827" stroke-width="2"/><line x1="30.5" y1="35" x2="33.5" y2="35" stroke="#111827" stroke-width="2"/><path d="M27 43 Q32 46 37 43" stroke="#111827" stroke-width="2.3" fill="none" stroke-linecap="round"/></svg>`
+    svg: `<svg class="sq-avatar-svg" viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#ccfbf1"/><circle cx="32" cy="35" r="16" fill="#fde68a"/><path d="M16 32 Q16 14 32 14 Q48 14 48 32" fill="#0f766e"/><circle cx="26" cy="35" r="4.5" fill="none" stroke="#111827" stroke-width="2"/><circle cx="38" cy="35" r="4.5" fill="none" stroke="#111827" stroke-width="2"/><circle class="sq-eye" cx="26" cy="35" r="1.8" fill="#111827"/><circle class="sq-eye" cx="38" cy="35" r="1.8" fill="#111827"/><line x1="30.5" y1="35" x2="33.5" y2="35" stroke="#111827" stroke-width="2"/><path d="M27 43 Q32 46 37 43" stroke="#111827" stroke-width="2.3" fill="none" stroke-linecap="round"/></svg>`
   },
   {
     id: 'captain',
     label: 'Bima Nakhoda',
-    svg: `<svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#e0e7ff"/><circle cx="32" cy="36" r="16" fill="#fdba74"/><path d="M16 24 H48 L44 15 H20 Z" fill="#ffffff" stroke="#1e3a8a" stroke-width="2"/><rect x="18" y="23" width="28" height="4" fill="#f59e0b"/><circle cx="26" cy="35" r="2.5" fill="#111827"/><circle cx="38" cy="35" r="2.5" fill="#111827"/><path d="M26 42 Q32 47 38 42" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`
+    svg: `<svg class="sq-avatar-svg" viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#e0e7ff"/><circle cx="32" cy="36" r="16" fill="#fdba74"/><path d="M16 24 H48 L44 15 H20 Z" fill="#ffffff" stroke="#1e3a8a" stroke-width="2"/><rect x="18" y="23" width="28" height="4" fill="#f59e0b"/><circle class="sq-eye" cx="26" cy="35" r="2.5" fill="#111827"/><circle class="sq-eye" cx="38" cy="35" r="2.5" fill="#111827"/><path d="M26 42 Q32 47 38 42" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`
   },
   {
     id: 'owl',
     label: 'Burung Hantu Bijak',
-    svg: `<svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#ede9fe"/><ellipse cx="32" cy="35" rx="18" ry="19" fill="#7c3aed"/><circle cx="25" cy="31" r="6" fill="#ffffff"/><circle cx="39" cy="31" r="6" fill="#ffffff"/><circle cx="25" cy="31" r="2.5" fill="#111827"/><circle cx="39" cy="31" r="2.5" fill="#111827"/><polygon points="32,35 28,41 36,41" fill="#f59e0b"/></svg>`
+    svg: `<svg class="sq-avatar-svg" viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#ede9fe"/><ellipse cx="32" cy="35" rx="18" ry="19" fill="#7c3aed"/><circle cx="25" cy="31" r="6" fill="#ffffff"/><circle cx="39" cy="31" r="6" fill="#ffffff"/><circle class="sq-eye" cx="25" cy="31" r="2.5" fill="#111827"/><circle class="sq-eye" cx="39" cy="31" r="2.5" fill="#111827"/><polygon points="32,35 28,41 36,41" fill="#f59e0b"/></svg>`
   },
   {
     id: 'kancil',
     label: 'Kancil Cerdik',
-    svg: `<svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#fef3c7"/><ellipse cx="22" cy="18" rx="4" ry="10" fill="#d97706"/><ellipse cx="42" cy="18" rx="4" ry="10" fill="#d97706"/><circle cx="32" cy="36" r="15" fill="#f59e0b"/><circle cx="26" cy="34" r="2.5" fill="#111827"/><circle cx="38" cy="34" r="2.5" fill="#111827"/><circle cx="32" cy="40" r="3" fill="#111827"/></svg>`
+    svg: `<svg class="sq-avatar-svg" viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#fef3c7"/><ellipse cx="22" cy="18" rx="4" ry="10" fill="#d97706"/><ellipse cx="42" cy="18" rx="4" ry="10" fill="#d97706"/><circle cx="32" cy="36" r="15" fill="#f59e0b"/><circle class="sq-eye" cx="26" cy="34" r="2.5" fill="#111827"/><circle class="sq-eye" cx="38" cy="34" r="2.5" fill="#111827"/><circle cx="32" cy="40" r="3" fill="#111827"/></svg>`
   },
   {
     id: 'creator',
     label: 'Nadia Kreator',
-    svg: `<svg viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#fce7f3"/><circle cx="32" cy="36" r="16" fill="#fed7aa"/><path d="M16 32 Q20 14 32 14 Q44 14 48 32" fill="#be185d"/><circle cx="26" cy="35" r="2.5" fill="#111827"/><circle cx="38" cy="35" r="2.5" fill="#111827"/><path d="M27 42 Q32 46 37 42" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="46" cy="18" r="5" fill="#0d9488"/></svg>`
+    svg: `<svg class="sq-avatar-svg" viewBox="0 0 64 64" width="56" height="56"><circle cx="32" cy="32" r="30" fill="#fce7f3"/><circle cx="32" cy="36" r="16" fill="#fed7aa"/><path d="M16 32 Q20 14 32 14 Q44 14 48 32" fill="#be185d"/><circle class="sq-eye" cx="26" cy="35" r="2.5" fill="#111827"/><circle class="sq-eye" cx="38" cy="35" r="2.5" fill="#111827"/><path d="M27 42 Q32 46 37 42" stroke="#111827" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="46" cy="18" r="5" fill="#0d9488"/></svg>`
   }
 ];
 

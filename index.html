@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1d4ed8" />
-  <meta name="description" content="Story Quest: Interactive learning adventure for Narrative Text (Legend & Fable) — Grade 9 Junior High." />
-  <title>Story Quest — Story Island (Narrative Text Grade 9)</title>
+  <meta name="description" content="Story Quest: Interactive learning adventure for Narrative Text (Legend & Fable) — Grade 9 Junior High School." />
+  <title>Story Quest — Story Island (Narrative Text Grade 9 Junior High School)</title>
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/svg+xml" href="./assets/icon-192.svg" />
   <!-- Bootstrap 5.3.3 (versi disematkan) -->
@@ -24,7 +24,7 @@
             <img src="./assets/icon-192.svg" alt="Story Quest Icon" width="38" height="38" class="rounded-3" />
             <div class="text-start lh-sm">
               <span class="sq-brand-title d-block">STORY QUEST</span>
-              <small class="sq-brand-sub" data-i18n="brandSub">Story Island • Grade 9 Junior High</small>
+              <small class="sq-brand-sub" data-i18n="brandSub">Story Island • Grade 9 Junior High School</small>
             </div>
           </button>
         </div>
@@ -56,6 +56,9 @@
           </button>
           <button type="button" id="btn-toggle-lang" class="btn sq-btn-outline sq-touch" aria-label="Switch Language" title="Switch Language (English / Indonesia)">
             🌐 <span id="lang-label">EN</span>
+          </button>
+          <button type="button" id="btn-toggle-bgm" class="btn sq-btn-outline sq-touch" aria-pressed="false" aria-label="Toggle Background Music" title="Background Music (YouTube)">
+            🎵 <span class="d-none d-xl-inline" id="bgm-label">BGM</span>
           </button>
           <button type="button" id="btn-toggle-sound" class="btn sq-btn-outline sq-touch" aria-pressed="false" aria-label="Mute or unmute sound" title="Sound Effects">
             🔊
@@ -112,15 +115,24 @@
 
   <!-- Footer Profesional -->
   <footer class="sq-footer mt-5 py-4" role="contentinfo">
-    <div class="container-fluid sq-container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div class="container-fluid sq-container d-flex flex-wrap justify-content-between align-items-center gap-3">
       <div>
-        <strong>Story Quest: Story Island</strong> — <span data-i18n="footerDesc">Deep Learning English Media for Grade 9 Junior High (Narrative Text: Legend &amp; Fable).</span>
+        <div>
+          <strong>Story Quest: Story Island</strong> — <span data-i18n="footerDesc">Deep Learning English Media for Grade 9 Junior High School (Narrative Text: Legend &amp; Fable).</span>
+        </div>
+        <div class="small text-secondary mt-1" data-i18n="footerSub">
+          Data is saved safely on this device (offline-ready PWA) • No login &amp; no external server.
+        </div>
       </div>
-      <div class="small text-secondary" data-i18n="footerSub">
-        Data is saved safely on this device (offline-ready PWA) • No login &amp; no external server.
+      <div class="text-md-end small">
+        <div class="fw-bold text-white">Afnan Danin Trihauli, S.Pd.</div>
+        <div class="text-secondary">Teacher of SMP Baitul Izzah Boarding School</div>
       </div>
     </div>
   </footer>
+
+  <!-- Wadah Tersembunyi untuk Pemutar BGM YouTube -->
+  <div id="sq-bgm-container" class="sq-bgm-hidden" aria-hidden="true"></div>
 
   <!-- Toast Notifikasi Badge / XP -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3" id="sq-toast-container" aria-live="polite" aria-atomic="true"></div>

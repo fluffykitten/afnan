@@ -6,7 +6,7 @@ let memoryLang = null;
 
 const DICT = {
   en: {
-    brandSub: 'Story Island • Grade 9 Junior High',
+    brandSub: 'Story Island • Grade 9 Junior High School',
     progressLabel: 'Learning Progress',
     navHome: 'Home',
     navMap: 'Map',
@@ -22,13 +22,13 @@ const DICT = {
     repeatMatBtn: '🔄 Repeat Material',
     downloadSummaryBtn: '📥 Download Learning Summary',
     nextBtn: 'Next ➡️',
-    footerDesc: 'Deep Learning English Media for Grade 9 Junior High (Narrative Text: Legend & Fable).',
+    footerDesc: 'Deep Learning English Media for Grade 9 Junior High School (Narrative Text: Legend & Fable).',
     footerSub: 'Data is saved safely on this device (offline-ready PWA) • No login & no external server.',
     modalClose: 'Close',
     langToggleTitle: 'Switch Language (English / Indonesia)',
 
     // Home
-    heroBadge: 'Grade 9 Junior High English',
+    heroBadge: 'Grade 9 Junior High School English',
     heroTitle: 'Welcome to Story Quest: Story Island! 🏝️',
     heroDesc:
       'Explore <strong>6 Interactive Islands</strong> to master <strong>Narrative Text (Legend &amp; Fable)</strong> deeply: from communicative purpose, Story Map, text proportions, critical comparison, fact vs opinion, to designing your own story!',
@@ -155,7 +155,7 @@ const DICT = {
     certPdf: '📥 Download PDF',
     certNotEligible: '⚠️ Complete the <strong>Final Assessment</strong> first to activate your score on the certificate.',
     certRibbon: 'CERTIFICATE OF ACHIEVEMENT',
-    certSubject: 'Grade 9 Junior High English — Narrative Text (Legend & Fable)',
+    certSubject: 'Grade 9 Junior High School English — Narrative Text (Legend & Fable)',
     certAwardedTo: 'Proudly presented to:',
     certClassLabel: 'Class:',
     certBody: 'Has completed deep learning on <strong>Narrative Text (Legend &amp; Fable)</strong> covering communicative purpose analysis, schematic structure, text proportions, critical comparison, fact vs opinion evaluation, and original story design.',
@@ -166,7 +166,7 @@ const DICT = {
     certDateIssued: 'Date Issued:',
     certIdLabel: 'Certificate ID:',
     certIssuer: 'Story Quest Development Team',
-    certIssuerSub: 'Grade 9 Junior High English Learning',
+    certIssuerSub: 'Grade 9 Junior High School English Learning',
 
     // Leaderboard & Teacher
     lbTitle: '🏆 Local Leaderboard',
@@ -190,6 +190,10 @@ const DICT = {
     teacherSettingsTitle: '⚙️ Learning Settings',
     teacherTimerLabel: 'Quiz Race Duration (seconds)',
     teacherYtLabel: 'Apperception YouTube Video URL',
+    teacherBgmLabel: 'Background Music YouTube URL',
+    teacherBgmEnabledLabel: 'Enable Background Music by default',
+    bgmOnLabel: 'BGM On',
+    bgmOffLabel: 'BGM Off',
     teacherSaveSettings: '💾 Save Settings',
     teacherSettingsSaved: '✅ Settings saved successfully.',
     teacherDangerZone: 'Danger Zone: Delete all profiles & progress in this browser.',
@@ -467,6 +471,10 @@ const DICT = {
     teacherSettingsTitle: '⚙️ Pengaturan Pembelajaran',
     teacherTimerLabel: 'Durasi Balapan Kuis (detik)',
     teacherYtLabel: 'Link Video YouTube Apersepsi',
+    teacherBgmLabel: 'Link YouTube Musik Latar (Background Music)',
+    teacherBgmEnabledLabel: 'Aktifkan Musik Latar secara default',
+    bgmOnLabel: 'Musik Nyala',
+    bgmOffLabel: 'Musik Mati',
     teacherSaveSettings: '💾 Simpan Pengaturan',
     teacherSettingsSaved: '✅ Pengaturan berhasil disimpan.',
     teacherDangerZone: 'Zona Berbahaya: Hapus seluruh profil & progres di browser ini.',

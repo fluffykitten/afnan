@@ -42,7 +42,9 @@ function getDefaultState() {
     students: [],
     settings: {
       quizRaceSeconds: CONFIG.DEFAULT_QUIZ_RACE_SECONDS,
-      youtubeUrl: CONFIG.APERSEPSI_YOUTUBE_URL
+      youtubeUrl: CONFIG.APERSEPSI_YOUTUBE_URL,
+      bgmYoutubeUrl: CONFIG.DEFAULT_BGM_YOUTUBE_URL,
+      bgmEnabled: CONFIG.DEFAULT_BGM_ENABLED
     }
   };
 }

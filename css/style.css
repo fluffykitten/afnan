@@ -466,10 +466,88 @@ body.pid-mode h1 { font-size: 2.5rem; }
 body.pid-mode h2 { font-size: 2.05rem; }
 body.pid-mode h3 { font-size: 1.7rem; }
 
-/* Animasi & Aksesibilitas prefers-reduced-motion */
+/* Wadah Tersembunyi untuk Pemutar BGM YouTube */
+.sq-bgm-hidden {
+  position: fixed;
+  left: -9999px;
+  bottom: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Animasi Tombol Klik & Wajah Avatar (Playful & Balanced) */
 @keyframes sqFadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sqWiggle {
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-7deg) scale(1.06); }
+  45% { transform: rotate(7deg) scale(1.08); }
+  70% { transform: rotate(-4deg) scale(1.03); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes sqPopBounce {
+  0% { transform: scale(1); }
+  35% { transform: scale(0.92); }
+  70% { transform: scale(1.07); }
+  100% { transform: scale(1); }
+}
+
+@keyframes sqJelly {
+  0% { transform: scale(1, 1); }
+  30% { transform: scale(1.08, 0.92); }
+  60% { transform: scale(0.95, 1.05); }
+  85% { transform: scale(1.02, 0.98); }
+  100% { transform: scale(1, 1); }
+}
+
+.anim-wiggle {
+  animation: sqWiggle 0.42s ease-out;
+}
+.anim-pop {
+  animation: sqPopBounce 0.36s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.anim-jelly {
+  animation: sqJelly 0.4s ease;
+}
+
+/* Animasi Wajah Avatar */
+.sq-avatar-svg {
+  animation: sqAvatarBob 3.4s ease-in-out infinite;
+  transform-origin: center bottom;
+  transition: transform 0.25s ease;
+}
+.sq-avatar-card:hover .sq-avatar-svg,
+.sq-avatar-card.selected .sq-avatar-svg,
+.sq-mini-avatar:hover .sq-avatar-svg {
+  animation: sqAvatarExcited 0.6s ease;
+}
+.sq-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sqAvatarBlink 4.2s infinite;
+}
+
+@keyframes sqAvatarBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2.5px) rotate(1.5deg); }
+}
+
+@keyframes sqAvatarExcited {
+  0% { transform: scale(1) rotate(0deg); }
+  30% { transform: scale(1.12) rotate(-5deg); }
+  65% { transform: scale(1.08) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes sqAvatarBlink {
+  0%, 44%, 48%, 92%, 96%, 100% { transform: scaleY(1); }
+  46%, 94% { transform: scaleY(0.12); }
 }
 
 @media (prefers-reduced-motion: reduce) {

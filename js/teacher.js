@@ -7,7 +7,7 @@ import { getAllStudents, getSettings, updateSettings, clearAllData } from './sto
 import { playClick, playCorrect, playWrong } from './sound.js';
 import { t } from './i18n.js';
 
-export function openTeacherModal(modalBody, modalFooter, onDataReset) {
+export function openTeacherModal(modalBody, modalFooter, onDataReset, onSettingsSaved) {
   let unlocked = false;
 
   function renderPinPrompt(errorMsg = '') {
@@ -103,6 +103,16 @@ export function openTeacherModal(modalBody, modalFooter, onDataReset) {
           <label class="form-label small fw-bold" for="cfg-yt">${t('teacherYtLabel')}</label>
           <input type="url" id="cfg-yt" class="form-control sq-touch-sm" value="${settings.youtubeUrl}" />
         </div>
+        <div class="col-md-8">
+          <label class="form-label small fw-bold" for="cfg-bgm-url">${t('teacherBgmLabel')}</label>
+          <input type="url" id="cfg-bgm-url" class="form-control sq-touch-sm" value="${settings.bgmYoutubeUrl || CONFIG.DEFAULT_BGM_YOUTUBE_URL}" />
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+          <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" role="switch" id="cfg-bgm-enabled" ${settings.bgmEnabled !== false ? 'checked' : ''} />
+            <label class="form-check-label small fw-bold" for="cfg-bgm-enabled">${t('teacherBgmEnabledLabel')}</label>
+          </div>
+        </div>
         <div class="col-12">
           <button type="submit" class="btn btn-sm sq-btn-outline sq-touch-sm">${t('teacherSaveSettings')}</button>
         </div>
@@ -144,7 +154,10 @@ export function openTeacherModal(modalBody, modalFooter, onDataReset) {
       playClick();
       const quizRaceSeconds = Math.max(30, Number(modalBody.querySelector('#cfg-timer').value) || 90);
       const youtubeUrl = modalBody.querySelector('#cfg-yt').value.trim() || CONFIG.APERSEPSI_YOUTUBE_URL;
-      updateSettings({ quizRaceSeconds, youtubeUrl });
+      const bgmYoutubeUrl = modalBody.querySelector('#cfg-bgm-url').value.trim() || CONFIG.DEFAULT_BGM_YOUTUBE_URL;
+      const bgmEnabled = modalBody.querySelector('#cfg-bgm-enabled').checked;
+      updateSettings({ quizRaceSeconds, youtubeUrl, bgmYoutubeUrl, bgmEnabled });
+      if (typeof onSettingsSaved === 'function') onSettingsSaved();
       renderDashboard(t('teacherSettingsSaved'));
     });
 
