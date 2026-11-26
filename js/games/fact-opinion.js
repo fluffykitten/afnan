@@ -2,6 +2,7 @@
  * Pulau 5 Mini-Game: Detektif Fakta vs Opini (Swipe Kiri/Kanan + Tombol Aksesibel)
  */
 import { playClick, playCorrect, playWrong, playVictory } from '../sound.js';
+import { t } from '../i18n.js';
 
 export function renderFactOpinionGame(container, textsData, onComplete) {
   const items = (textsData.factOpinionItems || []).slice(0, 8);
@@ -16,10 +17,10 @@ export function renderFactOpinionGame(container, textsData, onComplete) {
     if (isCorrect) {
       scoreCount += 1;
       playCorrect();
-      lastFeedback = `<div class="alert alert-success rounded-4 small">✅ Benar! (${item.type.toUpperCase()}) — ${item.reason}</div>`;
+      lastFeedback = `<div class="alert alert-success rounded-4 small">${t('mg5Correct', { type: item.type.toUpperCase(), reason: item.reason })}</div>`;
     } else {
       playWrong();
-      lastFeedback = `<div class="alert alert-warning rounded-4 small">🌱 Belum tepat! Seharusnya <strong>${item.type.toUpperCase()}</strong>. ${item.reason}</div>`;
+      lastFeedback = `<div class="alert alert-warning rounded-4 small">${t('mg5Wrong', { type: item.type.toUpperCase(), reason: item.reason })}</div>`;
     }
     idx += 1;
     render();
@@ -32,11 +33,11 @@ export function renderFactOpinionGame(container, textsData, onComplete) {
       container.innerHTML = `
         <div class="sq-card text-center">
           <div class="display-4 mb-2">🔍</div>
-          <h3 class="h4 fw-bold">Misi Detektif Fakta vs Opini Tuntas!</h3>
-          <p class="mb-2">Ketepatan memilah: <strong>${scoreCount} / ${items.length}</strong> kartu</p>
+          <h3 class="h4 fw-bold">${t('mg5DoneTitle')}</h3>
+          <p class="mb-2">${t('mg5DoneSub', { correct: scoreCount, total: items.length })}</p>
           <div class="display-4 fw-bold text-primary mb-3">${score}</div>
           ${lastFeedback}
-          <button type="button" id="btn-fo-retry" class="btn sq-btn-outline sq-touch mt-2">🔄 Main Lagi</button>
+          <button type="button" id="btn-fo-retry" class="btn sq-btn-outline sq-touch mt-2">${t('mg5Retry')}</button>
         </div>
       `;
       container.querySelector('#btn-fo-retry').addEventListener('click', () => {
@@ -46,7 +47,7 @@ export function renderFactOpinionGame(container, textsData, onComplete) {
         lastFeedback = '';
         render();
       });
-      onComplete(score, `Detektif Fakta vs Opini: ${scoreCount}/${items.length} benar.`);
+      onComplete(score, `Fact vs Opinion Detective: ${scoreCount}/${items.length} correct.`);
       return;
     }
 
@@ -55,28 +56,28 @@ export function renderFactOpinionGame(container, textsData, onComplete) {
       <div class="sq-card">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <div>
-            <h3 class="h4 fw-bold mb-1">🔍 Detektif Fakta vs Opini</h3>
-            <p class="small text-secondary mb-0">Geser (swipe) kartu ke <strong>Kiri (FAKTA)</strong> atau <strong>Kanan (OPINI)</strong>, atau tekan tombol di bawah.</p>
+            <h3 class="h4 fw-bold mb-1">${t('mg5Title')}</h3>
+            <p class="small text-secondary mb-0">${t('mg5Sub')}</p>
           </div>
-          <span class="badge sq-badge-tosca fs-6">Kartu ${idx + 1} / ${items.length}</span>
+          <span class="badge sq-badge-tosca fs-6">${t('mg5CardCount', { curr: idx + 1, total: items.length })}</span>
         </div>
 
         ${lastFeedback}
 
         <div id="swipe-card" class="sq-swipe-card text-center my-3" tabindex="0">
-          <div class="small fw-bold text-primary mb-2">PERNYATAAN TEKS</div>
+          <div class="small fw-bold text-primary mb-2">${t('mg5CardHeader')}</div>
           <p class="fs-5 fw-bold mb-0">"${current.text}"</p>
         </div>
 
         <div class="row g-2">
           <div class="col-6">
             <button type="button" id="btn-fact" class="btn sq-btn-primary sq-touch w-100">
-              ⬅️ FAKTA TEKS
+              ${t('mg5FactBtn')}
             </button>
           </div>
           <div class="col-6">
             <button type="button" id="btn-opinion" class="btn sq-btn-tosca sq-touch w-100">
-              OPINI PEMBACA ➡️
+              ${t('mg5OpinionBtn')}
             </button>
           </div>
         </div>

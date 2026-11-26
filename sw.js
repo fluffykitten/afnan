@@ -1,5 +1,5 @@
 /* Service Worker sederhana untuk mode offline Story Quest */
-const CACHE_NAME = 'story-quest-v1';
+const CACHE_NAME = 'story-quest-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -11,6 +11,7 @@ const CORE_ASSETS = [
   './data/questions.json',
   './data/badges.json',
   './js/config.js',
+  './js/i18n.js',
   './js/storage.js',
   './js/sound.js',
   './js/gamification.js',

@@ -5,6 +5,7 @@
 import { CONFIG } from './config.js';
 import { getAllStudents, updateActiveStudent } from './storage.js';
 import { playVictory } from './sound.js';
+import { t, getBadgeText, getLang } from './i18n.js';
 
 export const AVATARS = [
   {
@@ -71,7 +72,7 @@ export function showToast(title, body) {
       <div class="toast-body">
         <strong>${title}</strong><br><span class="small">${body}</span>
       </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Tutup"></button>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"></button>
     </div>
   `;
   toastEl.querySelector('.btn-close').addEventListener('click', () => toastEl.remove());
@@ -79,9 +80,6 @@ export function showToast(title, body) {
   setTimeout(() => toastEl.remove(), 4500);
 }
 
-/**
- * Menambah XP dan mengevaluasi pencapaian badge otomatis berdasarkan badges.json.
- */
 export function awardXpAndEvaluateBadges(xpAmount, reason, badgesList = []) {
   const newlyUnlocked = [];
   const updated = updateActiveStudent((stu) => {
@@ -120,7 +118,7 @@ export function awardXpAndEvaluateBadges(xpAmount, reason, badgesList = []) {
       if (conditions[b.id] && !owned.has(b.id)) {
         owned.add(b.id);
         stu.xp += b.xpBonus || 0;
-        newlyUnlocked.push(b);
+        newlyUnlocked.push(getBadgeText(b));
       }
     });
     stu.badges = [...owned];
@@ -128,7 +126,8 @@ export function awardXpAndEvaluateBadges(xpAmount, reason, badgesList = []) {
 
   newlyUnlocked.forEach((b) => {
     playVictory();
-    showToast(`🎖️ Badge Baru: ${b.icon} ${b.name}!`, `${b.description} (+${b.xpBonus} XP)`);
+    const prefix = getLang() === 'en' ? '🎖️ New Badge:' : '🎖️ Badge Baru:';
+    showToast(`${prefix} ${b.icon} ${b.name}!`, `${b.description} (+${b.xpBonus} XP)`);
   });
 
   return updated;
@@ -137,22 +136,22 @@ export function awardXpAndEvaluateBadges(xpAmount, reason, badgesList = []) {
 export function renderLeaderboardModalHtml(badgesList) {
   const students = [...getAllStudents()].sort((a, b) => (b.xp || 0) - (a.xp || 0));
   if (students.length === 0) {
-    return '<p class="text-secondary mb-0">Belum ada profil siswa yang terdaftar di perangkat ini.</p>';
+    return `<p class="text-secondary mb-0">${t('lbEmpty')}</p>`;
   }
 
   return `
-    <p class="small text-secondary mb-3">Papan peringkat lokal berdasarkan XP petualangan di perangkat ini.</p>
+    <p class="small text-secondary mb-3">${t('lbSub')}</p>
     <div class="table-responsive">
       <table class="table table-hover align-middle">
         <thead class="table-primary">
           <tr>
             <th>#</th>
-            <th>Siswa</th>
-            <th>Kelas</th>
-            <th>Level &amp; XP</th>
-            <th>Pulau Selesai</th>
-            <th>Nilai Akhir</th>
-            <th>Badge</th>
+            <th>${t('lbColStudent')}</th>
+            <th>${t('lbColClass')}</th>
+            <th>${t('lbColXp')}</th>
+            <th>${t('lbColIslands')}</th>
+            <th>${t('lbColFinal')}</th>
+            <th>${t('lbColBadges')}</th>
           </tr>
         </thead>
         <tbody>

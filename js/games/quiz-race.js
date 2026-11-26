@@ -3,10 +3,11 @@
  */
 import { playClick, playCorrect, playWrong, playVictory } from '../sound.js';
 import { getSettings } from '../storage.js';
+import { t } from '../i18n.js';
 
 export function renderQuizRaceGame(container, textsData, onComplete) {
-  const legend = textsData.texts.find((t) => t.id === 'malin') || textsData.texts[1];
-  const fable = textsData.texts.find((t) => t.id === 'kancil') || textsData.texts[3];
+  const legend = textsData.texts.find((item) => item.id === 'malin') || textsData.texts[1];
+  const fable = textsData.texts.find((item) => item.id === 'kancil') || textsData.texts[3];
 
   const raceQuestions = [
     {
@@ -90,7 +91,7 @@ export function renderQuizRaceGame(container, textsData, onComplete) {
       }
       timeLeft -= 1;
       const timerEl = container.querySelector('#race-timer-val');
-      if (timerEl) timerEl.textContent = `${timeLeft}d`;
+      if (timerEl) timerEl.textContent = `${timeLeft}${t('mg4SecUnit')}`;
       if (timeLeft <= 0) {
         stopTimer();
         finishRace();
@@ -106,15 +107,15 @@ export function renderQuizRaceGame(container, textsData, onComplete) {
             <table class="table table-sm table-bordered small align-middle mb-0">
               <thead class="table-primary">
                 <tr>
-                  <th>Aspek Perbandingan</th>
+                  <th>${t('mg4ColAspect')}</th>
                   <th>${legend.title} (Legend)</th>
                   <th>${fable.title} (Fable)</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td class="fw-bold">Tokoh</td><td>Manusia (Malin &amp; Ibu)</td><td>Hewan (Kancil &amp; Buaya)</td></tr>
-                <tr><td class="fw-bold">Asal-Usul</td><td>Batu Pantai Air Manis</td><td>Tidak menjelaskan tempat nyata</td></tr>
-                <tr><td class="fw-bold">Total Kalimat</td><td>${lStat.total} kalimat</td><td>${fStat.total} kalimat</td></tr>
+                <tr><td class="fw-bold">${t('mg4RowChars')}</td><td>${t('mg4RowCharsL')}</td><td>${t('mg4RowCharsF')}</td></tr>
+                <tr><td class="fw-bold">${t('mg4RowOrigin')}</td><td>${t('mg4RowOriginL')}</td><td>${t('mg4RowOriginF')}</td></tr>
+                <tr><td class="fw-bold">${t('mg4RowTotal')}</td><td>${lStat.total}</td><td>${fStat.total}</td></tr>
                 <tr><td class="fw-bold">Complication</td><td>${lStat.map.Complication} (${Math.round((lStat.map.Complication / lStat.total) * 100)}%)</td><td>${fStat.map.Complication} (${Math.round((fStat.map.Complication / fStat.total) * 100)}%)</td></tr>
                 <tr><td class="fw-bold">Resolution</td><td>${lStat.map.Resolution} (${Math.round((lStat.map.Resolution / lStat.total) * 100)}%)</td><td>${fStat.map.Resolution} (${Math.round((fStat.map.Resolution / fStat.total) * 100)}%)</td></tr>
               </tbody>
@@ -123,7 +124,7 @@ export function renderQuizRaceGame(container, textsData, onComplete) {
         </div>
         <div class="col-lg-6">
           <div class="p-2 border rounded-4 bg-white">
-            <canvas id="compare-chart" height="160" aria-label="Grafik perbandingan proporsi Legend dan Fable"></canvas>
+            <canvas id="compare-chart" height="160" aria-label="Comparison proportion chart"></canvas>
           </div>
         </div>
       </div>
@@ -167,12 +168,12 @@ export function renderQuizRaceGame(container, textsData, onComplete) {
       <div class="sq-card">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
           <div>
-            <h3 class="h4 fw-bold mb-1">⚡ Balapan Kuis Komparatif (Legend vs Fable)</h3>
-            <p class="small text-secondary mb-0">Gunakan tabel &amp; grafik perbandingan untuk menjawab cepat sebelum waktu habis!</p>
+            <h3 class="h4 fw-bold mb-1">${t('mg4Title')}</h3>
+            <p class="small text-secondary mb-0">${t('mg4Sub')}</p>
           </div>
           <div class="d-flex align-items-center gap-2">
-            <span class="badge bg-danger fs-6">⏱️ <span id="race-timer-val">${timeLeft}d</span></span>
-            <span class="badge sq-badge-tosca fs-6">Soal ${qIndex + 1}/${raceQuestions.length}</span>
+            <span class="badge bg-danger fs-6">⏱️ <span id="race-timer-val">${timeLeft}${t('mg4SecUnit')}</span></span>
+            <span class="badge sq-badge-tosca fs-6">${t('mg4QCount', { curr: qIndex + 1, total: raceQuestions.length })}</span>
           </div>
         </div>
 
@@ -180,10 +181,10 @@ export function renderQuizRaceGame(container, textsData, onComplete) {
 
         <div class="d-flex flex-wrap gap-2 mb-3">
           <button type="button" id="pwr-5050" class="btn btn-sm sq-btn-outline sq-touch-sm" ${usedFifty ? 'disabled' : ''}>
-            ✂️ Power-up 50:50 ${usedFifty ? '(Terpakai)' : ''}
+            ✂️ Power-up 50:50 ${usedFifty ? t('mg4Used') : ''}
           </button>
           <button type="button" id="pwr-time" class="btn btn-sm sq-btn-tosca sq-touch-sm" ${usedAddTime ? 'disabled' : ''}>
-            ⏳ Power-up +15 Detik ${usedAddTime ? '(Terpakai)' : ''}
+            ${t('mg4TimePower')} ${usedAddTime ? t('mg4Used') : ''}
           </button>
         </div>
 
@@ -222,7 +223,7 @@ export function renderQuizRaceGame(container, textsData, onComplete) {
       usedAddTime = true;
       timeLeft += 15;
       playCorrect();
-      container.querySelector('#race-timer-val').textContent = `${timeLeft}d`;
+      container.querySelector('#race-timer-val').textContent = `${timeLeft}${t('mg4SecUnit')}`;
       container.querySelector('#pwr-time').disabled = true;
     });
 
@@ -253,17 +254,17 @@ export function renderQuizRaceGame(container, textsData, onComplete) {
     container.innerHTML = `
       <div class="sq-card text-center">
         <div class="display-4 mb-2">🏁</div>
-        <h3 class="h4 fw-bold">Balapan Kuis Selesai!</h3>
-        <p class="mb-2">Kamu menjawab benar <strong>${correct}</strong> dari ${raceQuestions.length} tantangan dengan sisa waktu <strong>${Math.max(0, timeLeft)} detik</strong>.</p>
+        <h3 class="h4 fw-bold">${t('mg4DoneTitle')}</h3>
+        <p class="mb-2">${t('mg4DoneSub', { correct, total: raceQuestions.length, left: Math.max(0, timeLeft) })}</p>
         <div class="display-4 fw-bold text-primary mb-3">${score}</div>
-        <button type="button" id="btn-race-again" class="btn sq-btn-outline sq-touch">🔄 Ulangi Balapan</button>
+        <button type="button" id="btn-race-again" class="btn sq-btn-outline sq-touch">${t('mg4Retry')}</button>
       </div>
     `;
     container.querySelector('#btn-race-again').addEventListener('click', () => {
       playClick();
       renderQuizRaceGame(container, textsData, onComplete);
     });
-    onComplete(score, `Menyelesaikan Balapan Kuis Perbandingan Legend vs Fable (${correct}/${raceQuestions.length}).`);
+    onComplete(score, `Completed Legend vs Fable Quiz Race (${correct}/${raceQuestions.length}).`);
   }
 
   renderQuestion();

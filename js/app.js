@@ -1,7 +1,7 @@
 /**
  * Router SPA utama & Controller State Aplikasi Story Quest
  */
-import { CONFIG, extractYouTubeId, getPredikat } from './config.js';
+import { CONFIG, extractYouTubeId } from './config.js';
 import {
   getActiveStudent,
   createOrSelectStudent,
@@ -21,6 +21,16 @@ import {
 import { renderQuizSession, buildBossQuizQuestions, buildPosttestQuestions } from './quiz-engine.js';
 import { renderCertificateView, downloadLearningSummary } from './certificate.js';
 import { openTeacherModal } from './teacher.js';
+import {
+  getLang,
+  setLang,
+  t,
+  getPredikatLocalized,
+  getIslandMeta,
+  getMiniMaterials,
+  getAvatarLabel,
+  getBadgeText
+} from './i18n.js';
 
 import { renderMatchPurposeGame } from './games/match-purpose.js';
 import { renderStoryMapGame } from './games/story-map.js';
@@ -30,9 +40,9 @@ import { renderFactOpinionGame } from './games/fact-opinion.js';
 import { renderStoryBuilderGame } from './games/story-builder.js';
 
 const appState = {
-  route: 'home', // home | apersepsi | pretest | map | island | posttest | reflection | certificate
+  route: 'home',
   islandId: 1,
-  islandStep: 'material', // material | game | boss
+  islandStep: 'material',
   materialSlide: 0,
   textsData: null,
   questionsData: null,
@@ -40,95 +50,20 @@ const appState = {
   modalInstance: null
 };
 
-const MINI_MATERIALS = {
-  1: [
-    {
-      title: 'Mengenal Tujuan Komunikatif Narrative Text',
-      body: 'Narrative text (seperti <strong>Legend</strong> dan <strong>Fable</strong>) memiliki dua fungsi sosial utama: <em>to entertain/amuse the readers</em> (menghibur pembaca dengan kisah imajinatif) dan <em>to convey moral values</em> (menyampaikan pesan moral).',
-      boxTitle: 'Tahukah Kamu?',
-      boxText: 'Dalam sebuah legenda atau fabel, pesan moral jarang berdiri sendiri—selalu ada <strong>kata kunci</strong> dan minimal <strong>2 bukti peristiwa</strong> dari awal hingga akhir cerita!'
-    },
-    {
-      title: 'Cara Menemukan Bukti Tujuan di Dalam Teks',
-      body: 'Perhatikan tindakan tokoh (misalnya Malin Kundang menolak ibunya), akibat dari tindakan tersebut (badai mengubahnya menjadi batu), dan kalimat penutup seperti <em>"...reminding everyone to keep their promises"</em>.',
-      boxTitle: 'Fakta Menarik',
-      boxText: 'Dua bukti paling kuat untuk membuktikan tujuan moral biasanya berasal dari pasangan <strong>Sebab (tindakan tokoh di Complication)</strong> + <strong>Akibat (hasil di Resolution)</strong>.'
-    }
-  ],
-  2: [
-    {
-      title: 'Tiga Tahap Wajib Schematic Structure',
-      body: 'Setiap narrative text yang utuh memiliki: <br>1. <strong>Orientation</strong>: mengenalkan tokoh, waktu, dan tempat.<br>2. <strong>Complication</strong>: munculnya masalah/konflik hingga klimaks.<br>3. <strong>Resolution</strong>: cara masalah diselesaikan (bahagia atau tragis).',
-      boxTitle: 'Info Penting',
-      boxText: 'Ciri bahasa Orientation sering memakai <em>Once upon a time</em> atau <em>Long ago</em> dengan <strong>Simple Past Tense</strong>.'
-    },
-    {
-      title: 'Dua Tahap Opsional: Evaluation & Re-orientation',
-      body: 'Selain 3 tahap wajib, penulis dapat menyisipkan:<br>• <strong>Evaluation</strong> (opsional): kesadaran atau penilaian batin tokoh di tengah krisis.<br>• <strong>Re-orientation</strong> (opsional): penutup yang merangkum pesan moral atau kondisi saat ini.',
-      boxTitle: 'Tahukah Kamu?',
-      boxText: 'Menggunakan <strong>Story Map Digital</strong> membantumu memetakan alur cerita secara visual sebelum menulis atau meringkas teks.'
-    }
-  ],
-  3: [
-    {
-      title: 'Mengukur Proporsi Kalimat & Kata Tiap Tahap',
-      body: 'Pembaca kritis tidak hanya membaca cerita, tetapi juga mengamati <strong>proporsi</strong>: berapa jumlah kalimat atau kata pada Orientation, Complication, dan Resolution, serta berapa selisihnya.',
-      boxTitle: 'Info Penting',
-      boxText: 'Rumus Persentase Tahap = <strong>(Jumlah Kalimat Tahap ÷ Total Kalimat Teks) × 100%</strong>.'
-    },
-    {
-      title: 'Membaca Tahap Terpanjang & Terpendek',
-      body: 'Tahap dengan persentase terbesar disebut <strong>tahap terpanjang</strong> (biasanya Complication atau Resolution karena memuat aksi terbanyak), sedangkan yang terkecil adalah <strong>tahap terpendek</strong> (sering kali Evaluation/Re-orientation).',
-      boxTitle: 'Fakta Menarik',
-      boxText: 'Grafik batang dan grafik donat memudahkan kita melihat keseimbangan cerita dalam sekali pandang!'
-    }
-  ],
-  4: [
-    {
-      title: 'Legend vs Fable: Persamaan & Perbedaan',
-      body: 'Keduanya sama-sama berbentuk naratif lampau dengan pesan moral. Namun:<br>• <strong>Legend</strong>: tokoh manusia/mistis, sering menjelaskan asal-usul bentang alam (danau, gunung, pantai).<br>• <strong>Fable</strong>: tokoh hewan yang berbicara/berpikir layaknya manusia.',
-      boxTitle: 'Tahukah Kamu?',
-      boxText: 'Indonesia kaya legenda Nusantara seperti <em>Lake Toba</em>, <em>Malin Kundang</em>, dan <em>Sangkuriang</em>, serta fabel cerdik seperti <em>Si Kancil</em>.'
-    },
-    {
-      title: 'Membandingkan Dua Teks Secara Berbasis Bukti',
-      body: 'Saat membandingkan Legend dan Fable, gunakan <strong>tabel komparatif</strong> dan <strong>grafik proporsi</strong>, lalu dukung kesimpulanmu dengan minimal <strong>2 bukti</strong> langsung dari kedua teks.',
-      boxTitle: 'Info Penting',
-      boxText: 'Jangan hanya menulis "berbeda"—tuliskan bukti spesifik seperti persentase Complication atau kutipan tindakan tokoh.'
-    }
-  ],
-  5: [
-    {
-      title: 'Mengevaluasi Peran Tiap Tahap Cerita',
-      body: 'Setiap tahap punya peran penting: tanpa <strong>Orientation</strong> pembaca bingung siapa tokohnya; tanpa <strong>Complication</strong> cerita terasa datar; tanpa <strong>Resolution</strong> konflik menggantung.',
-      boxTitle: 'Fakta Menarik',
-      boxText: 'Tahap <strong>Evaluation</strong> membuat pembaca ikut merasakan emosi tokoh tepat sebelum keputusan besar di Resolution terjadi.'
-    },
-    {
-      title: 'Membedakan Fakta Teks vs Opini Pembaca',
-      body: '• <strong>Fakta Teks</strong>: kejadian atau detail yang tertulis eksplisit dan bisa dibuktikan langsung di bacaan.<br>• <strong>Opini</strong>: penilaian subjektif pembaca (misalnya memakai kata <em>the best, worst, unfairly, boring</em>).',
-      boxTitle: 'Info Penting',
-      boxText: 'Selalu cek kalimat rujukan di teks asli sebelum menyimpulkan sebuah pernyataan sebagai fakta!'
-    }
-  ],
-  6: [
-    {
-      title: 'Merancang Kerangka Cerita Orisinal (Story Builder)',
-      body: 'Kini saatnya menjadi kreator! Gabungkan kartu <strong>Tokoh</strong>, <strong>Latar</strong>, <strong>Masalah</strong>, dan <strong>Nilai Moral</strong> menjadi kerangka cerita berbahasa Inggris yang runtut.',
-      boxTitle: 'Tahukah Kamu?',
-      boxText: 'Pastikan konflik di Complication berhubungan langsung dengan sifat tokoh di Orientation agar Resolution terasa logis!'
-    },
-    {
-      title: 'Tips Presentasi Kolaboratif di Papan Interaktif (PID)',
-      body: 'Saat mempresentasikan kerangka ceritamu bersama kelompok, gunakan tombol <strong>Mode PID</strong> agar teks tampil besar dan jelas di depan kelas, lalu jelaskan tujuan komunikatif dan alur tiap tahapnya.',
-      boxTitle: 'Info Penting',
-      boxText: 'Beri umpan balik yang membangun kepada kelompok temanmu dengan menyebutkan kelebihan struktur dan satu saran perbaikan.'
-    }
-  ]
-};
-
 const appRoot = document.getElementById('app-root');
 const bottomNavBar = document.getElementById('bottom-nav-bar');
+
+function applyStaticShellTranslations() {
+  const lang = getLang();
+  document.documentElement.lang = lang;
+  const langLabel = document.getElementById('lang-label');
+  if (langLabel) langLabel.textContent = lang.toUpperCase();
+
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const key = el.dataset.i18n;
+    el.innerHTML = t(key);
+  });
+}
 
 function getModal() {
   if (!appState.modalInstance) {
@@ -142,7 +77,7 @@ function showModal(title, renderFn) {
   const modalBody = document.getElementById('sqModalBody');
   const modalFooter = document.getElementById('sqModalFooter');
   modalTitle.textContent = title;
-  modalFooter.innerHTML = '<button type="button" class="btn sq-btn-outline sq-touch" data-bs-dismiss="modal">Tutup</button>';
+  modalFooter.innerHTML = `<button type="button" class="btn sq-btn-outline sq-touch" data-bs-dismiss="modal">${t('modalClose')}</button>`;
   renderFn(modalBody, modalFooter);
   getModal().show();
 }
@@ -151,13 +86,14 @@ function calculateOverallProgress(student) {
   if (!student) return 0;
   let points = 0;
   if (student.pretest) points += 1;
-  points += (student.completedIslands || []).length; // maks 6
+  points += (student.completedIslands || []).length;
   if (student.posttest) points += 1;
   if (student.reflection?.savedAt) points += 1;
   return Math.min(100, Math.round((points / 9) * 100));
 }
 
 function syncHeader() {
+  applyStaticShellTranslations();
   const student = getActiveStudent();
   const strip = document.getElementById('student-status-strip');
   const pct = calculateOverallProgress(student);
@@ -178,9 +114,9 @@ function syncHeader() {
   document.getElementById('header-student-name').textContent = student.name;
   document.getElementById('header-student-class').textContent = student.className;
   document.getElementById('header-student-level').textContent = `Lv. ${lv.level}`;
-  document.getElementById('header-xp').textContent = `⚡ ${student.xp} XP`;
-  document.getElementById('header-streak').textContent = `🔥 ${student.streak || 1} Hari`;
-  document.getElementById('header-badges').textContent = `🎖️ ${(student.badges || []).length} Badge`;
+  document.getElementById('header-xp').textContent = `⚡ ${student.xp} ${t('xpSuffix')}`;
+  document.getElementById('header-streak').textContent = `🔥 ${student.streak || 1} ${t('daysUnit')}`;
+  document.getElementById('header-badges').textContent = `🎖️ ${(student.badges || []).length} ${t('badgesUnit')}`;
 }
 
 function navigate(route, opts = {}) {
@@ -200,12 +136,7 @@ function updateBottomNav() {
   }
   bottomNavBar.classList.remove('d-none');
   const repeatBtn = document.getElementById('btn-repeat-material');
-  const nextBtn = document.getElementById('btn-next-step');
-  const prevBtn = document.getElementById('btn-prev-step');
-
   repeatBtn.classList.toggle('d-none', appState.route !== 'island');
-  prevBtn.disabled = false;
-  nextBtn.disabled = false;
 }
 
 function renderCurrentRoute() {
@@ -260,27 +191,19 @@ function renderHomeView() {
       <div class="col-lg-6">
         <div class="sq-card-blue h-100 d-flex flex-column justify-content-between">
           <div>
-            <span class="badge bg-light text-primary mb-2 px-3 py-2 rounded-pill">Bahasa Inggris SMP Kelas 9</span>
-            <h1 class="display-6 fw-bold mb-3">Selamat Datang di Story Quest: Pulau Cerita! 🏝️</h1>
-            <p class="mb-3">
-              Jelajahi <strong>6 Pulau Interaktif</strong> untuk menguasai materi <strong>Narrative Text (Legend &amp; Fable)</strong> secara mendalam:
-              dari tujuan komunikatif, Story Map, proporsi teks, perbandingan kritis, fakta vs opini, hingga merancang ceritamu sendiri!
-            </p>
+            <span class="badge bg-light text-primary mb-2 px-3 py-2 rounded-pill">${t('heroBadge')}</span>
+            <h1 class="display-6 fw-bold mb-3">${t('heroTitle')}</h1>
+            <p class="mb-3">${t('heroDesc')}</p>
             <div class="sq-info-box mb-3">
-              <div class="sq-info-title">🌟 Alur Petualangan</div>
-              <ol class="mb-0 ps-3 small">
-                <li>Isi profil petualang &amp; pilih avatar kartunmu.</li>
-                <li>Tonton Apersepsi &amp; kerjakan Asesmen Awal Adaptif.</li>
-                <li>Taklukkan 6 Pulau berurutan (Materi → Mini-Game → Boss Quiz).</li>
-                <li>Selesaikan Asesmen Akhir, Refleksi, &amp; unduh Sertifikat PDF!</li>
-              </ol>
+              <div class="sq-info-title">🌟 ${t('flowTitle')}</div>
+              <ol class="mb-0 ps-3 small">${t('flowSteps')}</ol>
             </div>
           </div>
           ${
             student
               ? `<div class="d-flex flex-wrap gap-2 mt-2">
-                   <button type="button" id="btn-home-continue" class="btn btn-warning fw-bold sq-touch">🚀 Lanjutkan Petualangan</button>
-                   <button type="button" id="btn-home-apersepsi" class="btn btn-light fw-bold sq-touch">🎬 Mulai dari Apersepsi</button>
+                   <button type="button" id="btn-home-continue" class="btn btn-warning fw-bold sq-touch">${t('continueBtn')}</button>
+                   <button type="button" id="btn-home-apersepsi" class="btn btn-light fw-bold sq-touch">${t('startApersepsiBtn')}</button>
                  </div>`
               : ''
           }
@@ -289,28 +212,28 @@ function renderHomeView() {
 
       <div class="col-lg-6">
         <div class="sq-card h-100">
-          <h2 class="h4 fw-bold text-primary mb-3">🧭 Daftar / Masuk Profil Petualang</h2>
+          <h2 class="h4 fw-bold text-primary mb-3">${t('profileHeading')}</h2>
           <form id="profile-form">
             <div class="row g-2 mb-3">
               <div class="col-sm-7">
-                <label class="form-label fw-bold small" for="inp-name">Nama Lengkap Siswa</label>
-                <input type="text" id="inp-name" class="form-control sq-touch" placeholder="Contoh: Raka Pratama" value="${student?.name || ''}" required />
+                <label class="form-label fw-bold small" for="inp-name">${t('nameLabel')}</label>
+                <input type="text" id="inp-name" class="form-control sq-touch" placeholder="${t('namePlaceholder')}" value="${student?.name || ''}" required />
               </div>
               <div class="col-sm-5">
-                <label class="form-label fw-bold small" for="inp-class">Kelas</label>
-                <input type="text" id="inp-class" class="form-control sq-touch" placeholder="Contoh: 9A" value="${student?.className || ''}" required />
+                <label class="form-label fw-bold small" for="inp-class">${t('classLabel')}</label>
+                <input type="text" id="inp-class" class="form-control sq-touch" placeholder="${t('classPlaceholder')}" value="${student?.className || ''}" required />
               </div>
             </div>
 
             <div class="mb-3">
-              <div class="form-label fw-bold small">Pilih Avatar Kartunmu:</div>
+              <div class="form-label fw-bold small">${t('pickAvatarLabel')}</div>
               <div class="row g-2" id="avatar-grid">
                 ${AVATARS.map(
                   (av) => `
                   <div class="col-4">
                     <button type="button" class="sq-avatar-card w-100 ${av.id === selectedAvatar ? 'selected' : ''}" data-avatar="${av.id}">
                       <div>${av.svg}</div>
-                      <div class="small fw-bold mt-1">${av.label}</div>
+                      <div class="small fw-bold mt-1">${getAvatarLabel(av)}</div>
                     </button>
                   </div>`
                 ).join('')}
@@ -318,14 +241,14 @@ function renderHomeView() {
             </div>
 
             <button type="submit" class="btn sq-btn-primary sq-touch w-100">
-              ⚓ Simpan Profil &amp; Mulai Berpetualang
+              ${t('saveProfileBtn')}
             </button>
           </form>
 
           ${
             allStudents.length > 0
               ? `<hr class="my-3"/>
-                 <div class="small fw-bold text-secondary mb-2">Atau pilih profil tersimpan di perangkat ini:</div>
+                 <div class="small fw-bold text-secondary mb-2">${t('savedProfilesHint')}</div>
                  <div class="d-flex flex-wrap gap-2">
                    ${allStudents
                      .map(
@@ -346,12 +269,13 @@ function renderHomeView() {
       student
         ? `<div class="sq-card mt-4">
              <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
-               <h3 class="h5 fw-bold mb-0">🎖️ Koleksi Badge Kamu (${(student.badges || []).length}/${appState.badgesData.length})</h3>
-               <span class="small text-secondary">Kumpulkan badge dengan menyelesaikan pulau, mini-game, &amp; refleksi!</span>
+               <h3 class="h5 fw-bold mb-0">${t('badgeCollectionTitle', { owned: (student.badges || []).length, total: appState.badgesData.length })}</h3>
+               <span class="small text-secondary">${t('badgeCollectionSub')}</span>
              </div>
              <div class="row g-2">
                ${appState.badgesData
-                 .map((b) => {
+                 .map((rawBadge) => {
+                   const b = getBadgeText(rawBadge);
                    const owned = (student.badges || []).includes(b.id);
                    return `
                      <div class="col-6 col-md-4 col-lg-3">
@@ -401,7 +325,7 @@ function renderHomeView() {
 }
 
 /* ============================================================================
-   2. APERSEPSI (PEMANTIK TANPA LANGSUNG MENJELASKAN MATERI)
+   2. APERSEPSI
    ============================================================================ */
 function renderApersepsiView() {
   const settings = getSettings();
@@ -411,10 +335,10 @@ function renderApersepsiView() {
     <div class="sq-card">
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
         <div>
-          <span class="badge sq-badge-tosca mb-1">Tahap 1 • Apersepsi Pemantik</span>
-          <h2 class="h3 fw-bold mb-0">🎬 Mari Mengamati Sebelum Berlayar!</h2>
+          <span class="badge sq-badge-tosca mb-1">${t('apersepsiBadge')}</span>
+          <h2 class="h3 fw-bold mb-0">${t('apersepsiTitle')}</h2>
         </div>
-        <button type="button" id="btn-skip-apersepsi" class="btn sq-btn-primary sq-touch">Lanjut ke Asesmen Awal ➡️</button>
+        <button type="button" id="btn-skip-apersepsi" class="btn sq-btn-primary sq-touch">${t('skipApersepsiBtn')}</button>
       </div>
 
       <div class="row g-4 align-items-center">
@@ -422,19 +346,16 @@ function renderApersepsiView() {
           ${
             ytId
               ? `<div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm border">
-                   <iframe src="https://www.youtube.com/embed/${ytId}" title="Video Pemantik Story Quest" allowfullscreen></iframe>
+                   <iframe src="https://www.youtube.com/embed/${ytId}" title="Story Quest Starter Video" allowfullscreen></iframe>
                  </div>`
-              : `<div class="p-5 text-center bg-light rounded-4 border">Video pemantik siap dipasang lewat link YouTube di Mode Guru.</div>`
+              : `<div class="p-5 text-center bg-light rounded-4 border">${t('apersepsiPlaceholder')}</div>`
           }
-          <div class="small text-secondary mt-2">
-            Jika koneksi offline, amati ilustrasi pulau di samping dan diskusikan pertanyaan pemantik bersama temanmu.
-          </div>
+          <div class="small text-secondary mt-2">${t('apersepsiOfflineNote')}</div>
         </div>
 
         <div class="col-lg-5">
           <div class="p-3 rounded-4 bg-primary-subtle border border-primary-subtle text-center mb-3">
-            <!-- Ilustrasi SVG Kartun Pemantik -->
-            <svg viewBox="0 0 280 140" class="w-100" style="max-height: 150px;" aria-label="Ilustrasi perahu dan sungai misterius">
+            <svg viewBox="0 0 280 140" class="w-100" style="max-height: 150px;" aria-label="Boat and mysterious river illustration">
               <rect width="280" height="140" rx="16" fill="#dbeafe"/>
               <path d="M0 95 Q70 80 140 95 T280 95 L280 140 L0 140 Z" fill="#0d9488"/>
               <path d="M75 95 L105 60 L155 60 L175 95 Z" fill="#f59e0b"/>
@@ -444,11 +365,9 @@ function renderApersepsiView() {
           </div>
 
           <div class="sq-info-box">
-            <div class="sq-info-title">🤔 Pertanyaan Pemantik</div>
-            <p class="fw-bold mb-2">"Apa yang akan terjadi jika tokoh dalam sebuah cerita melanggar janji sucinya atau meremehkan teman yang kecil?"</p>
-            <p class="small mb-0">
-              Tuliskan tebakan singkatmu di buku atau diskusikan secara lisan sebelum memulai misi! (Belum perlu menghafal teori apa pun dahulu.)
-            </p>
+            <div class="sq-info-title">${t('apersepsiPromptTitle')}</div>
+            <p class="fw-bold mb-2">${t('apersepsiPromptQ')}</p>
+            <p class="small mb-0">${t('apersepsiPromptHint')}</p>
           </div>
         </div>
       </div>
@@ -462,25 +381,25 @@ function renderApersepsiView() {
 }
 
 /* ============================================================================
-   3. ASESMEN AWAL ADAPTIF (10 SOAL)
+   3. ASESMEN AWAL ADAPTIF
    ============================================================================ */
 function renderPretestView() {
   const student = getActiveStudent();
   if (student?.pretest) {
-    const recIsland = CONFIG.ISLANDS.find((i) => i.id === student.pretest.recommendedIsland) || CONFIG.ISLANDS[0];
+    const recId = student.pretest.recommendedIsland || 1;
+    const recMeta = getIslandMeta(recId);
     appRoot.innerHTML = `
       <div class="sq-card text-center">
         <div class="display-4 mb-2">🧭</div>
-        <h2 class="h3 fw-bold">Asesmen Awal Sudah Diselesaikan</h2>
-        <p class="mb-2">Skor Asesmen Awalmu: <strong class="text-primary fs-4">${student.pretest.score}</strong></p>
+        <h2 class="h3 fw-bold">${t('pretestDoneTitle')}</h2>
+        <p class="mb-2">${t('pretestScoreLabel')} <strong class="text-primary fs-4">${student.pretest.score}</strong></p>
         <div class="sq-info-box text-start mx-auto my-3" style="max-width: 640px;">
-          <div class="sq-info-title">📌 Rekomendasi Belajar</div>
-          Fokus perhatian yang disarankan: <strong>Pulau ${recIsland.id}: ${recIsland.name}</strong>.
-          Semua pulau tetap dimulai secara berurutan dari Pulau 1.
+          <div class="sq-info-title">${t('pretestRecTitle')}</div>
+          ${t('pretestRecBody', { id: recId, name: recMeta.name })}
         </div>
         <div class="d-flex justify-content-center gap-2">
-          <button type="button" id="btn-pre-retake" class="btn sq-btn-outline sq-touch">🔄 Ulangi Asesmen Awal</button>
-          <button type="button" id="btn-pre-map" class="btn sq-btn-primary sq-touch">🗺️ Masuk ke Peta Pulau</button>
+          <button type="button" id="btn-pre-retake" class="btn sq-btn-outline sq-touch">${t('retakePretestBtn')}</button>
+          <button type="button" id="btn-pre-map" class="btn sq-btn-primary sq-touch">${t('enterMapBtn')}</button>
         </div>
       </div>
     `;
@@ -497,8 +416,8 @@ function renderPretestView() {
 function startAdaptivePretest() {
   renderQuizSession({
     container: appRoot,
-    title: 'Asesmen Awal Adaptif',
-    subtitle: '10 soal adaptif untuk memetakan kesiapanmu dan memberi rekomendasi pulau fokus.',
+    title: t('pretestTitle'),
+    subtitle: t('pretestSub'),
     mode: 'pretest',
     questionsPool: appState.questionsData.pretest,
     totalQuestions: 10,
@@ -514,14 +433,14 @@ function startAdaptivePretest() {
           completedAt: new Date().toISOString()
         };
       });
-      awardXpAndEvaluateBadges(50, 'Menyelesaikan Asesmen Awal Adaptif', appState.badgesData);
+      awardXpAndEvaluateBadges(50, 'Completed Adaptive Pretest', appState.badgesData);
       syncHeader();
     }
   });
 }
 
 /* ============================================================================
-   4. PETA 6 PULAU CERITA (INTERAKTIF & BERURUTAN)
+   4. PETA 6 PULAU CERITA
    ============================================================================ */
 function renderMapView() {
   const student = getActiveStudent();
@@ -533,20 +452,20 @@ function renderMapView() {
     <div class="sq-map-wrapper mb-4">
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
         <div>
-          <h2 class="h3 fw-bold mb-1 text-primary-emphasis">🗺️ Peta Pulau Cerita (6 Level Berurutan)</h2>
-          <p class="small mb-0">Selesaikan mini-materi, mini-game, dan Boss Quiz (skor ≥ ${CONFIG.PASSING_SCORE}) untuk membuka pulau berikutnya.</p>
+          <h2 class="h3 fw-bold mb-1 text-primary-emphasis">${t('mapTitle')}</h2>
+          <p class="small mb-0">${t('mapSub', { pass: CONFIG.PASSING_SCORE })}</p>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <button type="button" id="btn-map-apersepsi" class="btn btn-sm sq-btn-outline sq-touch-sm">🎬 Apersepsi</button>
-          <button type="button" id="btn-map-pretest" class="btn btn-sm sq-btn-outline sq-touch-sm">🧭 Asesmen Awal</button>
+          <button type="button" id="btn-map-apersepsi" class="btn btn-sm sq-btn-outline sq-touch-sm">${t('mapApersepsiBtn')}</button>
+          <button type="button" id="btn-map-pretest" class="btn btn-sm sq-btn-outline sq-touch-sm">${t('mapPretestBtn')}</button>
         </div>
       </div>
 
-      <!-- Peta Jalur SVG Visual -->
       <div class="bg-white bg-opacity-75 rounded-4 p-2 mb-3 border">
-        <svg viewBox="0 0 900 120" class="w-100" style="max-height: 110px;" aria-label="Jalur pelayaran 6 Pulau Cerita">
+        <svg viewBox="0 0 900 120" class="w-100" style="max-height: 110px;" aria-label="6 Story Islands sailing route">
           <path d="M75 60 Q215 15 350 60 T625 60 T825 60" fill="none" stroke="#1d4ed8" stroke-width="5" stroke-dasharray="10 8"/>
           ${CONFIG.ISLANDS.map((isl, i) => {
+            const meta = getIslandMeta(isl.id);
             const cx = 75 + i * 150;
             const cy = i % 2 === 0 ? 60 : 42;
             const done = completedSet.has(isl.id);
@@ -556,15 +475,15 @@ function renderMapView() {
               <g>
                 <circle cx="${cx}" cy="${cy}" r="22" fill="${fill}" stroke="#ffffff" stroke-width="4"/>
                 <text x="${cx}" y="${cy + 6}" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="bold">${done ? '✓' : isl.id}</text>
-                <text x="${cx}" y="108" text-anchor="middle" fill="#1e293b" font-size="13" font-weight="bold">${isl.name}</text>
+                <text x="${cx}" y="108" text-anchor="middle" fill="#1e293b" font-size="13" font-weight="bold">${meta.name}</text>
               </g>`;
           }).join('')}
         </svg>
       </div>
 
-      <!-- Kartu 6 Pulau -->
       <div class="row g-3">
         ${CONFIG.ISLANDS.map((isl) => {
+          const meta = getIslandMeta(isl.id);
           const isUnlocked = isl.id <= (student.unlockedIsland || 1);
           const isCompleted = completedSet.has(isl.id);
           const isRec = recIslandId === isl.id;
@@ -577,24 +496,30 @@ function renderMapView() {
                   <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
                     <span class="fs-2">${isl.icon}</span>
                     <div class="text-end">
-                      ${isRec ? '<span class="badge sq-badge-tosca mb-1 d-block">📌 Rekomendasi Asesmen Awal</span>' : ''}
+                      ${isRec ? `<span class="badge sq-badge-tosca mb-1 d-block">${t('recBadge')}</span>` : ''}
                       ${
                         isCompleted
-                          ? `<span class="badge bg-success">✅ Tuntas (Boss: ${bossScore})</span>`
+                          ? `<span class="badge bg-success">${t('completedBadge', { score: bossScore })}</span>`
                           : isUnlocked
-                            ? '<span class="badge bg-primary">🔓 Terbuka</span>'
-                            : '<span class="badge bg-secondary">🔒 Terkunci</span>'
+                            ? `<span class="badge bg-primary">${t('unlockedBadge')}</span>`
+                            : `<span class="badge bg-secondary">${t('lockedBadge')}</span>`
                       }
                     </div>
                   </div>
-                  <h3 class="h5 fw-bold mb-1">Pulau ${isl.id}: ${isl.name}</h3>
-                  <div class="small fw-bold text-primary mb-2">${isl.subtitle}</div>
-                  <p class="small text-secondary mb-3">${isl.goal}</p>
+                  <h3 class="h5 fw-bold mb-1">${t('islandLabel', { id: isl.id, name: meta.name })}</h3>
+                  <div class="small fw-bold text-primary mb-2">${meta.subtitle}</div>
+                  <p class="small text-secondary mb-3">${meta.goal}</p>
                 </div>
 
                 <button type="button" class="btn ${isUnlocked ? 'sq-btn-primary' : 'btn-secondary'} sq-touch w-100"
                         data-open-island="${isl.id}" ${isUnlocked ? '' : 'disabled'}>
-                  ${isCompleted ? '🔄 Kunjungi / Ulangi Pulau' : isUnlocked ? '⛵ Jelajahi Pulau Ini' : `Selesaikan Pulau ${isl.id - 1} Dulu`}
+                  ${
+                    isCompleted
+                      ? t('revisitIslandBtn')
+                      : isUnlocked
+                        ? t('exploreIslandBtn')
+                        : t('lockedIslandBtn', { prev: isl.id - 1 })
+                  }
                 </button>
               </div>
             </div>`;
@@ -602,28 +527,23 @@ function renderMapView() {
       </div>
     </div>
 
-    <!-- Gerbang Tahap Akhir: Asesmen Akhir, Refleksi, Sertifikat -->
     <div class="sq-card">
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
         <div>
-          <h3 class="h5 fw-bold mb-1">🏁 Gerbang Akhir Petualangan</h3>
+          <h3 class="h5 fw-bold mb-1">${t('finalGateTitle')}</h3>
           <p class="small text-secondary mb-0">
-            ${
-              allIslandsDone
-                ? 'Hebat! Keenam pulau sudah ditaklukkan. Kerjakan Asesmen Akhir, isi Refleksi, dan klaim Sertifikatmu!'
-                : `Selesaikan seluruh 6 pulau untuk membuka Asesmen Akhir & Sertifikat (${completedSet.size}/6 selesai).`
-            }
+            ${allIslandsDone ? t('finalGateDone') : t('finalGateWait', { done: completedSet.size })}
           </p>
         </div>
         <div class="d-flex flex-wrap gap-2">
           <button type="button" id="btn-go-posttest" class="btn sq-btn-primary sq-touch" ${allIslandsDone ? '' : 'disabled'}>
-            📝 Asesmen Akhir ${student.posttest ? `(${student.posttest.score})` : ''}
+            ${t('posttestBtn')} ${student.posttest ? `(${student.posttest.score})` : ''}
           </button>
           <button type="button" id="btn-go-reflection" class="btn sq-btn-tosca sq-touch" ${student.posttest ? '' : 'disabled'}>
-            💭 Refleksi
+            ${t('reflectionBtn')}
           </button>
           <button type="button" id="btn-go-cert" class="btn sq-btn-dark sq-touch" ${student.posttest ? '' : 'disabled'}>
-            🎓 Sertifikat
+            ${t('certBtn')}
           </button>
         </div>
       </div>
@@ -646,10 +566,11 @@ function renderMapView() {
 }
 
 /* ============================================================================
-   5. TAMPILAN PULAU (MINI-MATERI MAX 3 LAYAR -> MINI-GAME -> BOSS QUIZ)
+   5. TAMPILAN PULAU
    ============================================================================ */
 function renderIslandView() {
   const island = CONFIG.ISLANDS.find((i) => i.id === appState.islandId) || CONFIG.ISLANDS[0];
+  const meta = getIslandMeta(island.id);
   const student = getActiveStudent();
   const gameDone = Boolean(student.islandGamesDone?.[island.id]);
   const bossDone = (student.completedIslands || []).includes(island.id);
@@ -657,13 +578,13 @@ function renderIslandView() {
   appRoot.innerHTML = `
     <div class="mb-3 d-flex flex-wrap justify-content-between align-items-center gap-2">
       <div>
-        <span class="badge bg-primary mb-1">Pulau ${island.id} dari 6</span>
-        <h2 class="h3 fw-bold mb-0">${island.icon} ${island.name} — <span class="text-primary">${island.subtitle}</span></h2>
+        <span class="badge bg-primary mb-1">${t('islandBadge', { id: island.id })}</span>
+        <h2 class="h3 fw-bold mb-0">${island.icon} ${meta.name} — <span class="text-primary">${meta.subtitle}</span></h2>
       </div>
-      <div class="btn-group" role="group" aria-label="Tahap pulau">
-        <button type="button" class="btn sq-btn-outline sq-touch-sm ${appState.islandStep === 'material' ? 'active' : ''}" data-step-tab="material">1. Mini-Materi</button>
-        <button type="button" class="btn sq-btn-outline sq-touch-sm ${appState.islandStep === 'game' ? 'active' : ''}" data-step-tab="game">2. Mini-Game ${gameDone ? '✅' : ''}</button>
-        <button type="button" class="btn sq-btn-outline sq-touch-sm ${appState.islandStep === 'boss' ? 'active' : ''}" data-step-tab="boss">3. Boss Quiz ${bossDone ? '✅' : ''}</button>
+      <div class="btn-group" role="group" aria-label="Island stage tabs">
+        <button type="button" class="btn sq-btn-outline sq-touch-sm ${appState.islandStep === 'material' ? 'active' : ''}" data-step-tab="material">${t('tabMaterial')}</button>
+        <button type="button" class="btn sq-btn-outline sq-touch-sm ${appState.islandStep === 'game' ? 'active' : ''}" data-step-tab="game">${t('tabGame')} ${gameDone ? '✅' : ''}</button>
+        <button type="button" class="btn sq-btn-outline sq-touch-sm ${appState.islandStep === 'boss' ? 'active' : ''}" data-step-tab="boss">${t('tabBoss')} ${bossDone ? '✅' : ''}</button>
       </div>
     </div>
 
@@ -690,7 +611,7 @@ function renderIslandView() {
 }
 
 function renderMiniMaterial(container, island) {
-  const slides = MINI_MATERIALS[island.id] || [];
+  const slides = getMiniMaterials(island.id);
   const slideIdx = Math.min(appState.materialSlide, slides.length - 1);
   const slide = slides[slideIdx];
   const sampleText = appState.textsData.texts[island.id - 1];
@@ -698,8 +619,8 @@ function renderMiniMaterial(container, island) {
   container.innerHTML = `
     <div class="sq-card">
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <span class="badge sq-badge-tosca">Mini-Materi • Layar ${slideIdx + 1} / ${slides.length}</span>
-        <button type="button" id="btn-read-sample" class="btn btn-sm sq-btn-outline sq-touch-sm">📖 Baca Teks Contoh (${sampleText.title})</button>
+        <span class="badge sq-badge-tosca">${t('materialSlideBadge', { curr: slideIdx + 1, total: slides.length })}</span>
+        <button type="button" id="btn-read-sample" class="btn btn-sm sq-btn-outline sq-touch-sm">${t('readSampleBtn', { title: sampleText.title })}</button>
       </div>
 
       <h3 class="h4 fw-bold text-primary mb-3">${slide.title}</h3>
@@ -711,11 +632,11 @@ function renderMiniMaterial(container, island) {
       </div>
 
       <div class="d-flex flex-wrap justify-content-between gap-2">
-        <button type="button" id="btn-mat-prev" class="btn sq-btn-outline sq-touch" ${slideIdx === 0 ? 'disabled' : ''}>⬅️ Layar Sebelumnya</button>
+        <button type="button" id="btn-mat-prev" class="btn sq-btn-outline sq-touch" ${slideIdx === 0 ? 'disabled' : ''}>${t('matPrevBtn')}</button>
         ${
           slideIdx + 1 < slides.length
-            ? '<button type="button" id="btn-mat-next" class="btn sq-btn-primary sq-touch">Layar Materi Berikutnya ➡️</button>'
-            : '<button type="button" id="btn-mat-togame" class="btn sq-btn-primary sq-touch">🎮 Lanjut ke Mini-Game ➡️</button>'
+            ? `<button type="button" id="btn-mat-next" class="btn sq-btn-primary sq-touch">${t('matNextBtn')}</button>`
+            : `<button type="button" id="btn-mat-togame" class="btn sq-btn-primary sq-touch">${t('matToGameBtn')}</button>`
         }
       </div>
     </div>
@@ -725,7 +646,7 @@ function renderMiniMaterial(container, island) {
     playClick();
     showModal(`📖 ${sampleText.title} (${sampleText.type.toUpperCase()})`, (body) => {
       body.innerHTML = `
-        <p class="small text-secondary mb-2"><strong>Asal:</strong> ${sampleText.origin} | <strong>Tujuan:</strong> ${sampleText.purpose}</p>
+        <p class="small text-secondary mb-2"><strong>${t('sampleOrigin')}</strong> ${sampleText.origin} | <strong>${t('samplePurpose')}</strong> ${sampleText.purpose}</p>
         ${sampleText.stages
           .map(
             (st) => `
@@ -736,7 +657,7 @@ function renderMiniMaterial(container, island) {
           )
           .join('')}
         <div class="sq-info-box small">
-          <div class="sq-info-title">🔍 Bukti Tujuan Komunikatif</div>
+          <div class="sq-info-title">${t('sampleEvidenceTitle')}</div>
           <ul class="mb-0 ps-3">${sampleText.evidences.map((ev) => `<li>${ev}</li>`).join('')}</ul>
         </div>
       `;
@@ -775,15 +696,14 @@ function renderIslandMiniGame(container, island) {
       stu.islandGamesDone = stu.islandGamesDone || {};
       stu.islandGamesDone[island.id] = { score, summary, completedAt: new Date().toISOString() };
     });
-    awardXpAndEvaluateBadges(40, `Mini-Game Pulau ${island.id}`, appState.badgesData);
+    awardXpAndEvaluateBadges(40, `Mini-Game Island ${island.id}`, appState.badgesData);
     syncHeader();
 
-    // Tampilkan tombol cepat menuju Boss Quiz
     const nextBar = document.createElement('div');
     nextBar.className = 'mt-3 text-end';
     nextBar.innerHTML = `
       <button type="button" class="btn sq-btn-primary sq-touch" id="btn-after-game-boss">
-        ⚔️ Tantang Boss Quiz Pulau ${island.id} ➡️
+        ${t('challengeBossBtn', { id: island.id })}
       </button>
     `;
     nextBar.querySelector('#btn-after-game-boss').addEventListener('click', () => {
@@ -812,18 +732,17 @@ function renderIslandMiniGame(container, island) {
       break;
     case 6:
       renderStoryBuilderGame(container, appState.textsData, onGameComplete, (storyObj) => {
-        // Mode Presentasi Papan Interaktif (PID)
         document.body.classList.add('pid-mode');
         document.getElementById('btn-toggle-pid').setAttribute('aria-pressed', 'true');
-        showModal(`🖥️ Presentasi Kelompok: ${storyObj.title}`, (body) => {
+        showModal(t('presentationTitle', { title: storyObj.title }), (body) => {
           body.innerHTML = `
             <div class="p-2">
-              <div class="badge sq-badge-tosca fs-6 mb-3">${storyObj.genre} • Karya Kelompok</div>
+              <div class="badge sq-badge-tosca fs-6 mb-3">${t('presentationTag', { genre: storyObj.genre })}</div>
               <div class="mb-3"><span class="sq-stage-tag tag-orientation">Orientation</span><p class="fs-5">${storyObj.orientation}</p></div>
               <div class="mb-3"><span class="sq-stage-tag tag-complication">Complication</span><p class="fs-5">${storyObj.complication}</p></div>
               <div class="mb-3"><span class="sq-stage-tag tag-resolution">Resolution</span><p class="fs-5">${storyObj.resolution}</p></div>
               <div class="mb-3"><span class="sq-stage-tag tag-reorientation">Re-orientation</span><p class="fs-5">${storyObj.reorientation}</p></div>
-              <div class="sq-info-box"><div class="sq-info-title">🎯 Nilai Moral</div>${storyObj.moral}</div>
+              <div class="sq-info-box"><div class="sq-info-title">${t('presentationMoral')}</div>${storyObj.moral}</div>
             </div>
           `;
         });
@@ -835,11 +754,12 @@ function renderIslandMiniGame(container, island) {
 }
 
 function renderIslandBossQuiz(container, island) {
+  const meta = getIslandMeta(island.id);
   const pool = buildBossQuizQuestions(appState.questionsData.hots, island.id);
   renderQuizSession({
     container,
-    title: `Boss Quiz Pulau ${island.id}: ${island.name}`,
-    subtitle: '10 soal HOTS (5 khusus topik pulau + 5 lintas topik). Raih skor ≥ 70 untuk membuka pulau berikutnya!',
+    title: t('bossQuizTitle', { id: island.id, name: meta.name }),
+    subtitle: t('bossQuizSub'),
     mode: 'boss',
     questionsPool: pool,
     totalQuestions: 10,
@@ -867,21 +787,21 @@ function renderIslandBossQuiz(container, island) {
       });
 
       const xpGain = result.passed ? 75 : 25;
-      awardXpAndEvaluateBadges(xpGain, `Boss Quiz Pulau ${island.id} (Skor ${result.score})`, appState.badgesData);
+      awardXpAndEvaluateBadges(xpGain, `Boss Quiz Island ${island.id} (Score ${result.score})`, appState.badgesData);
       syncHeader();
     }
   });
 }
 
 /* ============================================================================
-   6. ASESMEN AKHIR (10 SOAL SEDANG-TINGGI) & REFLEKSI (4 KALIMAT RUMPANG)
+   6. ASESMEN AKHIR & REFLEKSI
    ============================================================================ */
 function renderPosttestView() {
   const pool = buildPosttestQuestions(appState.questionsData.posttest);
   renderQuizSession({
     container: appRoot,
-    title: 'Asesmen Akhir Story Quest',
-    subtitle: '10 soal komprehensif tingkat sedang–tinggi mencakup semua tujuan pembelajaran Narrative Text.',
+    title: t('posttestTitle'),
+    subtitle: t('posttestSub'),
     mode: 'posttest',
     questionsPool: pool,
     totalQuestions: 10,
@@ -890,7 +810,7 @@ function renderPosttestView() {
         navigate('reflection');
         return;
       }
-      const pred = getPredikat(result.score);
+      const pred = getPredikatLocalized(result.score);
       updateActiveStudent((stu) => {
         stu.posttest = {
           score: result.score,
@@ -898,7 +818,7 @@ function renderPosttestView() {
           completedAt: new Date().toISOString()
         };
       });
-      awardXpAndEvaluateBadges(100, `Asesmen Akhir (Skor ${result.score})`, appState.badgesData);
+      awardXpAndEvaluateBadges(100, `Final Assessment (Score ${result.score})`, appState.badgesData);
       syncHeader();
     }
   });
@@ -910,31 +830,31 @@ function renderReflectionView() {
 
   appRoot.innerHTML = `
     <div class="sq-card">
-      <span class="badge sq-badge-tosca mb-2">Pembelajaran Mendalam • Refleksi Diri</span>
-      <h2 class="h3 fw-bold mb-1">💭 Refleksi Petualanganmu</h2>
-      <p class="text-secondary small mb-4">Lengkapi 4 kalimat rumpang di bawah ini dengan jujur, lalu simpan sebelum mencetak sertifikatmu.</p>
+      <span class="badge sq-badge-tosca mb-2">${t('reflectionBadge')}</span>
+      <h2 class="h3 fw-bold mb-1">${t('reflectionTitle')}</h2>
+      <p class="text-secondary small mb-4">${t('reflectionSub')}</p>
 
       <form id="reflection-form" class="d-grid gap-3">
         <div>
-          <label class="form-label fw-bold" for="ref-1">1. Hal paling penting yang kupelajari dari Narrative Text (Legend &amp; Fable) adalah ...</label>
-          <input type="text" id="ref-1" class="form-control sq-touch" value="${ref.blank1 || ''}" placeholder="Tuliskan pemahaman utamamu..." required />
+          <label class="form-label fw-bold" for="ref-1">${t('ref1Label')}</label>
+          <input type="text" id="ref-1" class="form-control sq-touch" value="${ref.blank1 || ''}" placeholder="${t('ref1Ph')}" required />
         </div>
         <div>
-          <label class="form-label fw-bold" for="ref-2">2. Tahap struktur atau bagian analisis yang menurutku paling menantang adalah ..., dan cara mengatasinya dengan ...</label>
-          <input type="text" id="ref-2" class="form-control sq-touch" value="${ref.blank2 || ''}" placeholder="Ceritakan tantangan & strategimu..." required />
+          <label class="form-label fw-bold" for="ref-2">${t('ref2Label')}</label>
+          <input type="text" id="ref-2" class="form-control sq-touch" value="${ref.blank2 || ''}" placeholder="${t('ref2Ph')}" required />
         </div>
         <div>
-          <label class="form-label fw-bold" for="ref-3">3. Cara membedakan fakta teks dan opini pembaca secara akurat yaitu dengan memeriksa ...</label>
-          <input type="text" id="ref-3" class="form-control sq-touch" value="${ref.blank3 || ''}" placeholder="Tuliskan kata kunci atau bukti..." required />
+          <label class="form-label fw-bold" for="ref-3">${t('ref3Label')}</label>
+          <input type="text" id="ref-3" class="form-control sq-touch" value="${ref.blank3 || ''}" placeholder="${t('ref3Ph')}" required />
         </div>
         <div>
-          <label class="form-label fw-bold" for="ref-4">4. Nilai moral dari cerita yang ingin kuterapkan dalam kehidupan sehari-hari adalah ...</label>
-          <input type="text" id="ref-4" class="form-control sq-touch" value="${ref.blank4 || ''}" placeholder="Contoh: menepati janji, menghormati orang tua..." required />
+          <label class="form-label fw-bold" for="ref-4">${t('ref4Label')}</label>
+          <input type="text" id="ref-4" class="form-control sq-touch" value="${ref.blank4 || ''}" placeholder="${t('ref4Ph')}" required />
         </div>
 
         <div class="d-flex flex-wrap justify-content-between gap-2 mt-2">
-          <button type="submit" class="btn sq-btn-primary sq-touch">💾 Simpan Refleksi</button>
-          <button type="button" id="btn-ref-cert" class="btn sq-btn-tosca sq-touch">🎓 Buka Sertifikat ➡️</button>
+          <button type="submit" class="btn sq-btn-primary sq-touch">${t('saveRefBtn')}</button>
+          <button type="button" id="btn-ref-cert" class="btn sq-btn-tosca sq-touch">${t('openCertBtn')}</button>
         </div>
       </form>
       <div id="ref-feedback" class="mt-3"></div>
@@ -952,11 +872,10 @@ function renderReflectionView() {
         savedAt: new Date().toISOString()
       };
     });
-    awardXpAndEvaluateBadges(35, 'Menyimpan Refleksi Belajar', appState.badgesData);
+    awardXpAndEvaluateBadges(35, 'Saved Learning Reflection', appState.badgesData);
     syncHeader();
     playVictory();
-    appRoot.querySelector('#ref-feedback').innerHTML =
-      '<div class="alert alert-success rounded-4">✅ Refleksi tersimpan di perangkat! Kamu siap mengunduh Sertifikat PDF.</div>';
+    appRoot.querySelector('#ref-feedback').innerHTML = `<div class="alert alert-success rounded-4">${t('refSavedAlert')}</div>`;
   });
 
   appRoot.querySelector('#btn-ref-cert').addEventListener('click', () => {
@@ -974,9 +893,16 @@ function bindGlobalControls() {
   document.getElementById('btn-nav-map').addEventListener('click', () => { playClick(); navigate('map'); });
   document.getElementById('btn-switch-profile').addEventListener('click', () => { playClick(); navigate('home'); });
 
+  document.getElementById('btn-toggle-lang').addEventListener('click', () => {
+    playClick();
+    const next = getLang() === 'en' ? 'id' : 'en';
+    setLang(next);
+    renderCurrentRoute();
+  });
+
   document.getElementById('btn-nav-leaderboard').addEventListener('click', () => {
     playClick();
-    showModal('🏆 Papan Peringkat Lokal', (body) => {
+    showModal(t('lbTitle'), (body) => {
       body.innerHTML = renderLeaderboardModalHtml(appState.badgesData);
     });
   });
@@ -1004,7 +930,7 @@ function bindGlobalControls() {
 
   document.getElementById('btn-teacher-mode').addEventListener('click', () => {
     playClick();
-    showModal('👩‍🏫 Mode Guru (PIN Diperlukan)', (body, footer) => {
+    showModal(t('teacherModalTitle'), (body, footer) => {
       openTeacherModal(body, footer, () => {
         getModal().hide();
         navigate('home');
@@ -1012,7 +938,6 @@ function bindGlobalControls() {
     });
   });
 
-  // Navigasi Bawah
   document.getElementById('btn-prev-step').addEventListener('click', () => {
     playClick();
     const flow = ['home', 'apersepsi', 'pretest', 'map', 'island', 'posttest', 'reflection', 'certificate'];
@@ -1069,9 +994,10 @@ function bindGlobalControls() {
 }
 
 async function initApp() {
+  setLang(getLang());
+  applyStaticShellTranslations();
   bindGlobalControls();
 
-  // Daftarkan Service Worker PWA
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   }
@@ -1097,8 +1023,8 @@ async function initApp() {
   } catch (err) {
     appRoot.innerHTML = `
       <div class="alert alert-danger rounded-4">
-        <h4>Gagal memuat data aplikasi</h4>
-        <p class="mb-0">Pastikan aplikasi dijalankan melalui server web (bukan langsung <code>file://</code>). Detail: ${err.message}</p>
+        <h4>Failed to load application data</h4>
+        <p class="mb-0">Make sure the app is served via a web server (not directly via <code>file://</code>). Detail: ${err.message}</p>
       </div>
     `;
   }

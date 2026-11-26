@@ -1,14 +1,13 @@
 /**
  * Pulau 2 Mini-Game: Drag & Drop Story Map Digital
- * Mendukung drag-and-drop mouse serta klik-pilih aksesibel untuk HP & layar sentuh/keyboard.
  */
-import { playClick, playCorrect, playWrong, playVictory } from '../sound.js';
+import { playClick, playWrong, playVictory } from '../sound.js';
+import { t } from '../i18n.js';
 
 export function renderStoryMapGame(container, textsData, onComplete) {
-  const story = textsData.texts.find((t) => t.id === 'toba') || textsData.texts[0];
+  const story = textsData.texts.find((tItem) => tItem.id === 'toba') || textsData.texts[0];
   const stageBuckets = ['Orientation', 'Complication', 'Evaluation', 'Resolution', 'Re-orientation'];
 
-  // Ambil 1 kalimat representatif per tahap untuk disusun ke Story Map
   const cards = story.stages.map((st, idx) => ({
     id: `card_${idx}`,
     expectedStage: st.stage,
@@ -16,7 +15,7 @@ export function renderStoryMapGame(container, textsData, onComplete) {
   }));
 
   const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
-  const placements = {}; // cardId -> stageName
+  const placements = {};
   let selectedCardId = null;
   let checked = false;
 
@@ -28,19 +27,18 @@ export function renderStoryMapGame(container, textsData, onComplete) {
       <div class="sq-card">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
           <div>
-            <h3 class="h4 fw-bold mb-1">🗺️ Story Map Digital: ${story.title}</h3>
-            <p class="small text-secondary mb-0">Seret (Drag &amp; Drop) atau klik kartu kalimat lalu klik kotak tahap struktur yang tepat.</p>
+            <h3 class="h4 fw-bold mb-1">${t('mg2Title', { title: story.title })}</h3>
+            <p class="small text-secondary mb-0">${t('mg2Sub')}</p>
           </div>
-          <span class="badge sq-badge-tosca fs-6">${placedCount} / ${cards.length} Terpasang</span>
+          <span class="badge sq-badge-tosca fs-6">${t('mg2Placed', { done: placedCount, total: cards.length })}</span>
         </div>
 
-        <!-- Bank Kartu Kalimat -->
         <div class="mb-4 p-3 rounded-4 bg-light border">
-          <div class="fw-bold small text-primary mb-2">Kartu Kalimat Cerita (Belum Dipasang):</div>
+          <div class="fw-bold small text-primary mb-2">${t('mg2PoolLabel')}</div>
           <div class="d-flex flex-column gap-2" id="story-card-pool">
             ${
               unplaced.length === 0
-                ? '<div class="text-success fw-bold small">✅ Semua kartu sudah dimasukkan ke Story Map! Tekan "Periksa Story Map".</div>'
+                ? `<div class="text-success fw-bold small">${t('mg2AllPlaced')}</div>`
                 : unplaced
                     .map(
                       (c) => `
@@ -54,24 +52,23 @@ export function renderStoryMapGame(container, textsData, onComplete) {
           </div>
         </div>
 
-        <!-- Zona Story Map -->
         <div class="row g-3">
           ${stageBuckets
             .map((stageName) => {
               const assigned = cards.filter((c) => placements[c.id] === stageName);
               return `
                 <div class="col-md-6">
-                  <div class="sq-dropzone" data-stage="${stageName}" tabindex="0" role="region" aria-label="Zona ${stageName}">
+                  <div class="sq-dropzone" data-stage="${stageName}" tabindex="0" role="region" aria-label="${stageName}">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                       <span class="fw-bold text-primary">${stageName}</span>
                       <button type="button" class="btn btn-sm btn-outline-primary sq-touch-sm" data-place-here="${stageName}">
-                        Tempel di sini
+                        ${t('mg2PlaceHere')}
                       </button>
                     </div>
                     <div class="d-flex flex-column gap-2">
                       ${
                         assigned.length === 0
-                          ? '<div class="small text-secondary fst-italic">Kosong — seret atau klik "Tempel di sini"</div>'
+                          ? `<div class="small text-secondary fst-italic">${t('mg2EmptyZone')}</div>`
                           : assigned
                               .map((c) => {
                                 const statusClass = checked
@@ -83,7 +80,7 @@ export function renderStoryMapGame(container, textsData, onComplete) {
                                   <div class="sq-drag-chip ${statusClass}" data-assigned-id="${c.id}">
                                     <div class="small">${c.text}</div>
                                     <button type="button" class="btn btn-link btn-sm p-0 mt-1 text-danger" data-remove-card="${c.id}">
-                                      Lepas kartu
+                                      ${t('mg2RemoveCard')}
                                     </button>
                                   </div>`;
                               })
@@ -99,15 +96,14 @@ export function renderStoryMapGame(container, textsData, onComplete) {
         <div id="storymap-feedback" class="mt-3"></div>
 
         <div class="d-flex flex-wrap justify-content-between gap-2 mt-4">
-          <button type="button" id="btn-reset-map" class="btn sq-btn-outline sq-touch">🔄 Reset Papan</button>
+          <button type="button" id="btn-reset-map" class="btn sq-btn-outline sq-touch">${t('mg2Reset')}</button>
           <button type="button" id="btn-check-map" class="btn sq-btn-primary sq-touch" ${placedCount < cards.length ? 'disabled' : ''}>
-            ✅ Periksa Story Map
+            ${t('mg2Check')}
           </button>
         </div>
       </div>
     `;
 
-    // Drag & Click handlers pada kartu
     container.querySelectorAll('[data-card-id]').forEach((chip) => {
       chip.addEventListener('dragstart', (e) => {
         selectedCardId = chip.dataset.cardId;
@@ -126,7 +122,6 @@ export function renderStoryMapGame(container, textsData, onComplete) {
       });
     });
 
-    // Dropzone & click-to-place handlers
     container.querySelectorAll('.sq-dropzone').forEach((zone) => {
       const stage = zone.dataset.stage;
       zone.addEventListener('dragover', (e) => {
@@ -188,13 +183,13 @@ export function renderStoryMapGame(container, textsData, onComplete) {
       const fb = container.querySelector('#storymap-feedback');
       if (correct === cards.length) {
         playVictory();
-        fb.innerHTML = `<div class="alert alert-success rounded-4">🎉 <strong>Sempurna!</strong> Semua ${cards.length} tahap Story Map tersusun tepat (Skor 100).</div>`;
-        onComplete(100, 'Berhasil menyusun Story Map lengkap dengan benar.');
+        fb.innerHTML = `<div class="alert alert-success rounded-4">${t('mg2Perfect', { total: cards.length })}</div>`;
+        onComplete(100, 'Completed the Digital Story Map accurately.');
       } else {
         playWrong();
-        fb.innerHTML = `<div class="alert alert-warning rounded-4">🌱 ${correct} dari ${cards.length} kartu sudah tepat (Skor ${score}). Cek kartu merah dan perbaiki agar makin mantap!</div>`;
+        fb.innerHTML = `<div class="alert alert-warning rounded-4">${t('mg2Partial', { correct, total: cards.length, score })}</div>`;
         if (score >= 60) {
-          onComplete(score, `Menyusun Story Map (${correct}/${cards.length} tepat).`);
+          onComplete(score, `Story Map (${correct}/${cards.length} accurate).`);
         }
       }
     });

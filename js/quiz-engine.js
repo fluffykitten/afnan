@@ -2,9 +2,10 @@
  * Mesin Kuis Reusable untuk Asesmen Awal Adaptif, Boss Quiz (10 soal HOTS),
  * dan Asesmen Akhir (10 soal sedang-tinggi).
  */
-import { CONFIG, getPredikat } from './config.js';
+import { CONFIG } from './config.js';
 import { playClick, playCorrect, playWrong, playVictory } from './sound.js';
 import { fireConfettiIfHigh } from './gamification.js';
+import { t, getPredikatLocalized, getIslandMeta, getGrowthMindsetMsg } from './i18n.js';
 
 function shuffle(arr) {
   const copy = [...arr];
@@ -15,33 +16,23 @@ function shuffle(arr) {
   return copy;
 }
 
-/**
- * Mengambil paket 10 soal untuk Boss Quiz Pulau (5 khusus pulau + 5 lintas topik)
- */
 export function buildBossQuizQuestions(allHots, islandId) {
   const specific = shuffle(allHots.filter((q) => q.islandId === islandId)).slice(0, 5);
   const cross = shuffle(allHots.filter((q) => q.islandId !== islandId)).slice(0, 5);
   return [...specific, ...cross];
 }
 
-/**
- * Mengambil paket 10 soal Asesmen Akhir (sedang-tinggi)
- */
 export function buildPosttestQuestions(allPosttest) {
   const hard = shuffle(allPosttest.filter((q) => q.difficulty === 'hard')).slice(0, 5);
   const medium = shuffle(allPosttest.filter((q) => q.difficulty !== 'hard')).slice(0, 5);
   return shuffle([...hard, ...medium]);
 }
 
-/**
- * Render dan jalankan sesi kuis pada elemen container.
- * @param {Object} opts
- */
 export function renderQuizSession({
   container,
   title,
   subtitle,
-  mode, // 'pretest' | 'boss' | 'posttest'
+  mode,
   questionsPool,
   totalQuestions = 10,
   onComplete
@@ -50,7 +41,6 @@ export function renderQuizSession({
   let activeQuestions = isAdaptive ? [] : questionsPool.slice(0, totalQuestions);
   const usedIds = new Set();
 
-  // Untuk mode adaptif pretest, mulai dari soal tingkat medium
   function pickNextAdaptiveQuestion(currentDiff) {
     let candidates = questionsPool.filter((q) => !usedIds.has(q.id) && q.difficulty === currentDiff);
     if (candidates.length === 0) {
@@ -70,7 +60,7 @@ export function renderQuizSession({
   let index = 0;
   let correctCount = 0;
   let answered = false;
-  const topicStats = {}; // untuk rekomendasi adaptif
+  const topicStats = {};
 
   function renderQuestion() {
     const q = activeQuestions[index];
@@ -79,13 +69,13 @@ export function renderQuizSession({
       return;
     }
     answered = false;
-    const progressPct = Math.round(((index) / totalQuestions) * 100);
+    const progressPct = Math.round((index / totalQuestions) * 100);
     const diffBadge =
       q.difficulty === 'hard'
-        ? '<span class="badge bg-danger">Level: Tinggi (HOTS)</span>'
+        ? `<span class="badge bg-danger">${t('diffHard')}</span>`
         : q.difficulty === 'easy'
-          ? '<span class="badge bg-success">Level: Dasar</span>'
-          : '<span class="badge bg-primary">Level: Sedang</span>';
+          ? `<span class="badge bg-success">${t('diffEasy')}</span>`
+          : `<span class="badge bg-primary">${t('diffMedium')}</span>`;
 
     container.innerHTML = `
       <div class="sq-card">
@@ -96,7 +86,7 @@ export function renderQuizSession({
           </div>
           <div class="d-flex align-items-center gap-2">
             ${diffBadge}
-            <span class="badge sq-badge-tosca fs-6">Soal ${index + 1} / ${totalQuestions}</span>
+            <span class="badge sq-badge-tosca fs-6">${t('questionProgress', { curr: index + 1, total: totalQuestions })}</span>
           </div>
         </div>
 
@@ -107,7 +97,7 @@ export function renderQuizSession({
         ${
           q.passage
             ? `<div class="sq-reading-box mb-3">
-                 <div class="small fw-bold text-primary mb-1">📖 Cuplikan Teks (English):</div>
+                 <div class="small fw-bold text-primary mb-1">${t('passageLabel')}</div>
                  <p class="mb-0">${q.passage}</p>
                </div>`
             : ''
@@ -132,9 +122,9 @@ export function renderQuizSession({
         <div id="quiz-feedback" class="d-none"></div>
 
         <div class="d-flex justify-content-between align-items-center mt-3">
-          <div class="small fw-bold text-secondary">Skor benar sementara: ${correctCount}</div>
+          <div class="small fw-bold text-secondary">${t('tempCorrect', { count: correctCount })}</div>
           <button type="button" id="btn-quiz-next" class="btn sq-btn-primary sq-touch d-none">
-            ${index + 1 < totalQuestions ? 'Soal Berikutnya ➡️' : 'Lihat Hasil Akhir 🏁'}
+            ${index + 1 < totalQuestions ? t('nextQuestionBtn') : t('seeFinalResultBtn')}
           </button>
         </div>
       </div>
@@ -166,7 +156,7 @@ export function renderQuizSession({
           playCorrect();
           feedbackBox.innerHTML = `
             <div class="alert alert-success rounded-4 border-2">
-              <strong>✅ Hebat! Jawabanmu tepat!</strong>
+              <strong>${t('correctToast')}</strong>
               <p class="mb-0 mt-1 small">${q.explanation}</p>
             </div>
           `;
@@ -176,13 +166,12 @@ export function renderQuizSession({
         } else {
           topicStats[topicKey].wrong += 1;
           playWrong();
-          const gmMsg =
-            CONFIG.GROWTH_MINDSET_FEEDBACK[Math.floor(Math.random() * CONFIG.GROWTH_MINDSET_FEEDBACK.length)];
+          const gmMsg = getGrowthMindsetMsg();
           feedbackBox.innerHTML = `
             <div class="alert alert-warning rounded-4 border-2">
               <strong>🌱 ${gmMsg}</strong>
-              <p class="mb-1 mt-1 small"><strong>Kunci Jawaban:</strong> ${String.fromCharCode(65 + q.answerIndex)}. ${q.options[q.answerIndex]}</p>
-              <p class="mb-0 small"><strong>Pembahasan:</strong> ${q.explanation}</p>
+              <p class="mb-1 mt-1 small"><strong>${t('answerKeyLabel')}</strong> ${String.fromCharCode(65 + q.answerIndex)}. ${q.options[q.answerIndex]}</p>
+              <p class="mb-0 small"><strong>${t('explanationLabel')}</strong> ${q.explanation}</p>
             </div>
           `;
           if (isAdaptive) {
@@ -209,11 +198,10 @@ export function renderQuizSession({
 
   function finishQuiz() {
     const score = Math.round((correctCount / totalQuestions) * 100);
-    const predikat = getPredikat(score);
+    const predikat = getPredikatLocalized(score);
     playVictory();
     fireConfettiIfHigh(score);
 
-    // Cari pulau rekomendasi berdasarkan topik dengan kesalahan terbanyak (untuk pretest)
     let recommendedIsland = 1;
     let maxWrong = -1;
     Object.entries(topicStats).forEach(([islandKey, st]) => {
@@ -224,19 +212,18 @@ export function renderQuizSession({
     });
     if (maxWrong <= 0) recommendedIsland = 1;
 
-    const islandInfo = CONFIG.ISLANDS.find((isl) => isl.id === recommendedIsland) || CONFIG.ISLANDS[0];
+    const islandMeta = getIslandMeta(recommendedIsland);
 
     let extraHtml = '';
     if (mode === 'pretest') {
       extraHtml = `
         <div class="sq-info-box my-3 text-start">
-          <div class="sq-info-title">🧭 Rekomendasi Peta Petualanganmu</div>
+          <div class="sq-info-title">${t('recBoxTitle')}</div>
           <p class="mb-1">
-            Berdasarkan jawabanmu pada Asesmen Awal Adaptif, fokus belajar yang paling disarankan adalah
-            <strong>Pulau ${islandInfo.id}: ${islandInfo.name}</strong> (${islandInfo.subtitle}).
+            ${t('recBoxDesc', { id: recommendedIsland, name: islandMeta.name, sub: islandMeta.subtitle })}
           </p>
           <p class="mb-0 small">
-            Sesuai aturan petualangan, semua pulau tetap dibuka berurutan mulai dari Pulau 1. Pulau rekomendasi akan ditandai khusus di peta agar kamu lebih teliti saat sampai di sana!
+            ${t('recBoxNote')}
           </p>
         </div>
       `;
@@ -244,7 +231,7 @@ export function renderQuizSession({
       extraHtml = `
         <div class="my-3">
           <span class="badge bg-${predikat.color} fs-5 px-4 py-2 rounded-pill">
-            Predikat: ${predikat.label}
+            ${t('predicateLabel', { label: predikat.label })}
           </span>
         </div>
       `;
@@ -252,11 +239,7 @@ export function renderQuizSession({
       const passed = score >= CONFIG.PASSING_SCORE;
       extraHtml = `
         <div class="alert ${passed ? 'alert-success' : 'alert-info'} rounded-4 my-3">
-          ${
-            passed
-              ? '🎉 <strong>Boss Pulau Berhasil Dikalahkan!</strong> Pulau berikutnya kini terbuka di peta!'
-              : `🌱 <strong>Skor masih di bawah ${CONFIG.PASSING_SCORE}.</strong> Tidak apa-apa! Ulangi mini-materi atau coba Boss Quiz lagi untuk membuka pulau berikutnya.`
-          }
+          ${passed ? t('bossPassedMsg') : t('bossFailedMsg', { pass: CONFIG.PASSING_SCORE })}
         </div>
       `;
     }
@@ -264,13 +247,13 @@ export function renderQuizSession({
     container.innerHTML = `
       <div class="sq-card text-center">
         <div class="display-4 mb-2">${score >= 90 ? '🏆' : score >= 70 ? '🎉' : '🌱'}</div>
-        <h2 class="h3 fw-bold mb-1">Hasil ${title}</h2>
-        <p class="text-secondary mb-3">${correctCount} dari ${totalQuestions} soal dijawab benar</p>
+        <h2 class="h3 fw-bold mb-1">${t('resultHeading', { title })}</h2>
+        <p class="text-secondary mb-3">${t('resultCountSub', { correct: correctCount, total: totalQuestions })}</p>
         <div class="display-3 fw-bold text-primary mb-2">${score}</div>
         ${extraHtml}
         <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
-          <button type="button" id="btn-quiz-retry" class="btn sq-btn-outline sq-touch">🔄 Coba Lagi</button>
-          <button type="button" id="btn-quiz-finish" class="btn sq-btn-primary sq-touch">Lanjutkan Petualangan ➡️</button>
+          <button type="button" id="btn-quiz-retry" class="btn sq-btn-outline sq-touch">${t('retryQuizBtn')}</button>
+          <button type="button" id="btn-quiz-finish" class="btn sq-btn-primary sq-touch">${t('continueAdvBtn')}</button>
         </div>
       </div>
     `;
@@ -285,12 +268,7 @@ export function renderQuizSession({
     };
 
     if (typeof onComplete === 'function') {
-      onComplete(resultPayload, {
-        onRetry: () => {
-          playClick();
-          renderQuizSession({ container, title, subtitle, mode, questionsPool, totalQuestions, onComplete });
-        }
-      });
+      onComplete(resultPayload);
     }
 
     container.querySelector('#btn-quiz-retry').addEventListener('click', () => {

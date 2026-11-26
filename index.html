@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1d4ed8" />
-  <meta name="description" content="Story Quest: Petualangan belajar Narrative Text (Legend & Fable) untuk siswa SMP Kelas 9." />
-  <title>Story Quest — Pulau Cerita (Narrative Text SMP Kelas 9)</title>
+  <meta name="description" content="Story Quest: Interactive learning adventure for Narrative Text (Legend & Fable) — Grade 9 Junior High." />
+  <title>Story Quest — Story Island (Narrative Text Grade 9)</title>
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/svg+xml" href="./assets/icon-192.svg" />
   <!-- Bootstrap 5.3.3 (versi disematkan) -->
@@ -20,19 +20,19 @@
     <div class="container-fluid sq-container py-2">
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
         <div class="d-flex align-items-center gap-2">
-          <button type="button" id="btn-brand-home" class="btn sq-brand-btn d-flex align-items-center gap-2 p-1" aria-label="Kembali ke Beranda Story Quest">
-            <img src="./assets/icon-192.svg" alt="Ikon Story Quest" width="38" height="38" class="rounded-3" />
+          <button type="button" id="btn-brand-home" class="btn sq-brand-btn d-flex align-items-center gap-2 p-1" aria-label="Back to Story Quest Home">
+            <img src="./assets/icon-192.svg" alt="Story Quest Icon" width="38" height="38" class="rounded-3" />
             <div class="text-start lh-sm">
               <span class="sq-brand-title d-block">STORY QUEST</span>
-              <small class="sq-brand-sub">Pulau Cerita • SMP Kelas 9</small>
+              <small class="sq-brand-sub" data-i18n="brandSub">Story Island • Grade 9 Junior High</small>
             </div>
           </button>
         </div>
 
         <!-- Progres Belajar Global -->
-        <div class="sq-progress-wrap flex-grow-1 mx-lg-3" aria-label="Progres belajar keseluruhan">
+        <div class="sq-progress-wrap flex-grow-1 mx-lg-3" aria-label="Overall learning progress">
           <div class="d-flex justify-content-between small fw-bold mb-1">
-            <span>Progres Petualangan</span>
+            <span data-i18n="progressLabel">Learning Progress</span>
             <span id="global-progress-text">0%</span>
           </div>
           <div class="progress sq-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="global-progress-bar-wrap">
@@ -42,23 +42,26 @@
 
         <!-- Kontrol Cepat Header -->
         <div class="d-flex flex-wrap align-items-center gap-2">
-          <button type="button" id="btn-nav-home" class="btn sq-btn-outline sq-touch" aria-label="Beranda" title="Beranda">
-            🏠 <span class="d-none d-md-inline">Home</span>
+          <button type="button" id="btn-nav-home" class="btn sq-btn-outline sq-touch" aria-label="Home" title="Home">
+            🏠 <span class="d-none d-md-inline" data-i18n="navHome">Home</span>
           </button>
-          <button type="button" id="btn-nav-map" class="btn sq-btn-outline sq-touch" aria-label="Peta Pulau Cerita" title="Peta Pulau">
-            🗺️ <span class="d-none d-md-inline">Peta</span>
+          <button type="button" id="btn-nav-map" class="btn sq-btn-outline sq-touch" aria-label="Story Island Map" title="Island Map">
+            🗺️ <span class="d-none d-md-inline" data-i18n="navMap">Map</span>
           </button>
-          <button type="button" id="btn-nav-leaderboard" class="btn sq-btn-outline sq-touch" aria-label="Papan Peringkat Lokal" title="Peringkat">
-            🏆 <span class="d-none d-lg-inline">Peringkat</span>
+          <button type="button" id="btn-nav-leaderboard" class="btn sq-btn-outline sq-touch" aria-label="Local Leaderboard" title="Rankings">
+            🏆 <span class="d-none d-lg-inline" data-i18n="navLeaderboard">Rankings</span>
           </button>
-          <button type="button" id="btn-toggle-pid" class="btn sq-btn-outline sq-touch" aria-pressed="false" aria-label="Mode Papan Interaktif (PID)" title="Mode Papan Interaktif & Layar Penuh">
-            🖥️ <span class="d-none d-lg-inline">Mode PID</span>
+          <button type="button" id="btn-toggle-pid" class="btn sq-btn-outline sq-touch" aria-pressed="false" aria-label="Interactive Whiteboard Mode" title="Interactive Board & Fullscreen">
+            🖥️ <span class="d-none d-lg-inline" data-i18n="navPid">IWB Mode</span>
           </button>
-          <button type="button" id="btn-toggle-sound" class="btn sq-btn-outline sq-touch" aria-pressed="false" aria-label="Matikan atau nyalakan suara" title="Suara Efek">
+          <button type="button" id="btn-toggle-lang" class="btn sq-btn-outline sq-touch" aria-label="Switch Language" title="Switch Language (English / Indonesia)">
+            🌐 <span id="lang-label">EN</span>
+          </button>
+          <button type="button" id="btn-toggle-sound" class="btn sq-btn-outline sq-touch" aria-pressed="false" aria-label="Mute or unmute sound" title="Sound Effects">
             🔊
           </button>
-          <button type="button" id="btn-teacher-mode" class="btn sq-btn-dark sq-touch" aria-label="Buka Mode Guru" title="Mode Guru">
-            👩‍🏫 <span class="d-none d-md-inline">Guru</span>
+          <button type="button" id="btn-teacher-mode" class="btn sq-btn-dark sq-touch" aria-label="Open Teacher Mode" title="Teacher Mode">
+            👩‍🏫 <span class="d-none d-md-inline" data-i18n="navTeacher">Teacher</span>
           </button>
         </div>
       </div>
@@ -75,9 +78,9 @@
         </div>
         <div class="d-flex flex-wrap align-items-center gap-2 small fw-bold">
           <span class="sq-pill" id="header-xp">⚡ 0 XP</span>
-          <span class="sq-pill" id="header-streak">🔥 0 Hari</span>
-          <span class="sq-pill" id="header-badges">🎖️ 0 Badge</span>
-          <button type="button" id="btn-switch-profile" class="btn btn-sm btn-outline-primary sq-touch-sm">Ganti Siswa</button>
+          <span class="sq-pill" id="header-streak">🔥 0 Days</span>
+          <span class="sq-pill" id="header-badges">🎖️ 0 Badges</span>
+          <button type="button" id="btn-switch-profile" class="btn btn-sm btn-outline-primary sq-touch-sm" data-i18n="switchProfile">Switch Student</button>
         </div>
       </div>
     </div>
@@ -87,22 +90,22 @@
   <main id="app-root" class="container-fluid sq-container py-4" tabindex="-1">
     <div class="text-center py-5">
       <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Memuat Story Quest...</span>
+        <span class="visually-hidden">Loading Story Quest...</span>
       </div>
-      <p class="mt-3 fw-bold">Menyiapkan Pulau Cerita...</p>
+      <p class="mt-3 fw-bold" data-i18n="loadingText">Preparing Story Island...</p>
     </div>
   </main>
 
   <!-- Bilah Navigasi Pembelajaran Bawah -->
-  <nav id="bottom-nav-bar" class="sq-bottom-nav d-none" aria-label="Navigasi langkah belajar">
+  <nav id="bottom-nav-bar" class="sq-bottom-nav d-none" aria-label="Learning step navigation">
     <div class="container-fluid sq-container d-flex flex-wrap align-items-center justify-content-between gap-2 py-2">
       <div class="d-flex flex-wrap gap-2">
-        <button type="button" id="btn-prev-step" class="btn sq-btn-outline sq-touch">⬅️ Previous</button>
-        <button type="button" id="btn-repeat-material" class="btn sq-btn-tosca sq-touch d-none">🔄 Ulangi Materi</button>
+        <button type="button" id="btn-prev-step" class="btn sq-btn-outline sq-touch" data-i18n="prevBtn">⬅️ Previous</button>
+        <button type="button" id="btn-repeat-material" class="btn sq-btn-tosca sq-touch d-none" data-i18n="repeatMatBtn">🔄 Repeat Material</button>
       </div>
       <div class="d-flex flex-wrap gap-2">
-        <button type="button" id="btn-download-summary" class="btn sq-btn-outline sq-touch">📥 Download Hasil Belajar</button>
-        <button type="button" id="btn-next-step" class="btn sq-btn-primary sq-touch">Next ➡️</button>
+        <button type="button" id="btn-download-summary" class="btn sq-btn-outline sq-touch" data-i18n="downloadSummaryBtn">📥 Download Learning Summary</button>
+        <button type="button" id="btn-next-step" class="btn sq-btn-primary sq-touch" data-i18n="nextBtn">Next ➡️</button>
       </div>
     </div>
   </nav>
@@ -111,10 +114,10 @@
   <footer class="sq-footer mt-5 py-4" role="contentinfo">
     <div class="container-fluid sq-container d-flex flex-wrap justify-content-between align-items-center gap-2">
       <div>
-        <strong>Story Quest: Pulau Cerita</strong> — Media Pembelajaran Mendalam Bahasa Inggris SMP Kelas 9 (Narrative Text: Legend &amp; Fable).
+        <strong>Story Quest: Story Island</strong> — <span data-i18n="footerDesc">Deep Learning English Media for Grade 9 Junior High (Narrative Text: Legend &amp; Fable).</span>
       </div>
-      <div class="small text-secondary">
-        Data tersimpan aman di perangkat (offline-ready PWA) • Tanpa login &amp; tanpa server eksternal.
+      <div class="small text-secondary" data-i18n="footerSub">
+        Data is saved safely on this device (offline-ready PWA) • No login &amp; no external server.
       </div>
     </div>
   </footer>

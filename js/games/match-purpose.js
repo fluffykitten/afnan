@@ -2,6 +2,7 @@
  * Pulau 1 Mini-Game: Pencocokan Pasangan (Kata Kunci <-> Bukti Tujuan Komunikatif)
  */
 import { playClick, playCorrect, playWrong, playVictory } from '../sound.js';
+import { t } from '../i18n.js';
 
 export function renderMatchPurposeGame(container, textsData, onComplete) {
   const pairs = [
@@ -32,7 +33,6 @@ export function renderMatchPurposeGame(container, textsData, onComplete) {
     }
   ];
 
-  // Acak urutan bukti di kolom kanan
   const shuffledEvidences = [...pairs].sort(() => Math.random() - 0.5);
   let selectedKeywordId = null;
   const matchedIds = new Set();
@@ -46,15 +46,15 @@ export function renderMatchPurposeGame(container, textsData, onComplete) {
       <div class="sq-card">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
           <div>
-            <h3 class="h4 fw-bold mb-1">🎯 Pencocokan Pasangan: Kata Kunci ↔ Bukti Tujuan</h3>
-            <p class="small text-secondary mb-0">Klik satu <strong>Kata Kunci Tujuan</strong> di kiri, lalu klik <strong>Bukti Teks</strong> yang cocok di kanan.</p>
+            <h3 class="h4 fw-bold mb-1">${t('mg1Title')}</h3>
+            <p class="small text-secondary mb-0">${t('mg1Sub')}</p>
           </div>
-          <span class="badge sq-badge-tosca fs-6">${matchedIds.size} / ${pairs.length} Cocok</span>
+          <span class="badge sq-badge-tosca fs-6">${t('mg1Matched', { done: matchedIds.size, total: pairs.length })}</span>
         </div>
 
         <div class="row g-3">
           <div class="col-md-5">
-            <div class="fw-bold mb-2 text-primary">Kata Kunci &amp; Nilai Moral</div>
+            <div class="fw-bold mb-2 text-primary">${t('mg1LeftCol')}</div>
             <div class="d-grid gap-2" id="kw-list">
               ${pairs
                 .map((p) => {
@@ -72,7 +72,7 @@ export function renderMatchPurposeGame(container, textsData, onComplete) {
           </div>
 
           <div class="col-md-7">
-            <div class="fw-bold mb-2 text-primary">Bukti Konkret dari Teks (English)</div>
+            <div class="fw-bold mb-2 text-primary">${t('mg1RightCol')}</div>
             <div class="d-grid gap-2" id="ev-list">
               ${shuffledEvidences
                 .map((p) => {
@@ -92,12 +92,10 @@ export function renderMatchPurposeGame(container, textsData, onComplete) {
         <div id="match-feedback" class="mt-3">
           ${
             doneAll
-              ? `<div class="alert alert-success rounded-4">
-                   🎉 <strong>Semua pasangan berhasil dicocokkan!</strong> Skor Mini-Game: <strong>${score}</strong>.
-                 </div>`
+              ? `<div class="alert alert-success rounded-4">${t('mg1Done', { score })}</div>`
               : `<div class="sq-info-box small">
-                   <div class="sq-info-title">💡 Tips</div>
-                   Perhatikan hubungan sebab-akibat antara tindakan tokoh dan pesan moral di setiap bukti teks.
+                   <div class="sq-info-title">${t('mg1TipTitle')}</div>
+                   ${t('mg1TipBody')}
                  </div>`
           }
         </div>
@@ -116,7 +114,7 @@ export function renderMatchPurposeGame(container, textsData, onComplete) {
       btn.addEventListener('click', () => {
         if (!selectedKeywordId) {
           const fb = container.querySelector('#match-feedback');
-          fb.innerHTML = '<div class="alert alert-info rounded-4">Pilih dulu satu <strong>Kata Kunci</strong> di kolom kiri!</div>';
+          fb.innerHTML = `<div class="alert alert-info rounded-4">${t('mg1PickLeftFirst')}</div>`;
           return;
         }
         const evId = btn.dataset.ev;
@@ -127,7 +125,7 @@ export function renderMatchPurposeGame(container, textsData, onComplete) {
           render();
           if (matchedIds.size === pairs.length) {
             playVictory();
-            onComplete(Math.max(60, 100 - mistakes * 10), 'Berhasil mencocokkan 5 kata kunci tujuan komunikatif dengan bukti teks.');
+            onComplete(Math.max(60, 100 - mistakes * 10), 'Matched 5 purpose keywords with text evidences.');
           }
         } else {
           mistakes += 1;
@@ -135,8 +133,7 @@ export function renderMatchPurposeGame(container, textsData, onComplete) {
           btn.classList.add('wrong');
           setTimeout(() => btn.classList.remove('wrong'), 500);
           const fb = container.querySelector('#match-feedback');
-          fb.innerHTML =
-            '<div class="alert alert-warning rounded-4">🌱 Belum tepat, kesalahan membantu kita tumbuh! Cek kesamaan cerita pada kata kunci dan bukti.</div>';
+          fb.innerHTML = `<div class="alert alert-warning rounded-4">${t('mg1Wrong')}</div>`;
         }
       });
     });

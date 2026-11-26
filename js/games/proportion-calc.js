@@ -1,7 +1,8 @@
 /**
  * Pulau 3 Mini-Game: Kalkulator Proporsi Interaktif + Grafik Batang/Donat Chart.js
  */
-import { playClick, playCorrect, playWrong, playVictory } from '../sound.js';
+import { playClick, playWrong, playVictory } from '../sound.js';
+import { t } from '../i18n.js';
 
 function countWords(text) {
   return text.trim().split(/\s+/).filter(Boolean).length;
@@ -13,7 +14,7 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
   let chartInstance = null;
 
   function render() {
-    const story = textsData.texts.find((t) => t.id === activeTextId) || textsData.texts[0];
+    const story = textsData.texts.find((item) => item.id === activeTextId) || textsData.texts[0];
     const actualStats = story.stages.map((st) => ({
       stage: st.stage,
       sentences: st.sentences.length,
@@ -29,24 +30,23 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
       <div class="sq-card">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
           <div>
-            <h3 class="h4 fw-bold mb-1">📊 Kalkulator Proporsi &amp; Grafik Otomatis</h3>
-            <p class="small text-secondary mb-0">Hitung jumlah kalimat tiap tahap dari teks di bawah, masukkan angkanya, dan lihat grafik otomatis!</p>
+            <h3 class="h4 fw-bold mb-1">${t('mg3Title')}</h3>
+            <p class="small text-secondary mb-0">${t('mg3Sub')}</p>
           </div>
           <div class="d-flex gap-2">
-            <select id="prop-story-select" class="form-select sq-touch-sm" aria-label="Pilih teks cerita">
-              ${textsData.texts.map((t) => `<option value="${t.id}" ${t.id === activeTextId ? 'selected' : ''}>${t.title}</option>`).join('')}
+            <select id="prop-story-select" class="form-select sq-touch-sm" aria-label="Select story text">
+              ${textsData.texts.map((item) => `<option value="${item.id}" ${item.id === activeTextId ? 'selected' : ''}>${item.title}</option>`).join('')}
             </select>
             <button type="button" id="btn-toggle-chart" class="btn sq-btn-outline sq-touch-sm">
-              ${chartType === 'doughnut' ? '📊 Ubah ke Grafik Batang' : '🍩 Ubah ke Grafik Donat'}
+              ${chartType === 'doughnut' ? t('mg3ToBar') : t('mg3ToDoughnut')}
             </button>
           </div>
         </div>
 
-        <!-- Teks Referensi dengan Penanda Tahap -->
         <div class="sq-reading-box mb-4">
           <div class="d-flex justify-content-between align-items-center mb-2">
             <strong>📖 ${story.title} (${story.type.toUpperCase()})</strong>
-            <span class="badge bg-secondary">Total Kata: ${totalWords} kata</span>
+            <span class="badge bg-secondary">${t('mg3TotalWords', { words: totalWords })}</span>
           </div>
           ${story.stages
             .map(
@@ -61,15 +61,15 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
 
         <div class="row g-4 align-items-center">
           <div class="col-lg-6">
-            <h4 class="h6 fw-bold text-primary mb-2">1. Isi Jumlah Kalimat Tiap Tahap</h4>
+            <h4 class="h6 fw-bold text-primary mb-2">${t('mg3Step1')}</h4>
             <div class="table-responsive">
               <table class="table table-bordered align-middle small">
                 <thead class="table-light">
                   <tr>
-                    <th>Tahap</th>
-                    <th>Input Kalimat</th>
-                    <th>Kata (Info)</th>
-                    <th>Proporsi (%)</th>
+                    <th>${t('mg3ColStage')}</th>
+                    <th>${t('mg3ColInput')}</th>
+                    <th>${t('mg3ColWords')}</th>
+                    <th>${t('mg3ColPct')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -81,9 +81,9 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
                         <td>
                           <input type="number" min="0" max="20" value="1"
                             class="form-control form-control-sm prop-input" data-idx="${idx}"
-                            aria-label="Jumlah kalimat ${st.stage}">
+                            aria-label="Sentence count ${st.stage}">
                         </td>
-                        <td>${st.words} kata</td>
+                        <td>${st.words}</td>
                         <td class="fw-bold text-primary" id="prop-pct-${idx}">-</td>
                       </tr>`
                     )
@@ -94,13 +94,13 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
 
             <div class="row g-2 mb-3">
               <div class="col-sm-6">
-                <label class="form-label small fw-bold" for="sel-longest">Tahap Terpanjang:</label>
+                <label class="form-label small fw-bold" for="sel-longest">${t('mg3Longest')}</label>
                 <select id="sel-longest" class="form-select sq-touch-sm">
                   ${actualStats.map((s) => `<option value="${s.stage}">${s.stage}</option>`).join('')}
                 </select>
               </div>
               <div class="col-sm-6">
-                <label class="form-label small fw-bold" for="sel-shortest">Tahap Terpendek:</label>
+                <label class="form-label small fw-bold" for="sel-shortest">${t('mg3Shortest')}</label>
                 <select id="sel-shortest" class="form-select sq-touch-sm">
                   ${actualStats.map((s) => `<option value="${s.stage}">${s.stage}</option>`).join('')}
                 </select>
@@ -108,18 +108,18 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
             </div>
 
             <button type="button" id="btn-check-prop" class="btn sq-btn-primary sq-touch w-100">
-              ✅ Hitung &amp; Verifikasi Proporsi
+              ${t('mg3CheckBtn')}
             </button>
             <div id="prop-feedback" class="mt-3"></div>
           </div>
 
           <div class="col-lg-6">
             <div class="p-3 border rounded-4 bg-white">
-              <canvas id="prop-chart-canvas" height="250" aria-label="Grafik proporsi tahap narrative text"></canvas>
+              <canvas id="prop-chart-canvas" height="250" aria-label="Stage proportion chart"></canvas>
             </div>
             <div class="sq-info-box mt-3 small" id="prop-summary-box">
-              <div class="sq-info-title">📐 Rumus Cepat</div>
-              Persentase Tahap = (Jumlah Kalimat Tahap ÷ Total Kalimat) × 100%. Selisih dihitung dari tahap terpanjang dikurangi tahap terpendek.
+              <div class="sq-info-title">${t('mg3FormulaTitle')}</div>
+              ${t('mg3FormulaBody')}
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
             labels: actualStats.map((s) => s.stage),
             datasets: [
               {
-                label: 'Jumlah Kalimat',
+                label: t('mg3ColInput'),
                 data: vals,
                 backgroundColor: ['#1d4ed8', '#dc2626', '#f59e0b', '#0d9488', '#7c3aed'],
                 borderWidth: 2
@@ -154,9 +154,7 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
           },
           options: {
             responsive: true,
-            plugins: {
-              legend: { position: 'bottom' }
-            }
+            plugins: { legend: { position: 'bottom' } }
           }
         });
       }
@@ -190,21 +188,11 @@ export function renderProportionCalcGame(container, textsData, onComplete) {
       const fb = container.querySelector('#prop-feedback');
       if (countMatches === actualStats.length && longestValid && shortestValid) {
         playVictory();
-        fb.innerHTML = `
-          <div class="alert alert-success rounded-4">
-            🎉 <strong>Tepat sekali!</strong> Total ${totalSentences} kalimat.
-            Tahap terpanjang (${maxStage.sentences} kalimat) dan terpendek (${minStage.sentences} kalimat) memiliki selisih <strong>${diffSentences} kalimat</strong>!
-          </div>
-        `;
-        onComplete(100, `Menghitung proporsi & menganalisis grafik teks ${story.title}.`);
+        fb.innerHTML = `<div class="alert alert-success rounded-4">${t('mg3Right', { total: totalSentences, max: maxStage.sentences, min: minStage.sentences, diff: diffSentences })}</div>`;
+        onComplete(100, `Calculated proportions & analyzed chart for ${story.title}.`);
       } else {
         playWrong();
-        fb.innerHTML = `
-          <div class="alert alert-warning rounded-4">
-            🌱 ${countMatches}/${actualStats.length} hitungan kalimat tepat.
-            Petunjuk: Hitung tanda titik di tiap blok warna pada kotak bacaan (${actualStats.map((s) => `${s.stage}: ${s.sentences}`).join(', ')}).
-          </div>
-        `;
+        fb.innerHTML = `<div class="alert alert-warning rounded-4">${t('mg3Wrong', { ok: countMatches, total: actualStats.length })} (${actualStats.map((s) => `${s.stage}: ${s.sentences}`).join(', ')})</div>`;
       }
     });
   }
